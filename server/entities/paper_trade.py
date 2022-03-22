@@ -13,6 +13,7 @@ class PaperTrade:
                  cost_price: float = None,
                  total_sell: float = None,
                  total_cost: float = None,
+                 net_profit: float = None,
                  ):
         self.ticker = ticker,
         self.strike_price = strike_price,
@@ -27,6 +28,7 @@ class PaperTrade:
         self.cost_price = cost_price,
         self.total_sell = total_sell,
         self.total_cost = total_cost,
+        self.net_profit = net_profit,
 
     def make_dictionary(self):
         dictionary = {
@@ -43,6 +45,7 @@ class PaperTrade:
             "costPrice": self.cost_price,
             "totalSell": self.total_sell,
             "totalCost": self.total_cost,
+            "netProfit": self.net_profit,
         }
 
         return dictionary
@@ -53,4 +56,4 @@ class PaperTrade:
                f"call_price: {self.call_price}, put_price: {self.put_price}, call_breakeven_point: " \
                f"{self.call_breakeven_point}, put_breakeven_point: {self.put_breakeven_point}, " \
                f"sell_price: {self.sell_price}, cost_price: {self.cost_price}, total_sell: {self.total_sell}, " \
-               f"total_cost: {self.total_cost}"
+               f"total_cost: {self.total_cost}, net_profit: {self.net_profit}"
