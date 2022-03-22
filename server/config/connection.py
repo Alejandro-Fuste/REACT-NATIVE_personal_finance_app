@@ -13,13 +13,14 @@ def create_connection():
 
 
 if __name__ == "__main__":
-
     dbname = create_connection()
 
     collection_name = dbname.users
 
-    test_user = {'firstName': 'Luke', 'lastName': 'Skywalker'}
+    test_user = {'firstName': 'Leia', 'lastName': 'Skywalker'}
 
-    collection_name.insert_one(test_user)
+    result = collection_name.insert_one(test_user)
+
+    print(result.inserted_id)
 
 
