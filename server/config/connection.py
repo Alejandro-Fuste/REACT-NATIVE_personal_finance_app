@@ -1,0 +1,25 @@
+from pymongo import MongoClient
+import os
+
+
+def create_connection():
+    try:
+        connection_string: str = os.environ.get("MongoURL")
+        client = MongoClient(connection_string)
+
+        return client.finance_app
+    except Exception:
+        print("Unable to connect to the server.")
+
+
+if __name__ == "__main__":
+
+    dbname = create_connection()
+
+    collection_name = dbname.users
+
+    test_user = {'firstName': 'Luke', 'lastName': 'Skywalker'}
+
+    collection_name.insert_one(test_user)
+
+
