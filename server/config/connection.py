@@ -1,26 +1,24 @@
 from pymongo import MongoClient
+from environment_variables import mongo_url
 import os
 
 
-def create_connection():
+def test_connection():
     try:
-        connection_string: str = os.environ.get("MongoURL")
+        connection_string = mongo_url
+        # connection_string: str = os.environ.get("MongoURL")
         client = MongoClient(connection_string)
+        database = client.finance_app
 
-        return client.finance_app
-    except Exception:
+        print(client.list_database_names())
+        print(database.list_collection_names())
+        print("Able to connect to the database.")
+
+        return database
+    except Exception as e:
         print("Unable to connect to the server.")
 
 
-if __name__ == "__main__":
-    dbname = create_connection()
-
-    collection_name = dbname.users
-
-    test_user = {'firstName': 'Leia', 'lastName': 'Skywalker'}
-
-    result = collection_name.insert_one(test_user)
-
-    print(result.inserted_id)
+connection = test_connection()
 
 

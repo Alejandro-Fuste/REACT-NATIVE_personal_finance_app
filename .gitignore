@@ -127,3 +127,21 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+#ignore intellij files
+.idea
+*.iws
+*.iml
+*.ipr
+
+#ignore builds and tests
+/target/
+*/target/**
+/test-output/
+*/test-output/**
+
+#Mac file
+.DS_Store
+
+#Environment variables file
+environment_variables.py
