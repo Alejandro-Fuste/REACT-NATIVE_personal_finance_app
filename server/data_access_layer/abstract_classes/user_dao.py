@@ -24,7 +24,7 @@ class UserDAO(ABC):
     @abstractmethod
     def update_user(self, user_id: int, user: User) -> User:
         pass
-    
+
     # Delete method -------
     @abstractmethod
     def delete_user(self, user_id: int) -> bool:
