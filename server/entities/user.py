@@ -30,5 +30,5 @@ class User:
 
     def __str__(self):
         return f"user_id: {self.user_id}, first_name: {self.first_name}, last_name: {self.last_name}, " \
-               f"email: {self.email}, username: {self.username}, passcode: ********, paper_trade: {self.paper_trade}"
+               f"email: {self.email}, username: {self.username}, passcode: {self.password}, paper_trade: {self.paper_trade}"
 
