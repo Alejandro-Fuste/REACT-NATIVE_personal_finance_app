@@ -9,7 +9,7 @@ fake = Faker()
 
 @fixture
 def create_new_user() -> User:
-    return User(fake.uuid4(), fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+    return User(0, fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                 fake.sha256(raw_output=False))
 
 

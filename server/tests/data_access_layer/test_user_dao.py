@@ -13,8 +13,9 @@ def test_create_user_success(create_new_user):
 
 # Read Tests ---------------------
 
-def test_get_user_success():
-    pass
+def test_get_user_success(create_new_user):
+    result: User = user_dao.get_user(create_new_user.user_id)
+    assert result.user_id == create_new_user.user_id
 
 
 def test_get_all_users_success():
