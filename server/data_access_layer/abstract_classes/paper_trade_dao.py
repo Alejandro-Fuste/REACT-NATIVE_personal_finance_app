@@ -25,5 +25,5 @@ class PaperTradeDAO(ABC):
 
     # Delete method -------
     @abstractmethod
-    def delete_user(self, paper_trade_id: int) -> bool:
+    def delete_paper_trade(self, paper_trade_id: int) -> bool:
         pass
