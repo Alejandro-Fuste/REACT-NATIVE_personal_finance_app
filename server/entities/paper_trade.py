@@ -9,6 +9,8 @@ class PaperTrade:
                  put_price: float = None,
                  call_breakeven_point: float = None,
                  put_breakeven_point: float = None,
+                 straddle_call_breakeven_point: float = None,
+                 straddle_put_breakeven_point: float = None,
                  sell_price: float = None,
                  cost_price: float = None,
                  total_sell: float = None,
@@ -25,6 +27,8 @@ class PaperTrade:
         self.put_price = put_price,
         self.call_breakeven_point = call_breakeven_point,
         self.put_breakeven_point = put_breakeven_point,
+        self.straddle_call_breakeven_point = straddle_call_breakeven_point,
+        self.straddle_put_breakeven_point = straddle_put_breakeven_point,
         self.sell_price = sell_price,
         self.cost_price = cost_price,
         self.total_sell = total_sell,
@@ -43,6 +47,8 @@ class PaperTrade:
             "putPrice": self.put_price,
             "callBreakevenPoint": self.call_breakeven_point,
             "putBreakevenPoint": self.put_breakeven_point,
+            "straddle_call_breakeven_point": self.straddle_call_breakeven_point,
+            "straddle_put_breakeven_point": self.straddle_put_breakeven_point,
             "sellPrice": self.sell_price,
             "costPrice": self.cost_price,
             "totalSell": self.total_sell,
@@ -58,6 +64,8 @@ class PaperTrade:
                f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, " \
                f"call_price: {self.call_price}, put_price: {self.put_price}, call_breakeven_point: " \
                f"{self.call_breakeven_point}, put_breakeven_point: {self.put_breakeven_point}, " \
-               f"sell_price: {self.sell_price}, cost_price: {self.cost_price}, total_sell: {self.total_sell}, " \
+               f"straddle_call_breakeven_point: {self.straddle_call_breakeven_point}, " \
+               f"straddle_put_breakeven_point: {self.straddle_put_breakeven_point} sell_price: {self.sell_price}, " \
+               f"cost_price: {self.cost_price}, total_sell: {self.total_sell}, " \
                f"total_cost: {self.total_cost}, net_profit: {self.net_profit}, " \
                f"net_profit_percentage: {self.net_profit_percentage}"

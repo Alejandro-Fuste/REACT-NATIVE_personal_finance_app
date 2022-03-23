@@ -1,4 +1,5 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
+from server.entities.user import User
 
 user_dao: UserDAO = UserDAOImp()
 
@@ -6,7 +7,8 @@ user_dao: UserDAO = UserDAOImp()
 # Creation Tests -----------------
 
 def test_create_user_success(create_new_user):
-    pass
+    new_user: User = user_dao.create_new_user(create_new_user)
+    assert new_user.first_name == "Luke"
 
 
 # Read Tests ---------------------
