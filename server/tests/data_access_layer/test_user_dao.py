@@ -1,13 +1,11 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
-from server.entities.user import User
-from pytest import fixture
 
 user_dao: UserDAO = UserDAOImp()
 
 
 # Creation Tests -----------------
 
-def test_create_user_success():
+def test_create_user_success(create_new_user):
     pass
 
 
