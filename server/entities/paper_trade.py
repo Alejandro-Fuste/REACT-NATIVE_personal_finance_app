@@ -18,22 +18,22 @@ class PaperTrade:
                  net_profit: float = None,
                  net_profit_percentage: int = None
                  ):
-        self.ticker = ticker,
-        self.strike_price = strike_price,
-        self.trade_type = trade_type,
-        self.expiration_date = expiration_date,
-        self.strategy_type = strategy_type,
-        self.call_price = call_price,
-        self.put_price = put_price,
-        self.call_breakeven_point = call_breakeven_point,
-        self.put_breakeven_point = put_breakeven_point,
-        self.straddle_call_breakeven_point = straddle_call_breakeven_point,
-        self.straddle_put_breakeven_point = straddle_put_breakeven_point,
-        self.sell_price = sell_price,
-        self.cost_price = cost_price,
-        self.total_sell = total_sell,
-        self.total_cost = total_cost,
-        self.net_profit = net_profit,
+        self.ticker = ticker
+        self.strike_price = strike_price
+        self.trade_type = trade_type
+        self.expiration_date = expiration_date
+        self.strategy_type = strategy_type
+        self.call_price = call_price
+        self.put_price = put_price
+        self.call_breakeven_point = call_breakeven_point
+        self.put_breakeven_point = put_breakeven_point
+        self.straddle_call_breakeven_point = straddle_call_breakeven_point
+        self.straddle_put_breakeven_point = straddle_put_breakeven_point
+        self.sell_price = sell_price
+        self.cost_price = cost_price
+        self.total_sell = total_sell
+        self.total_cost = total_cost
+        self.net_profit = net_profit
         self.net_profit_percentage = net_profit_percentage
 
     def make_dictionary(self):

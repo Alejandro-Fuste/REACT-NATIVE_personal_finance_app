@@ -7,16 +7,26 @@ from server.entities.user import User
 fake = Faker()
 
 
-# @fixture
+@fixture
 def create_new_user() -> User:
     return User(fake.uuid4(), fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                 fake.sha256(raw_output=False))
 
 
-@fixture
+# @fixture
 def create_new_paper_trade() -> PaperTrade:
-    return PaperTrade("T", 23.00, "Call", "3/25", "Straddle", .30, .11, 23.30, 22.89, 0, )
+    return PaperTrade("T", fake.pyfloat(left_digits=2, right_digits=2, positive=True), "Call", "3/25", "Straddle",
+                      fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                      fake.pyint(max_value=100)
+                      )
 
-
-print(create_new_user())
-print(create_new_user())
