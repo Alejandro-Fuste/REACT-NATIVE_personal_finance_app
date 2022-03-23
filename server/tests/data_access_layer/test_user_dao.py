@@ -19,7 +19,8 @@ def test_get_user_success(create_new_user):
 
 
 def test_get_all_users_success():
-    pass
+    users = user_dao.get_all_users()
+    assert len(users) >= 1
 
 
 # Update Tests -------------------
