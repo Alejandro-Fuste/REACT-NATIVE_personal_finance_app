@@ -13,7 +13,7 @@ def create_new_user() -> User:
                 fake.sha256(raw_output=False))
 
 
-# @fixture
+@fixture
 def create_new_paper_trade() -> PaperTrade:
     return PaperTrade("T", fake.pyfloat(left_digits=2, right_digits=2, positive=True), "Call", "3/25", "Straddle",
                       fake.pyfloat(left_digits=0, right_digits=2, positive=True),

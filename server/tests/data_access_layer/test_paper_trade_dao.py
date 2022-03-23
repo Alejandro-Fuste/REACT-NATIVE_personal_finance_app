@@ -7,8 +7,9 @@ paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
 
 # Creation Tests -----------------
 
-def test_add_paper_trade_success():
-    pass
+def test_add_paper_trade_success(create_new_paper_trade):
+    new_trade: PaperTrade = paper_trade_dao.add_paper_trade(create_new_paper_trade)
+    assert new_trade.ticker == create_new_paper_trade.ticker
 
 
 # Update Tests -----------------
