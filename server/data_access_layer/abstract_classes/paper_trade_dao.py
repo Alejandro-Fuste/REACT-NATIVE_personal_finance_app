@@ -8,7 +8,7 @@ class PaperTradeDAO(ABC):
 
     # Create method -------
     @abstractmethod
-    def add_paper_trade(self, paper_trade: PaperTrade) -> PaperTrade:
+    def add_paper_trade(self, paper_trade: PaperTrade) -> dict:
         pass
 
     # Read methods --------

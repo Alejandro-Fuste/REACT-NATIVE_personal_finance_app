@@ -7,8 +7,8 @@ user_dao: UserDAO = UserDAOImp()
 # Creation Tests -----------------
 
 def test_create_user_success(create_new_user):
-    new_user: User = user_dao.create_new_user(create_new_user)
-    assert new_user.first_name == create_new_user.first_name
+    new_user: dict = user_dao.create_new_user(create_new_user)
+    assert new_user.acknowledged
 
 
 # Read Tests ---------------------

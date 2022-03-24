@@ -8,7 +8,7 @@ class UserDAO(ABC):
 
     # Create method -------
     @abstractmethod
-    def create_new_user(self, user: User) -> User:
+    def create_new_user(self, user: User) -> dict:
         pass
 
     # Read methods -------
