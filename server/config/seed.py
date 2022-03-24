@@ -4,21 +4,23 @@ from server.entities.user import User
 from server.entities.paper_trade import PaperTrade
 from faker import Faker
 
-# database connection ----------------
+# database connection -------------
 connection_string = mongo_url
 client = MongoClient(connection_string)
 database = client.finance_app
 collection = database.users
 
-# delete_previous_entries = collection_name.delete_many({})
-#
-# print(delete_previous_entries.deleted_count, "documents deleted.")
+# Delete old entries before adding new entries
+delete_previous_entries = collection.delete_many({})
 
+print(f"{delete_previous_entries.deleted_count} documents deleted.")
+
+# New entries ---------------------
 fake = Faker()
 
-# Paper Trades --------------------
+#   Paper Trades --------------------
 
-# Users  --------------------------
+#   Users  --------------------------
 
 test_user = {'firstName': 'Leia', 'lastName': 'Skywalker'}
 
