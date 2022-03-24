@@ -8,7 +8,7 @@ class User:
                  email: str = None,
                  username: str = None,
                  password: str = None,
-                 paper_trades: List = []
+                 paper_trades: List = None
                  ):
         self.first_name = first_name
         self.last_name = last_name
