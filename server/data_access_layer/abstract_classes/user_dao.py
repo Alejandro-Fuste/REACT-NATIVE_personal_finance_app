@@ -13,7 +13,10 @@ class UserDAO(ABC):
 
     # Read methods -------
     @abstractmethod
-    def get_user(self, user_id: str) -> User:
+    def get_user_by_id(self, user_id: str) -> User:
+        pass
+
+    def get_user_by_username(self, username: str) -> User:
         pass
 
     @abstractmethod

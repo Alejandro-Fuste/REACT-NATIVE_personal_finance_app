@@ -8,7 +8,10 @@ class UserDAOImp(UserDAO):
     def create_new_user(self, user: User) -> User:
         pass
 
-    def get_user(self, user_id: str) -> User:
+    def get_user_by_id(self, user_id: str) -> User:
+        pass
+
+    def get_user_by_username(self, username: str) -> User:
         pass
 
     def get_all_users(self) -> List[User]:
