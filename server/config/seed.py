@@ -19,12 +19,29 @@ print(f"{delete_previous_entries.deleted_count} documents deleted.")
 fake = Faker()
 
 #   Paper Trades --------------------
-paper_trade_1 = PaperTrade
+paper_trade_1 = PaperTrade(fake.uuid4(cast_to=int), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           "Call", "3/25", "Straddle",
+                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyint(max_value=100))
 
 #   Users  --------------------------
 
-test_user = {'firstName': 'Leia', 'lastName': 'Skywalker'}
+test_user_1 = User(fake.uuid4(cast_to=int), "Luke", "Skywalker", "luke.skywalker@jedi.com",
+                   "Master Luke", fake.sha256(raw_output=False), paper_trade_1.make_dictionary())
 
-# result = collection_name.insert_one(test_user)
-#
-# print(result.inserted_id)
+test_user_2 = User(fake.uuid4(cast_to=int), "Leia", "Organa", "leia.organa@jedi.net",
+                   "Princess Leia", fake.sha256(raw_output=False))
+
+result = collection.insert_one(test_user_1)
+
+print(result.inserted_id)

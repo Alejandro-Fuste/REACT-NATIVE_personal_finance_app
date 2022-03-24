@@ -29,4 +29,3 @@ def create_new_paper_trade() -> PaperTrade:
                       fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                       fake.pyint(max_value=100)
                       )
-
