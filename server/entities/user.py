@@ -5,14 +5,14 @@ class User:
                  email: str = None,
                  username: str = None,
                  password: str = None,
-                 paper_trade: dict = {}
+                 paper_trades: dict = {}
                  ):
         self.first_name = first_name
         self.last_name = last_name
         self.email = email
         self.username = username
         self.password = password
-        self.paper_trade = paper_trade
+        self.paper_trades = paper_trades
 
     def make_dictionary(self):
         dictionary = {
@@ -21,12 +21,12 @@ class User:
             "email": self.email,
             "username": self.username,
             "password": self.password,
-            "paperTrade": self.paper_trade
+            "paperTrades": self.paper_trades
         }
         return dictionary
 
     def __str__(self):
         return f"first_name: {self.first_name}, last_name: {self.last_name}, " \
                f"email: {self.email}, username: {self.username}, passcode: {self.password}, " \
-               f"paper_trade: {self.paper_trade}"
+               f"paper_trade: {self.paper_trades}"
 
