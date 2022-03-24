@@ -17,5 +17,5 @@ class UserDAOImp(UserDAO):
     def update_user(self, user_id: int, user: User) -> User:
         pass
 
-    def delete_user(self, user_id: int) -> bool:
+    def delete_user(self, user_id: int) -> int:
         pass

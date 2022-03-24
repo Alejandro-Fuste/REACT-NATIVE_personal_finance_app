@@ -25,11 +25,13 @@ def test_get_all_users_success():
 
 # Update Tests -------------------
 
-def test_update_user_success():
-    pass
+def test_update_user_success(updated_user):
+    updated_user: User = user_dao.update_user(updated_user)
+    assert updated_user.username == "Master Jedi"
 
 
 # Delete Tests -------------------
 
 def test_delete_user_success():
-    pass
+    deleted_user = user_dao.delete_user(1)
+    assert deleted_user.deleted_count == 1

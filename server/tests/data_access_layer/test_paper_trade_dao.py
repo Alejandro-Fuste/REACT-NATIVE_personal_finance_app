@@ -14,11 +14,13 @@ def test_add_paper_trade_success(create_new_paper_trade):
 
 # Update Tests -----------------
 
-def test_update_paper_trade_success():
-    pass
+def test_update_paper_trade_success(updated_trade):
+    updated_trade: PaperTrade = paper_trade_dao.update_paper_trade(1, updated_trade)
+    assert updated_trade.sell_price == 2.00
 
 
 # Delete Tests -------------------
 
 def test_delete_paper_trade_success():
-    pass
+    deleted_account = paper_trade_dao.delete_paper_trade(2)
+    assert deleted_account.deleted_count == 1

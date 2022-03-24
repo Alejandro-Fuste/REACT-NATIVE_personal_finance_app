@@ -27,5 +27,5 @@ class UserDAO(ABC):
 
     # Delete method -------
     @abstractmethod
-    def delete_user(self, user_id: int) -> bool:
+    def delete_user(self, user_id: int) -> int:
         pass
