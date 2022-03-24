@@ -1,3 +1,6 @@
+from typing import List
+
+
 class User:
     def __init__(self,
                  first_name: str = None,
@@ -5,7 +8,7 @@ class User:
                  email: str = None,
                  username: str = None,
                  password: str = None,
-                 paper_trades: dict = {}
+                 paper_trades: List = []
                  ):
         self.first_name = first_name
         self.last_name = last_name
