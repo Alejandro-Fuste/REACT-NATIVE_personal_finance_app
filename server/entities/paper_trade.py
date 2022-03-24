@@ -1,5 +1,6 @@
 class PaperTrade:
     def __init__(self,
+                 trade_id: int = None,
                  ticker: str = None,
                  strike_price: float = None,
                  trade_type: str = None,
@@ -18,6 +19,7 @@ class PaperTrade:
                  net_profit: float = None,
                  net_profit_percentage: int = None
                  ):
+        self.trade_id = trade_id
         self.ticker = ticker
         self.strike_price = strike_price
         self.trade_type = trade_type
@@ -38,6 +40,7 @@ class PaperTrade:
 
     def make_dictionary(self):
         dictionary = {
+            "tradeId": self.trade_id,
             "ticker": self.ticker,
             "strikePrice": self.strike_price,
             "tradeType": self.trade_type,
@@ -60,10 +63,10 @@ class PaperTrade:
         return dictionary
 
     def __str__(self):
-        return f"ticker: {self.ticker}, strike_price: {self.strike_price}, trade_type: {self.trade_type}, " \
-               f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, " \
-               f"call_price: {self.call_price}, put_price: {self.put_price}, call_breakeven_point: " \
-               f"{self.call_breakeven_point}, put_breakeven_point: {self.put_breakeven_point}, " \
+        return f"tradeId: {self.trade_id}, ticker: {self.ticker}, strike_price: {self.strike_price}, " \
+               f"trade_type: {self.trade_type}, expiration_date: {self.expiration_date}, " \
+               f"strategy_type: {self.strategy_type}, call_price: {self.call_price}, put_price: {self.put_price}, " \
+               f"call_breakeven_point: {self.call_breakeven_point}, put_breakeven_point: {self.put_breakeven_point}, " \
                f"straddle_call_breakeven_point: {self.straddle_call_breakeven_point}, " \
                f"straddle_put_breakeven_point: {self.straddle_put_breakeven_point} sell_price: {self.sell_price}, " \
                f"cost_price: {self.cost_price}, total_sell: {self.total_sell}, " \

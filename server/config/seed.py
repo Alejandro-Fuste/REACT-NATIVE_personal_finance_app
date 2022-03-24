@@ -19,6 +19,7 @@ print(f"{delete_previous_entries.deleted_count} documents deleted.")
 fake = Faker()
 
 #   Paper Trades --------------------
+paper_trade_1 = PaperTrade
 
 #   Users  --------------------------
 
