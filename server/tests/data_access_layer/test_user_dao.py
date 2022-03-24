@@ -13,9 +13,9 @@ def test_create_user_success(create_new_user):
 
 # Read Tests ---------------------
 
-def test_get_user_success(create_new_user):
-    result: User = user_dao.get_user(create_new_user.user_id)
-    assert result.user_id == create_new_user.user_id
+def test_get_user_success():
+    result: User = user_dao.get_user("623cc3f5eb1b73644940438a")
+    assert result.first_name == "Luke"
 
 
 def test_get_all_users_success():
@@ -26,7 +26,7 @@ def test_get_all_users_success():
 # Update Tests -------------------
 
 def test_update_user_success(updated_user):
-    updated_user: User = user_dao.update_user(updated_user)
+    updated_user: User = user_dao.update_user("623cc3f5eb1b73644940438a", updated_user)
     assert updated_user.username == "Master Jedi"
 
 

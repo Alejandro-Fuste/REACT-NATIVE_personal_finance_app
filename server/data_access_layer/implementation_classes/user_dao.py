@@ -8,14 +8,14 @@ class UserDAOImp(UserDAO):
     def create_new_user(self, user: User) -> User:
         pass
 
-    def get_user(self, user_id: int) -> User:
+    def get_user(self, user_id: str) -> User:
         pass
 
     def get_all_users(self) -> List[User]:
         pass
 
-    def update_user(self, user_id: int, user: User) -> User:
+    def update_user(self, user_id: str, user: User) -> User:
         pass
 
-    def delete_user(self, user_id: int) -> int:
+    def delete_user(self, user_id: str) -> int:
         pass

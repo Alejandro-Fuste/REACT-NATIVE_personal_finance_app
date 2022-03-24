@@ -13,7 +13,7 @@ class UserDAO(ABC):
 
     # Read methods -------
     @abstractmethod
-    def get_user(self, user_id: int) -> User:
+    def get_user(self, user_id: str) -> User:
         pass
 
     @abstractmethod
@@ -22,10 +22,10 @@ class UserDAO(ABC):
 
     # Update method -------
     @abstractmethod
-    def update_user(self, user_id: int, user: User) -> User:
+    def update_user(self, user_id: str, user: User) -> User:
         pass
 
     # Delete method -------
     @abstractmethod
-    def delete_user(self, user_id: int) -> int:
+    def delete_user(self, user_id: str) -> int:
         pass
