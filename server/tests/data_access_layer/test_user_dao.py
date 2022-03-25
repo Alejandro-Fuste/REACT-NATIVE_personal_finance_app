@@ -14,7 +14,9 @@ def test_create_user_success(create_new_user):
 # Read Tests ---------------------
 
 def test_get_user_by_id_success():
-    result = user_dao.get_user_by_id("623cdf6f0f58a19156475f78")
+    users = user_dao.get_all_users()
+    first_user = users[0]["_id"]
+    result = user_dao.get_user_by_id(first_user)
     assert result["firstName"] == "Luke"
 
 
@@ -32,8 +34,8 @@ def test_update_user_success(updated_user):
 
 # Delete Tests -------------------
 
-def test_delete_user_success(create_new_user):
-    get_result: User = user_dao.get_user_by_username(create_new_user.username)
-    user_id: str = get_result._id
-    deleted_user = user_dao.delete_user(user_id)
+def test_delete_user_success():
+    users = user_dao.get_all_users()
+    last_user = users[-1]["_id"]
+    deleted_user = user_dao.delete_user(last_user)
     assert deleted_user.deleted_count == 1

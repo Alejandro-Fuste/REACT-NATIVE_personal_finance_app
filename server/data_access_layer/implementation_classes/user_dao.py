@@ -17,19 +17,17 @@ class UserDAOImp(UserDAO):
         return collection.insert_one(user)
 
     def get_user_by_id(self, user_id: str) -> dict:
-        result = collection.find_one({"_id": ObjectId(user_id)})
-        return result
+        return collection.find_one({"_id": ObjectId(user_id)})
 
     def get_all_users(self) -> List[User]:
-        results = collection.find()
-        return list(results)
+        return list(collection.find())
 
     def update_user(self, user_id: str, user: User) -> User:
         pass
 
     def delete_user(self, user_id: str) -> int:
-        pass
+        return collection.delete_one({"_id": ObjectId(user_id)})
 
-# test_id = "623cdf6f0f58a19156475f78"
-# result = collection.find_one({"_id": ObjectId(test_id)})
-# print(result)
+
+# result = list(collection.find())
+# print(result[-1]["_id"])
