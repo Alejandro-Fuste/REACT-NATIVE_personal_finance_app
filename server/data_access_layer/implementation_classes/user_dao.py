@@ -29,5 +29,3 @@ class UserDAOImp(UserDAO):
         return collection.delete_one({"_id": ObjectId(user_id)})
 
 
-# result = list(collection.find())
-# print(result[-1]["_id"])
