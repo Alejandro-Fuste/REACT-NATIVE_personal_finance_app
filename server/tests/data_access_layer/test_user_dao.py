@@ -27,10 +27,10 @@ def test_get_all_users_success():
 
 # Update Tests -------------------
 
-def test_update_username_success():
+def test_update_username_success(update_username):
     users = user_dao.get_all_users()
     first_user_id = users[0]["_id"]
-    updated_user: dict = user_dao.update_username(first_user_id, "Master Jedi")
+    updated_user: dict = user_dao.update_username(first_user_id, update_username)
     assert updated_user.acknowledged
 
 

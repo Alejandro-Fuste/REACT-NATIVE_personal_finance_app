@@ -32,3 +32,7 @@ def create_new_paper_trade() -> PaperTrade:
                            )
     return new_trade.make_dictionary()
 
+
+@fixture
+def update_username() -> str:
+    return fake.domain_word()
