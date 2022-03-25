@@ -59,6 +59,8 @@ test_user_2 = User("Leia", "Organa", "leia.organa@jedi.net",
                    "Princess Leia", fake.sha256(raw_output=False), [paper_trade_1.make_dictionary(),
                                                                     paper_trade_2.make_dictionary()])
 
+#   Add users to database  ----------
+
 result = collection.insert_many([test_user_1.make_dictionary(), test_user_2.make_dictionary()])
 
 for x in collection.find():

@@ -27,9 +27,11 @@ def test_get_all_users_success():
 
 # Update Tests -------------------
 
-def test_update_user_success(updated_user):
-    updated_user: User = user_dao.update_user("623cc3f5eb1b73644940438a", updated_user)
-    assert updated_user.username == "Master Jedi"
+def test_update_username_success():
+    users = user_dao.get_all_users()
+    first_user_id = users[0]["_id"]
+    updated_user: dict = user_dao.update_username(first_user_id, "Master Jedi")
+    assert updated_user.acknowledged
 
 
 # Delete Tests -------------------

@@ -22,8 +22,8 @@ class UserDAOImp(UserDAO):
     def get_all_users(self) -> List[User]:
         return list(collection.find())
 
-    def update_user(self, user_id: str, user: User) -> User:
-        pass
+    def update_username(self, user_id: str, new_info: str) -> dict:
+        return collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"username": new_info}})
 
     def delete_user(self, user_id: str) -> int:
         return collection.delete_one({"_id": ObjectId(user_id)})

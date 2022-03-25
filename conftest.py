@@ -31,3 +31,4 @@ def create_new_paper_trade() -> PaperTrade:
                            fake.pyint(max_value=100)
                            )
     return new_trade.make_dictionary()
+

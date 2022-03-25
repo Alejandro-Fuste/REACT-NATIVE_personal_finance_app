@@ -22,7 +22,7 @@ class UserDAO(ABC):
 
     # Update method -------
     @abstractmethod
-    def update_user(self, user_id: str, user: User) -> User:
+    def update_username(self, user_id: str, new_info: str) -> dict:
         pass
 
     # Delete method -------
