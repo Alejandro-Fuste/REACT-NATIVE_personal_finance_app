@@ -11,11 +11,12 @@ collection = database.users
 
 
 class PaperTradeDAOImp(PaperTradeDAO):
-    def add_paper_trade(self, paper_trade: PaperTrade) -> dict:
+    # Create method -------
+    def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
+        return collection.update_one({})
+
+    def update_paper_trade(self, user_id: str, paper_trade_id: int, paper_trade: PaperTrade) -> dict:
         pass
 
-    def update_paper_trade(self, paper_trade_id: int, paper_trade: PaperTrade) -> PaperTrade:
-        pass
-
-    def delete_paper_trade(self, paper_trade_id: int) -> int:
+    def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
         pass
