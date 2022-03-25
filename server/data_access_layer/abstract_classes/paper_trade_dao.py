@@ -18,7 +18,7 @@ class PaperTradeDAO(ABC):
 
     # Update method -------
     @abstractmethod
-    def update_paper_trade(self, user_id: str, paper_trade_id: int, paper_trade: PaperTrade) -> dict:
+    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, sell_price: float) -> bool:
         pass
 
     # Delete method -------

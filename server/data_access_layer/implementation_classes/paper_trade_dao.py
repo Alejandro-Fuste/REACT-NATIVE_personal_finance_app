@@ -25,18 +25,23 @@ class PaperTradeDAOImp(PaperTradeDAO):
         return trades["paperTrades"]
 
     # Update method -------
-    def update_paper_trade(self, user_id: str, paper_trade_id: int, paper_trade: PaperTrade) -> dict:
-        pass
+    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, sell_price: float) -> bool:
+        result = collection.update_one({"_id": ObjectId(user_id)},
+                                       {"$set": {f"paperTrades.{paper_trade_index}.sellPrice": sell_price}})
+        return result.acknowledged
 
     # Delete method -------
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
-        pass
+        deleted = collection.update_one({"_id": ObjectId(user_id)},
+                                        {"$pull": {"paperTrades": {"tradeId": paper_trade_id}}})
+        return deleted.acknowledged
 
 
-# result = collection.find({"_id": ObjectId("623ddc582a8e2cee29b0b62d")})
-# for x in result:
-#     print(x["paperTrades"])
-#     print(isinstance(x["paperTrades"], list))
+# deleted = collection.update_one({"_id": ObjectId("623ddc582a8e2cee29b0b62d")},
+# {"$pull":{"paperTrades": {"tradeId": 7721}}})
+# print(deleted.acknowledged)
 
-
-
+# users[0]["paperTrades"][-1]["tradeId"]
+# users = collection.find({"_id": ObjectId("623ddc582a8e2cee29b0b62d")})
+# for user in users:
+#     pprint(user["paperTrades"][-1]["tradeId"])

@@ -26,13 +26,18 @@ def test_get_paper_trades_success():
 
 # Update Tests ------------------
 
-def test_update_paper_trade_success(updated_trade):
-    updated_trade: PaperTrade = paper_trade_dao.update_paper_trade(1, updated_trade)
-    assert updated_trade.sell_price == 2.00
+def test_update_paper_trade_success():
+    users = user_dao.get_all_users()
+    first_user_id = users[0]["_id"]
+    updated_trade: bool = paper_trade_dao.update_paper_trade_sell_price(first_user_id, 0, 111.11)
+    assert updated_trade
 
 
 # Delete Tests -------------------
 
 def test_delete_paper_trade_success():
-    deleted_account = paper_trade_dao.delete_paper_trade(2)
-    assert deleted_account.deleted_count == 1
+    users = user_dao.get_all_users()
+    first_user_id = users[0]["_id"]
+    paper_trade_id = users[0]["paperTrades"][-1]["tradeId"]
+    deleted_account = paper_trade_dao.delete_paper_trade(first_user_id, paper_trade_id)
+    assert deleted_account
