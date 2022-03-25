@@ -13,11 +13,7 @@ class PaperTradeDAO(ABC):
 
     # Read methods --------
     @abstractmethod
-    def get_paper_trade(self, user_id: str, paper_trade_id: int) -> dict:
-        pass
-
-    @abstractmethod
-    def get_paper_trades(self, user_id: str) -> List[PaperTrade]:
+    def get_paper_trades(self, user_id: str) -> list:
         pass
 
     # Update method -------

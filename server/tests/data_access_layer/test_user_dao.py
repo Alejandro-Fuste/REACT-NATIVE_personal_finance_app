@@ -1,5 +1,4 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
-from server.entities.user import User
 
 user_dao: UserDAO = UserDAOImp()
 
