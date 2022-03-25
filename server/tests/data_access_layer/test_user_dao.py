@@ -14,13 +14,8 @@ def test_create_user_success(create_new_user):
 # Read Tests ---------------------
 
 def test_get_user_by_id_success():
-    result: User = user_dao.get_user_by_id("623cc3f5eb1b73644940438a")
-    assert result.first_name == "Luke"
-
-
-def test_get_user_by_username_success(create_new_user):
-    result: User = user_dao.get_user_by_username(create_new_user.username)
-    assert result.username == create_new_user.username
+    result = user_dao.get_user_by_id("623cdf6f0f58a19156475f78")
+    assert result["firstName"] == "Luke"
 
 
 def test_get_all_users_success():
