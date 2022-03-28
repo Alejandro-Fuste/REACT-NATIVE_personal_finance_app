@@ -34,5 +34,10 @@ def create_new_paper_trade() -> PaperTrade:
 
 
 @fixture
+def bad_username() -> str:
+    return "ekul"
+
+
+@fixture
 def update_username() -> str:
     return fake.domain_word()

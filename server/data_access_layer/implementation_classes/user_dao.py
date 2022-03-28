@@ -43,5 +43,6 @@ class UserDAOImp(UserDAO):
     def delete_user(self, user_id: str) -> int:
         return collection.delete_one({"_id": ObjectId(user_id)})
 
-# result = collection.find_one({"username": "itchell"})
-# print(result)
+
+# result = collection.find_one({"username": "mitchell"})
+# print(result["username"])

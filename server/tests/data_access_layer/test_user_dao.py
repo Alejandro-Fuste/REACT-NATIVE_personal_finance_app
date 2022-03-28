@@ -1,6 +1,9 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
+from server.custom_exceptions.user_not_found import UserNotFound
 
 user_dao: UserDAO = UserDAOImp()
+
+user_not_found_message: str = "The user could not be found."
 
 
 # Creation Tests -----------------
@@ -17,6 +20,21 @@ def test_get_user_by_id_success():
     first_user = users[0]["_id"]
     result = user_dao.get_user_by_id(first_user)
     assert result["firstName"] == "Luke"
+
+
+def test_get_user_by_username_success():
+    users = user_dao.get_all_users()
+    user_name = users[0]["username"]
+    result = user_dao.get_user_by_username(user_name)
+    assert result["username"] == user_name
+
+
+def test_get_user_by_username_failure(bad_username):
+    try:
+        user_dao.get_user_by_username(bad_username)
+        assert False
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
 
 
 def test_get_all_users_success():
