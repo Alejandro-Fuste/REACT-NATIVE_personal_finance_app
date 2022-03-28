@@ -64,6 +64,3 @@ class UserDAOImp(UserDAO):
             raise UserNotFound(user_not_found)
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
-
-# result = collection.update_one({"_id": ObjectId("623ddc582a8e2cee29b0b62a")}, {"$set": {"username": "test"}})
-# print(result)
