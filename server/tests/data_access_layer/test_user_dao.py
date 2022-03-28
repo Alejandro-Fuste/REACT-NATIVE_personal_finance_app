@@ -1,9 +1,11 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
 from server.custom_exceptions.user_not_found import UserNotFound
+from server.custom_exceptions.duplicate_user import DuplicateUser
 
 user_dao: UserDAO = UserDAOImp()
 
 user_not_found_message: str = "The user could not be found."
+duplicate_user_message: str = "This user already exists."
 
 
 # Creation Tests -----------------
@@ -18,9 +20,9 @@ def test_create_user_failure_duplicate():
     duplicate_user = users[0]
 
     try:
-        pass
-    except:
-        pass
+        user_dao.create_new_user(duplicate_user)
+    except DuplicateUser as e:
+        assert str(e) == duplicate_user_message
 
 
 # Read Tests ---------------------
