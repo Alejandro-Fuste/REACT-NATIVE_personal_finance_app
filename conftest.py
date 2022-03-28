@@ -35,7 +35,7 @@ def create_new_paper_trade() -> PaperTrade:
 
 @fixture
 def bad_id() -> str:
-    return fake.sha256(raw_output=False)
+    return "623ddc582a8e2cee29b0b62a"
 
 
 @fixture
