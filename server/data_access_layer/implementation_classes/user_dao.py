@@ -1,21 +1,18 @@
 from pymongo import MongoClient
-# from environment_variables import mongo_url
-import os
-# from server.data_access_layer.abstract_classes.user_dao import UserDAO
-# from server.entities.user import User
-# from typing import List
-# from bson.objectid import ObjectId
-from server.data_access_layer.abstract_classes.user_dao import UserDAO
-from server.entities.user import User
-from typing import List
 from bson.objectid import ObjectId
 from environment_variables import mongo_url
+from server.data_access_layer.abstract_classes.user_dao import UserDAO
+from server.entities.user import User
+from server.custom_exceptions.user_not_found import UserNotFound
+from typing import List
 
 # database connection -------------
 connection_string = mongo_url
 client = MongoClient(connection_string)
 database = client.finance_app
 collection = database.users
+
+user_not_found: str = "The user could not be found."
 
 
 class UserDAOImp(UserDAO):
@@ -28,7 +25,12 @@ class UserDAOImp(UserDAO):
         return collection.find_one({"_id": ObjectId(user_id)})
 
     def get_user_by_username(self, username: str) -> dict:
-        pass
+        result = collection.find_one({"username": username})
+
+        if result is None:
+            raise UserNotFound(user_not_found)
+        else:
+            return result
 
     def get_all_users(self) -> List[User]:
         return list(collection.find())
@@ -41,6 +43,5 @@ class UserDAOImp(UserDAO):
     def delete_user(self, user_id: str) -> int:
         return collection.delete_one({"_id": ObjectId(user_id)})
 
-
-result = collection.find_one({"username": "itchell"})
-print(result)
+# result = collection.find_one({"username": "itchell"})
+# print(result)
