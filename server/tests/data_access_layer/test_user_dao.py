@@ -13,6 +13,16 @@ def test_create_user_success(create_new_user):
     assert new_user.acknowledged
 
 
+def test_create_user_failure_duplicate():
+    users = user_dao.get_all_users()
+    duplicate_user = users[0]
+
+    try:
+        pass
+    except:
+        pass
+
+
 # Read Tests ---------------------
 
 def test_get_user_by_id_success():
