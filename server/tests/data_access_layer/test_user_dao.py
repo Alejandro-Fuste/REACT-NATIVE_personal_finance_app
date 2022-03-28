@@ -21,6 +21,7 @@ def test_create_user_failure_duplicate():
 
     try:
         user_dao.create_new_user(duplicate_user)
+        assert False
     except DuplicateUser as e:
         assert str(e) == duplicate_user_message
 
