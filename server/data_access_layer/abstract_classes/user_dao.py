@@ -17,6 +17,10 @@ class UserDAO(ABC):
         pass
 
     @abstractmethod
+    def get_user_by_username(self, username: str) -> dict:
+        pass
+
+    @abstractmethod
     def get_all_users(self) -> List[User]:
         pass
 
