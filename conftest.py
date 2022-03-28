@@ -34,6 +34,11 @@ def create_new_paper_trade() -> PaperTrade:
 
 
 @fixture
+def bad_id() -> int:
+    return 1
+
+
+@fixture
 def bad_username() -> str:
     return "ekul"
 

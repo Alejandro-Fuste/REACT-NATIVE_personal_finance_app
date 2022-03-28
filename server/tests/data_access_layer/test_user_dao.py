@@ -22,6 +22,14 @@ def test_get_user_by_id_success():
     assert result["firstName"] == "Luke"
 
 
+def test_get_user_by_id_failure(bad_id):
+    try:
+        user_dao.get_user_by_id(bad_id)
+        assert False
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
+
+
 def test_get_user_by_username_success():
     users = user_dao.get_all_users()
     user_name = users[0]["username"]
