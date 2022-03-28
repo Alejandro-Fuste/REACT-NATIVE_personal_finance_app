@@ -87,3 +87,11 @@ def test_delete_user_success():
     last_user = users[-1]["_id"]
     deleted_user = user_dao.delete_user(last_user)
     assert deleted_user.deleted_count == 1
+
+
+def test_delete_user_failure(bad_id):
+    try:
+        user_dao.delete_user(bad_id)
+        assert False
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
