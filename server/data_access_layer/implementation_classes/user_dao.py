@@ -49,11 +49,16 @@ class UserDAOImp(UserDAO):
 
     # Update methods ------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:
-        return collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"username": new_info}})
+        result = collection.find_one({"_id": ObjectId(user_id)})
+
+        if result is None:
+            raise UserNotFound(user_not_found)
+        else:
+            return collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"username": new_info}})
 
     # Delete methods ------------------------------------------------
     def delete_user(self, user_id: str) -> int:
         return collection.delete_one({"_id": ObjectId(user_id)})
 
-# result = collection.find_one({"_id": ObjectId("623ddc582a8e2cee29b0b62a")})
+# result = collection.update_one({"_id": ObjectId("623ddc582a8e2cee29b0b62a")}, {"$set": {"username": "test"}})
 # print(result)
