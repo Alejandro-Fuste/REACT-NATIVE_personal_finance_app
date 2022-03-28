@@ -18,7 +18,7 @@ duplicate_user: str = "This user already exists."
 
 
 class UserDAOImp(UserDAO):
-    # Create method -------
+    # Create method -----------------------------------------------
     def create_new_user(self, user: User) -> dict:
         result = collection.find_one({"username": user["username"]})
 
@@ -27,7 +27,7 @@ class UserDAOImp(UserDAO):
         else:
             raise DuplicateUser(duplicate_user)
 
-    # Read methods --------
+    # Read methods ------------------------------------------------
     def get_user_by_id(self, user_id: str) -> dict:
         result = collection.find_one({"_id": ObjectId(user_id)})
 
@@ -47,11 +47,11 @@ class UserDAOImp(UserDAO):
     def get_all_users(self) -> List[User]:
         return list(collection.find())
 
-    # Update methods --------
+    # Update methods ------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:
         return collection.update_one({"_id": ObjectId(user_id)}, {"$set": {"username": new_info}})
 
-    # Delete methods --------
+    # Delete methods ------------------------------------------------
     def delete_user(self, user_id: str) -> int:
         return collection.delete_one({"_id": ObjectId(user_id)})
 

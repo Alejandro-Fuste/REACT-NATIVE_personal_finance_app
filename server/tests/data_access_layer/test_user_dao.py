@@ -72,9 +72,9 @@ def test_update_username_success(update_username):
     assert updated_user.acknowledged
 
 
-def test_update_username_failure(bad_username):
+def test_update_username_failure(bad_id, update_username):
     try:
-        user_dao.update_username(bad_username)
+        user_dao.update_username(bad_id, update_username)
         assert False
     except UserNotFound as e:
         assert str(e) == user_not_found_message
