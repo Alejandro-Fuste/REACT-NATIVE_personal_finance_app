@@ -34,8 +34,8 @@ def create_new_paper_trade() -> PaperTrade:
 
 
 @fixture
-def bad_id() -> int:
-    return 1
+def bad_id() -> str:
+    return fake.sha256(raw_output=False)
 
 
 @fixture

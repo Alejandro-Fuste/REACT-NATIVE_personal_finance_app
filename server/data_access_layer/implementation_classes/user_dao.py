@@ -22,7 +22,12 @@ class UserDAOImp(UserDAO):
 
     # Read methods --------
     def get_user_by_id(self, user_id: str) -> dict:
-        return collection.find_one({"_id": ObjectId(user_id)})
+        result = collection.find_one({"_id": ObjectId(user_id)})
+
+        if result is None:
+            raise UserNotFound(user_not_found)
+        else:
+            return result
 
     def get_user_by_username(self, username: str) -> dict:
         result = collection.find_one({"username": username})
