@@ -8,7 +8,7 @@ user_not_found_message: str = "The user could not be found."
 duplicate_user_message: str = "This user already exists."
 
 
-# Creation Tests -----------------
+# Creation Tests --------------------------------------
 
 def test_create_user_success(create_new_user):
     new_user: dict = user_dao.create_new_user(create_new_user)
@@ -26,7 +26,7 @@ def test_create_user_failure_duplicate():
         assert str(e) == duplicate_user_message
 
 
-# Read Tests ---------------------
+# Read Tests ------------------------------------------
 
 def test_get_user_by_id_success():
     users = user_dao.get_all_users()
@@ -63,7 +63,7 @@ def test_get_all_users_success():
     assert len(users) >= 1
 
 
-# Update Tests -------------------
+# Update Tests ----------------------------------------
 
 def test_update_username_success(update_username):
     users = user_dao.get_all_users()
@@ -72,7 +72,15 @@ def test_update_username_success(update_username):
     assert updated_user.acknowledged
 
 
-# Delete Tests -------------------
+def test_update_username_failure(bad_username):
+    try:
+        user_dao.update_username(bad_username)
+        assert False
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
+
+
+# Delete Tests ----------------------------------------
 
 def test_delete_user_success():
     users = user_dao.get_all_users()
