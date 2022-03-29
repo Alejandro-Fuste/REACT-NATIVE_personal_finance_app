@@ -15,6 +15,10 @@ def test_add_paper_trade_success(create_new_paper_trade):
     assert new_trade.acknowledged
 
 
+def test_add_paper_trade_failure_duplicate():
+    pass
+
+
 # Read Tests --------------------
 
 def test_get_paper_trades_success():
@@ -22,6 +26,10 @@ def test_get_paper_trades_success():
     first_user_id = users[0]["_id"]
     user_trade = paper_trade_dao.get_paper_trades(first_user_id)
     assert isinstance(user_trade, list)
+
+
+def test_get_paper_trades_failure():
+    pass
 
 
 # Update Tests ------------------
@@ -33,6 +41,10 @@ def test_update_paper_trade_success():
     assert updated_trade
 
 
+def test_update_paper_trade_failure():
+    pass
+
+
 # Delete Tests -------------------
 
 def test_delete_paper_trade_success():
@@ -41,3 +53,7 @@ def test_delete_paper_trade_success():
     paper_trade_id = users[0]["paperTrades"][-1]["tradeId"]
     deleted_account = paper_trade_dao.delete_paper_trade(first_user_id, paper_trade_id)
     assert deleted_account
+
+
+def test_delete_paper_trade_failure():
+    pass
