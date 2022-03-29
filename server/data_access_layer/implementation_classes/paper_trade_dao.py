@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from pymongo import MongoClient
 from environment_variables import mongo_url
 from server.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
@@ -32,3 +34,11 @@ class PaperTradeDAOImp(PaperTradeDAO):
         deleted = collection.update_one({"_id": ObjectId(user_id)},
                                         {"$pull": {"paperTrades": {"tradeId": paper_trade_id}}})
         return deleted.acknowledged
+
+
+# trades = collection.find_one({"_id": ObjectId("623ddc582a8e2cee29b0b62d")})
+# pprint(trades)
+
+results = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": 6971}}})
+
+pprint(results)

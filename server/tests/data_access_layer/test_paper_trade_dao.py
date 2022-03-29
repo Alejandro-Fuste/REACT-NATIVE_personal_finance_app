@@ -1,9 +1,11 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp, PaperTradeDAO
-from server.entities.paper_trade import PaperTrade
+from server.custom_exceptions.duplicate_trade import DuplicateTrade
 
 user_dao: UserDAO = UserDAOImp()
 paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
+
+duplicate_trade_message: str = "This trade already exists."
 
 
 # Creation Tests -----------------
@@ -16,7 +18,15 @@ def test_add_paper_trade_success(create_new_paper_trade):
 
 
 def test_add_paper_trade_failure_duplicate():
-    pass
+    users = user_dao.get_all_users()
+    first_user_id = users[0]["_id"]
+    duplicate_trade = users[0]["paperTrades"][0]
+
+    try:
+        paper_trade_dao.add_paper_trade(first_user_id, duplicate_trade)
+        assert False
+    except DuplicateTrade as e:
+        assert str(e) == duplicate_trade_message
 
 
 # Read Tests --------------------
