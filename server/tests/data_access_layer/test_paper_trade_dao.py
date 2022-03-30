@@ -1,11 +1,13 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp, PaperTradeDAO
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
+from server.custom_exceptions.user_not_found import UserNotFound
 
 user_dao: UserDAO = UserDAOImp()
 paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
 
 duplicate_trade_message: str = "This trade already exists."
+user_not_found_message: str = "The user could not be found."
 
 
 # Creation Tests -----------------
@@ -38,8 +40,12 @@ def test_get_paper_trades_success():
     assert isinstance(user_trade, list)
 
 
-def test_get_paper_trades_failure():
-    pass
+def test_get_paper_trades_failure(bad_id):
+    try:
+        paper_trade_dao.get_paper_trades(bad_id)
+        assert False
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
 
 
 # Update Tests ------------------
@@ -51,8 +57,17 @@ def test_update_paper_trade_success():
     assert updated_trade
 
 
-def test_update_paper_trade_failure():
-    pass
+def test_update_paper_trade_failure_user_not_found(bad_id):
+    try:
+        paper_trade_dao.update_paper_trade_sell_price(bad_id, 0, 111.11)
+        assert False
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
+
+def test_update_paper_trade_failure_paper_trade_not_found():
+    try:
+        pass
+    except 
 
 
 # Delete Tests -------------------
@@ -65,5 +80,9 @@ def test_delete_paper_trade_success():
     assert deleted_account
 
 
-def test_delete_paper_trade_failure():
-    pass
+def test_delete_paper_trade_failure(bad_id):
+    try:
+        paper_trade_dao.delete_paper_trade(bad_id, 0)
+    except UserNotFound as e:
+        assert str(e) == user_not_found_message
+
