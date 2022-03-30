@@ -1,0 +1,2 @@
+from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
+from server.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService

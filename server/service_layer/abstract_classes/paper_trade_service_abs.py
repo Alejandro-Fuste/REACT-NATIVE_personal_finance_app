@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 from server.entities.paper_trade import PaperTrade
 
 
-class PaperTradeDAO(ABC):
+class PaperTradeService(ABC):
 
     # Create method -------
     @abstractmethod
