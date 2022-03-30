@@ -112,8 +112,8 @@ def test_delete_paper_trade_failure_user_not_found(bad_id):
 
 def test_delete_paper_trade_failure_paper_trade_not_found():
     users = user_dao.get_all_users()
-    first_user_id = users[0]["_id"]
-    trades: list = paper_trade_dao.get_paper_trades(first_user_id)
+    first_user_id = users[2]["_id"]
+    trades: list = users[2]["paperTrades"]
     bad_trade_index: int = len(trades) + 1
 
     try:
