@@ -21,7 +21,8 @@ duplicate_trade_message: str = "This trade already exists."
 class PaperTradeDAOImp(PaperTradeDAO):
     # Create method -------
     def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
-        result = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": 6971}}})
+        trade_id: int = paper_trade["tradeId"]
+        result = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": trade_id}}})
 
         if result is None:
             return collection.update_one({"_id": ObjectId(user_id)}, {"$push": {"paperTrades": paper_trade}})
