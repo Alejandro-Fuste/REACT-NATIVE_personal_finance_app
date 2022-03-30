@@ -19,6 +19,7 @@ collection = database.users
 duplicate_trade_message: str = "This trade already exists."
 user_not_found: str = "The user could not be found."
 user_has_no_trades: str = "Currently, user does not have any trades."
+paper_trade_not_found: str = "This trade could not be found."
 
 
 class PaperTradeDAOImp(PaperTradeDAO):
@@ -50,7 +51,7 @@ class PaperTradeDAOImp(PaperTradeDAO):
         if user is None:
             raise UserNotFound(user_not_found)
         elif len(user["paperTrades"]) == 0:
-            raise NoTrades(user_has_no_trades)
+            raise TradeNotFound(paper_trade_not_found)
         else:
             result = collection.update_one({"_id": ObjectId(user_id)},
                                            {"$set": {f"paperTrades.{paper_trade_index}.sellPrice": sell_price}})
