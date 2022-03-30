@@ -2,9 +2,12 @@ from pprint import pprint
 
 from pymongo import MongoClient
 from environment_variables import mongo_url
+from bson.objectid import ObjectId
 from server.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
 from server.entities.paper_trade import PaperTrade
-from bson.objectid import ObjectId
+from server.custom_exceptions.duplicate_trade import DuplicateTrade
+from server.custom_exceptions.trade_not_found import TradeNotFound
+
 
 # database connection -------------
 connection_string = mongo_url
@@ -12,11 +15,18 @@ client = MongoClient(connection_string)
 database = client.finance_app
 collection = database.users
 
+duplicate_trade_message: str = "This trade already exists."
+
 
 class PaperTradeDAOImp(PaperTradeDAO):
     # Create method -------
     def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
-        return collection.update_one({"_id": ObjectId(user_id)}, {"$push": {"paperTrades": paper_trade}})
+        result = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": 6971}}})
+
+        if result is None:
+            return collection.update_one({"_id": ObjectId(user_id)}, {"$push": {"paperTrades": paper_trade}})
+        else:
+            raise DuplicateTrade(duplicate_trade_message)
 
     # Read methods --------
     def get_paper_trades(self, user_id: str) -> list:
