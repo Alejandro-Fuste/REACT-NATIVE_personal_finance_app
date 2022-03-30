@@ -8,6 +8,7 @@ from server.entities.paper_trade import PaperTrade
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.trade_not_found import TradeNotFound
 from server.custom_exceptions.user_not_found import UserNotFound
+from server.custom_exceptions.no_trades import NoTrades
 
 # database connection -------------
 connection_string = mongo_url
@@ -17,6 +18,7 @@ collection = database.users
 
 duplicate_trade_message: str = "This trade already exists."
 user_not_found: str = "The user could not be found."
+user_has_no_trades: str = "Currently, user does not have any trades."
 
 
 class PaperTradeDAOImp(PaperTradeDAO):
@@ -37,7 +39,7 @@ class PaperTradeDAOImp(PaperTradeDAO):
         if trades is None:
             raise UserNotFound(user_not_found)
         elif len(trades["paperTrades"]) == 0:
-            raise
+            raise NoTrades(user_has_no_trades)
         else:
             return trades["paperTrades"]
 
