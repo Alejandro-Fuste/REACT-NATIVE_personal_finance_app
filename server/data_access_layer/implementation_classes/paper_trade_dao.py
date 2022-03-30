@@ -59,9 +59,16 @@ class PaperTradeDAOImp(PaperTradeDAO):
 
     # Delete method -------
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
-        deleted = collection.update_one({"_id": ObjectId(user_id)},
-                                        {"$pull": {"paperTrades": {"tradeId": paper_trade_id}}})
-        return deleted.acknowledged
+        user = collection.find_one({"_id": ObjectId(user_id)})
+
+        if user is None:
+            raise UserNotFound(user_not_found)
+        elif len(user["paperTrades"]) == 0:
+            raise TradeNotFound(paper_trade_not_found)
+        else:
+            deleted = collection.update_one({"_id": ObjectId(user_id)},
+                                            {"$pull": {"paperTrades": {"tradeId": paper_trade_id}}})
+            return deleted.acknowledged
 
 
 # trades = collection.find_one({"_id": ObjectId("6243cebc2fd82726c73f5bf1")})
