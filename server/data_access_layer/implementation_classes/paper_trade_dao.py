@@ -7,7 +7,7 @@ from server.data_access_layer.abstract_classes.paper_trade_dao import PaperTrade
 from server.entities.paper_trade import PaperTrade
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.trade_not_found import TradeNotFound
-
+from server.custom_exceptions.user_not_found import UserNotFound
 
 # database connection -------------
 connection_string = mongo_url
@@ -16,6 +16,7 @@ database = client.finance_app
 collection = database.users
 
 duplicate_trade_message: str = "This trade already exists."
+user_not_found: str = "The user could not be found."
 
 
 class PaperTradeDAOImp(PaperTradeDAO):
@@ -32,7 +33,13 @@ class PaperTradeDAOImp(PaperTradeDAO):
     # Read methods --------
     def get_paper_trades(self, user_id: str) -> list:
         trades = collection.find_one({"_id": ObjectId(user_id)})
-        return trades["paperTrades"]
+
+        if trades is None:
+            raise UserNotFound(user_not_found)
+        elif len(trades["paperTrades"]) == 0:
+            raise
+        else:
+            return trades["paperTrades"]
 
     # Update method -------
     def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, sell_price: float) -> bool:
