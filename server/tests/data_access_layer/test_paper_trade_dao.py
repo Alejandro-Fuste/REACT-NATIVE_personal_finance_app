@@ -3,6 +3,7 @@ from server.data_access_layer.implementation_classes.paper_trade_dao import Pape
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.user_not_found import UserNotFound
 from server.custom_exceptions.trade_not_found import TradeNotFound
+from server.custom_exceptions.no_trades import NoTrades
 
 user_dao: UserDAO = UserDAOImp()
 paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
@@ -10,6 +11,7 @@ paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
 duplicate_trade_message: str = "This trade already exists."
 user_not_found_message: str = "The user could not be found."
 paper_trade_not_found: str = "This trade could not be found."
+user_has_no_trades: str = "Currently, user does not have any trades."
 
 
 # Creation Tests -----------------
@@ -42,12 +44,23 @@ def test_get_paper_trades_success():
     assert isinstance(user_trade, list)
 
 
-def test_get_paper_trades_failure(bad_id):
+def test_get_paper_trades_failure_user_not_found(bad_id):
     try:
         paper_trade_dao.get_paper_trades(bad_id)
         assert False
     except UserNotFound as e:
         assert str(e) == user_not_found_message
+
+
+def test_get_paper_trades_failure_no_trades_exist():
+    users = user_dao.get_all_users()
+    user_without_trades = users[2]["_id"]
+
+    try:
+        paper_trade_dao.get_paper_trades(user_without_trades)
+        assert False
+    except NoTrades as e:
+        assert str(e) == user_has_no_trades
 
 
 # Update Tests ------------------

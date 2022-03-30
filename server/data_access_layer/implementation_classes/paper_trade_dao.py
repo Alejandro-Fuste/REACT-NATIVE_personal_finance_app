@@ -56,8 +56,8 @@ class PaperTradeDAOImp(PaperTradeDAO):
         return deleted.acknowledged
 
 
-trades = collection.find_one({"_id": ObjectId("6243cebc2fd82726c73f5bf1")})
-pprint(trades)
+# trades = collection.find_one({"_id": ObjectId("6243cebc2fd82726c73f5bf1")})
+# pprint(trades)
 
 # results = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": 6971}}})
 # paperTrade = results["paperTrades"][0]
