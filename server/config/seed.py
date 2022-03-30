@@ -49,6 +49,36 @@ paper_trade_2 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_d
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            fake.pyint(max_value=100))
 
+paper_trade_3 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           "Call", "3/25", "Straddle",
+                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyint(max_value=100))
+
+paper_trade_4 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           "Call", "3/25", "Straddle",
+                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                           fake.pyint(max_value=100))
+
 #   Users  --------------------------
 
 test_user_1 = User("Luke", "Skywalker", "luke.skywalker@jedi.com",
@@ -56,12 +86,15 @@ test_user_1 = User("Luke", "Skywalker", "luke.skywalker@jedi.com",
                                                                   paper_trade_2.make_dictionary()])
 
 test_user_2 = User("Leia", "Organa", "leia.organa@jedi.net",
-                   "Princess Leia", fake.sha256(raw_output=False), [paper_trade_1.make_dictionary(),
-                                                                    paper_trade_2.make_dictionary()])
+                   "Princess Leia", fake.sha256(raw_output=False), [paper_trade_3.make_dictionary(),
+                                                                    paper_trade_4.make_dictionary()])
+
+test_user_3 = User("Rey", "Skywalker", "rey.skywalker@jedi.com", "Jedi Knight", fake.sha256(raw_output=False))
 
 #   Add users to database  ----------
 
-result = collection.insert_many([test_user_1.make_dictionary(), test_user_2.make_dictionary()])
+result = collection.insert_many([test_user_1.make_dictionary(), test_user_2.make_dictionary(),
+                                 test_user_3.make_dictionary()])
 
 for x in collection.find():
     print(x)
