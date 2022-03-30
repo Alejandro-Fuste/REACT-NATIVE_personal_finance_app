@@ -45,9 +45,16 @@ class PaperTradeDAOImp(PaperTradeDAO):
 
     # Update method -------
     def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, sell_price: float) -> bool:
-        result = collection.update_one({"_id": ObjectId(user_id)},
-                                       {"$set": {f"paperTrades.{paper_trade_index}.sellPrice": sell_price}})
-        return result.acknowledged
+        user = collection.find_one({"_id": ObjectId(user_id)})
+
+        if user is None:
+            raise UserNotFound(user_not_found)
+        elif len(user["paperTrades"]) == 0:
+            raise NoTrades(user_has_no_trades)
+        else:
+            result = collection.update_one({"_id": ObjectId(user_id)},
+                                           {"$set": {f"paperTrades.{paper_trade_index}.sellPrice": sell_price}})
+            return result.acknowledged
 
     # Delete method -------
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
