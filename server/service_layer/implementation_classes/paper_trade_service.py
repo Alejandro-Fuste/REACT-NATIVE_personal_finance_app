@@ -6,7 +6,7 @@ from server.service_layer.abstract_classes.paper_trade_service_abs import PaperT
 class PaperTradeServiceImp(PaperTradeService):
     def __init__(self, paper_trade_dao):
         self.paper_trade_dao: PaperTradeDAOImp = paper_trade_dao
-        
+
     def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
         pass
 
