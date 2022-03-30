@@ -4,7 +4,7 @@ from typing import List
 from server.entities.user import User
 
 
-class UserDAO(ABC):
+class UserService(ABC):
 
     # Create method -------
     @abstractmethod
