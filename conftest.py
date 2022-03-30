@@ -38,10 +38,12 @@ def bad_id() -> str:
     return "623ddc582a8e2cee29b0b62a"
 
 
+@fixture
 def invalid_id() -> int:
     return fake.pyint(max_value=10000)
 
 
+@fixture
 def missing_id() -> str:
     return " "
 

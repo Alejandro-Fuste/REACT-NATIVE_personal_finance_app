@@ -20,20 +20,13 @@ user_id_not_provided: str = "A user id must be provided."
 # Read Tests ------------------------------------------
 
 # ID is integer instead of string
+
 def test_get_user_by_id_not_string(invalid_id):
     try:
-        user_service.get_user_by_id = Mock(side_effect=Exception(user_id_must_be_string))
+        user_service.get_user_by_id(invalid_id)
         assert False
     except UserIdMustBeString as e:
         assert str(e) == user_id_must_be_string
-
-
-# def test_get_user_by_id_not_string(invalid_id):
-#     try:
-#         user_service.get_user_by_id(invalid_id)
-#         assert False
-#     except UserIdMustBeString as e:
-#         assert str(e) == user_id_must_be_string
 
 
 # ID was not provided
