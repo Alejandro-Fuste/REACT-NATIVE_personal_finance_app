@@ -42,4 +42,6 @@ class PaperTradeDAOImp(PaperTradeDAO):
 results = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": 6971}}})
 paperTrade = results["paperTrades"][0]
 
-pprint(isinstance(paperTrade, dict))
+# pprint(isinstance(paperTrade, dict))
+
+print(len(results["paperTrades"]) + 1)
