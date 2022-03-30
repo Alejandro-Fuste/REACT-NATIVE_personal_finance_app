@@ -24,6 +24,9 @@ def test_get_user_by_id_not_string(invalid_id):
     except UserIdMustBeString as e:
         assert str(e) == user_id_must_be_string
 
+# ID was not provided
+def test_get_user_by_id_no_id():
+
 # Update Tests ----------------------------------------
 
 # Delete Tests ----------------------------------------

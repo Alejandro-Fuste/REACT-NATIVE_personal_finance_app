@@ -42,6 +42,10 @@ def invalid_id() -> int:
     return fake.pyint(max_value=10000)
 
 
+def missing_id() -> str:
+    return " "
+
+
 @fixture
 def bad_username() -> str:
     return "ekul"
