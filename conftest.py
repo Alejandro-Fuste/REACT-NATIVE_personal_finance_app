@@ -38,6 +38,10 @@ def bad_id() -> str:
     return "623ddc582a8e2cee29b0b62a"
 
 
+def invalid_id() -> int:
+    return fake.pyint(max_value=10000)
+
+
 @fixture
 def bad_username() -> str:
     return "ekul"
