@@ -28,6 +28,13 @@ def create_new_user_last_name_number() -> User:
 
 
 @fixture
+def create_new_user_username_number() -> User:
+    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.pyint(max_value=10000),
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
 def create_new_user_first_name_blank() -> User:
     new_user = User("", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                     fake.sha256(raw_output=False))
