@@ -116,6 +116,42 @@ def test_create_user_email_missing():
         assert str(e) == input_not_provided
 
 
+# username not string
+def test_create_user_username_not_string():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
+
+
+# username missing
+def test_create_user_username_missing():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+# username too short
+def test_create_user_username_too_short():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputTooShort as e:
+        assert str(e) == input_too_short
+
+
+# username too long
+def test_create_user_username_too_long():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputTooLong as e:
+        assert str(e) == input_too_long
+
+
 # Read Tests --------------------------------------------------------------------------------
 
 def test_get_user_by_id_not_string(invalid_id):
