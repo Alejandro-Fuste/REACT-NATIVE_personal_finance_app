@@ -4,7 +4,7 @@ from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.input_not_string import UserNameNotString
 from server.custom_exceptions.input_missing import UserNameMissing
-from server.custom_exceptions.username_too_short import UserNameTooShort
+from server.custom_exceptions.input_too_short import UserNameTooShort
 from server.custom_exceptions.input_too_long import UserNameTooLong
 
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
