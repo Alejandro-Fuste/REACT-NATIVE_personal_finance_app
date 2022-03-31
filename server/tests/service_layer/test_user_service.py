@@ -97,9 +97,9 @@ def test_create_user_last_name_too_long():
 
 
 # Email wrong format
-def test_create_user_email_wrong_format(create_new_user_username_number):
+def test_create_user_email_wrong_format():
     try:
-        user_service.create_new_user(create_new_user_username_number)
+        user_service.create_new_user()
         assert False
     except EmailWrongFormat as e:
         assert str(e) == email_wrong_format
@@ -115,9 +115,9 @@ def test_create_user_email_missing():
 
 
 # username not string
-def test_create_user_username_not_string():
+def test_create_user_username_not_string(create_new_user_username_number):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_username_number)
         assert False
     except InputNotString as e:
         assert str(e) == input_must_be_string
@@ -151,9 +151,9 @@ def test_create_user_username_too_long():
 
 
 # Password not string
-def test_create_user_password_not_string():
+def test_create_user_password_not_string(create_new_user_password_number):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_password_number)
         assert False
     except InputNotString as e:
         assert str(e) == input_must_be_string
