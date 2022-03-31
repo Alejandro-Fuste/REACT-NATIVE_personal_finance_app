@@ -89,12 +89,12 @@ def test_update_username_too_short(bad_id, username_too_short):
 
 
 # Username too long
-def test_update_username_too_long(bad_id, ):
+def test_update_username_too_long(bad_id, username_too_long):
     try:
-        user_service.update_username(bad_id, username_too_short)
+        user_service.update_username(bad_id, username_too_long)
         assert False
-    except UserNameTooShort as e:
-        assert str(e) == username_short
+    except UserNameTooLong as e:
+        assert str(e) == username_long
 
 
 # Delete Tests ----------------------------------------
