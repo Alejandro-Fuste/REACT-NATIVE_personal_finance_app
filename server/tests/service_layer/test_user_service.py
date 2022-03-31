@@ -2,10 +2,10 @@ from unittest.mock import MagicMock, patch, Mock
 
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
-from server.custom_exceptions.input_not_string import UserNameNotString
-from server.custom_exceptions.input_missing import UserNameMissing
-from server.custom_exceptions.input_too_short import UserNameTooShort
-from server.custom_exceptions.input_too_long import UserNameTooLong
+from server.custom_exceptions.input_not_string import InputNotString
+from server.custom_exceptions.input_missing import InputMissing
+from server.custom_exceptions.input_too_short import InputTooShort
+from server.custom_exceptions.input_too_long import InputTooLong
 
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
@@ -23,11 +23,80 @@ input_too_short: str = "The input is too short."
 input_too_long: str = "The input is too long."
 
 
-# Creation Tests --------------------------------------
-# blank inputs
+# Creation Tests ----------------------------------------------------------------------------
+# First name not string
+def test_create_user_first_name_not_string():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
 
 
-# Read Tests ------------------------------------------
+# First name missing
+def test_create_user_first_name_missing():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+# First name too short
+def test_create_user_first_name_too_short():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputTooShort as e:
+        assert str(e) == input_too_short
+
+
+# First name too long
+def test_create_user_first_name_too_long():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputTooLong as e:
+        assert str(e) == input_too_long
+
+
+# Last name not string
+def test_create_user_last_name_not_string():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
+
+
+# Last name missing
+def test_create_user_last_name_missing():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+# Last name too short
+def test_create_user_last_name_too_short():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputTooShort as e:
+        assert str(e) == input_too_short
+
+
+# Last name too long
+def test_create_user_last_name_too_long():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputTooLong as e:
+        assert str(e) == input_too_long
+
+
+# Read Tests --------------------------------------------------------------------------------
 
 def test_get_user_by_id_not_string(invalid_id):
     try:
@@ -69,7 +138,7 @@ def test_update_username_not_string(bad_id, bad_username_number):
     try:
         user_service.update_username(bad_id, bad_username_number)
         assert False
-    except UserNameNotString as e:
+    except InputNotString as e:
         assert str(e) == input_must_be_string
 
 
@@ -78,7 +147,7 @@ def test_update_username_missing(bad_id, username_missing):
     try:
         user_service.update_username(bad_id, username_missing)
         assert False
-    except UserNameMissing as e:
+    except InputMissing as e:
         assert str(e) == input_not_provided
 
 
@@ -87,7 +156,7 @@ def test_update_username_too_short(bad_id, username_too_short):
     try:
         user_service.update_username(bad_id, username_too_short)
         assert False
-    except UserNameTooShort as e:
+    except InputTooShort as e:
         assert str(e) == input_too_short
 
 
@@ -96,7 +165,7 @@ def test_update_username_too_long(bad_id, username_too_long):
     try:
         user_service.update_username(bad_id, username_too_long)
         assert False
-    except UserNameTooLong as e:
+    except InputTooLong as e:
         assert str(e) == input_too_long
 
 
