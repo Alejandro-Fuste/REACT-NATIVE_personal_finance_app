@@ -35,6 +35,14 @@ def create_new_user_first_name_too_short() -> User:
 
 
 @fixture
+def create_new_user_first_name_too_long() -> User:
+    new_user = User("1234567890123456789012345678901234557868290345869023486903248068239046089324068923094860982092340"
+                    "68809", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
 def create_new_paper_trade() -> PaperTrade:
     new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            "Call", "3/25", "Straddle",
