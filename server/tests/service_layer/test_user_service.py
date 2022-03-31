@@ -6,6 +6,7 @@ from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_too_short import InputTooShort
 from server.custom_exceptions.input_too_long import InputTooLong
+from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
@@ -21,6 +22,7 @@ input_must_be_string: str = "The input must be a string."
 input_not_provided: str = "An input must be provided."
 input_too_short: str = "The input is too short."
 input_too_long: str = "The input is too long."
+email_wrong_format: str = "The email is not in the correct format."
 
 
 # Creation Tests ----------------------------------------------------------------------------
@@ -101,8 +103,8 @@ def test_create_user_email_wrong_format():
     try:
         user_service.create_new_user()
         assert False
-    except InputNotString as e:
-        assert str(e) == input_must_be_string
+    except EmailWrongFormat as e:
+        assert str(e) == email_wrong_format
 
 
 # Email missing
