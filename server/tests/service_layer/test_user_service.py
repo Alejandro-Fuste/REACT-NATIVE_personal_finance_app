@@ -34,11 +34,6 @@ def test_get_user_by_id_no_id(missing_id):
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
 
-# Username not string
-# Username missing
-# Username too short
-# Username too long
-
 
 # Update Tests ----------------------------------------
 
@@ -56,6 +51,20 @@ def test_update_username_by_id_no_id(missing_id, update_username):
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
+
+
+# Username not string
+def test_update_username_not_string(invalid_id, update_username):
+    try:
+        user_service.update_username(invalid_id, update_username)
+        assert False
+    except UserIdMustBeString as e:
+        assert str(e) == user_id_must_be_string
+
+
+# Username missing
+# Username too short
+# Username too long
 
 
 # Delete Tests ----------------------------------------

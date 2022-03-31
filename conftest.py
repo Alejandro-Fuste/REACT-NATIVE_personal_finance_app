@@ -49,10 +49,15 @@ def missing_id() -> str:
 
 
 @fixture
+def update_username() -> str:
+    return fake.domain_word()
+
+
+@fixture
 def bad_username() -> str:
     return "ekul"
 
 
 @fixture
-def update_username() -> str:
-    return fake.domain_word()
+def bad_username_number() -> int:
+    return fake.pyint(max_value=10000)
