@@ -4,6 +4,8 @@ from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.username_not_string import UserNameNotString
 from server.custom_exceptions.username_missing import UserNameMissing
+from server.custom_exceptions.username_too_short import UserNameTooShort
+from server.custom_exceptions.username_too_long import UserNameTooLong
 
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
@@ -17,6 +19,8 @@ user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
 username_must_be_string: str = "The username must be a string."
 username_not_provided: str = "A username must be provided."
+username_short: str = "The username is too short."
+username_long: str = "The username is too long."
 
 
 # Creation Tests --------------------------------------
@@ -76,15 +80,16 @@ def test_update_username_missing(bad_id, username_missing):
 
 
 # Username too short
-def test_update_username_too_short(bad_id, username_missing):
+def test_update_username_too_short(bad_id, username_too_short):
     try:
-        user_service.update_username(bad_id, username_missing)
+        user_service.update_username(bad_id, username_too_short)
         assert False
-    except UserNameMissing as e:
-        assert str(e) == username_not_provided
+    except UserNameTooShort as e:
+        assert str(e) == username_short
 
 
 # Username too long
+
 
 
 # Delete Tests ----------------------------------------
