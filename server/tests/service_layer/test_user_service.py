@@ -96,6 +96,24 @@ def test_create_user_last_name_too_long():
         assert str(e) == input_too_long
 
 
+# Email wrong format
+def test_create_user_email_wrong_format():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
+
+
+# Email missing
+def test_create_user_email_missing():
+    try:
+        user_service.create_new_user()
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
 # Read Tests --------------------------------------------------------------------------------
 
 def test_get_user_by_id_not_string(invalid_id):
