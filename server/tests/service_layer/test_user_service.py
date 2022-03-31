@@ -1,5 +1,3 @@
-from unittest.mock import MagicMock, patch, Mock
-
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.input_not_string import InputNotString
@@ -45,9 +43,9 @@ def test_create_user_first_name_missing(create_new_user_first_name_blank):
 
 
 # First name too short
-def test_create_user_first_name_too_short():
+def test_create_user_first_name_too_short(create_new_user_first_name_too_short):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_first_name_too_short)
         assert False
     except InputTooShort as e:
         assert str(e) == input_too_short
