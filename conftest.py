@@ -66,3 +66,8 @@ def bad_username_number() -> int:
 @fixture
 def username_missing() -> str:
     return " "
+
+
+@fixture
+def username_too_short() -> str:
+    return "ab"

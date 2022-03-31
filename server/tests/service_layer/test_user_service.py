@@ -76,6 +76,14 @@ def test_update_username_missing(bad_id, username_missing):
 
 
 # Username too short
+def test_update_username_too_short(bad_id, username_missing):
+    try:
+        user_service.update_username(bad_id, username_missing)
+        assert False
+    except UserNameMissing as e:
+        assert str(e) == username_not_provided
+
+
 # Username too long
 
 
