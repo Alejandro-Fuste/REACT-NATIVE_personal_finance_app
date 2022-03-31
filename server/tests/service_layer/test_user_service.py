@@ -3,6 +3,7 @@ from unittest.mock import MagicMock, patch, Mock
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.username_not_string import UserNameNotString
+from server.custom_exceptions.username_missing import UserNameMissing
 
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
@@ -15,6 +16,7 @@ user_service: UserService = UserServiceImp(user_dao)
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
 username_must_be_string: str = "The username must be a string."
+username_not_provided: str = "A username must be provided."
 
 
 # Creation Tests --------------------------------------
@@ -65,12 +67,12 @@ def test_update_username_not_string(bad_id, bad_username_number):
 
 
 # Username missing
-def test_update_username_missing(bad_id, bad_username_number):
+def test_update_username_missing(bad_id, username_missing):
     try:
-        user_service.update_username(bad_id, bad_username_number)
+        user_service.update_username(bad_id, username_missing)
         assert False
-    except UserNameNotString as e:
-        assert str(e) == username_must_be_string
+    except UserNameMissing as e:
+        assert str(e) == username_not_provided
 
 
 # Username too short
