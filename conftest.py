@@ -21,6 +21,13 @@ def create_new_user_first_name_number() -> User:
 
 
 @fixture
+def create_new_user_first_name_blank() -> User:
+    new_user = User("", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
 def create_new_paper_trade() -> PaperTrade:
     new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            "Call", "3/25", "Straddle",
@@ -72,7 +79,7 @@ def bad_username_number() -> int:
 
 @fixture
 def username_missing() -> str:
-    return " "
+    return ""
 
 
 @fixture
