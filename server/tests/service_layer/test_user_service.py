@@ -61,9 +61,9 @@ def test_create_user_first_name_too_long(create_new_user_first_name_too_long):
 
 
 # Last name not string
-def test_create_user_last_name_not_string():
+def test_create_user_last_name_not_string(create_new_user_last_name_number):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_last_name_number)
         assert False
     except InputNotString as e:
         assert str(e) == input_must_be_string
