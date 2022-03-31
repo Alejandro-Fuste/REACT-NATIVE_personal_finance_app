@@ -61,3 +61,8 @@ def bad_username() -> str:
 @fixture
 def bad_username_number() -> int:
     return fake.pyint(max_value=10000)
+
+
+@fixture
+def username_missing() -> str:
+    return " "
