@@ -24,6 +24,8 @@ username_long: str = "The username is too long."
 
 
 # Creation Tests --------------------------------------
+# blank inputs
+
 
 # Read Tests ------------------------------------------
 
@@ -43,8 +45,8 @@ def test_get_user_by_id_no_id(missing_id):
         assert str(e) == user_id_not_provided
 
 
-# Update Tests ----------------------------------------
-
+# Update Tests --------------------------------------------------------------------------------
+# User Id not string
 def test_update_username_id_not_string(invalid_id, update_username):
     try:
         user_service.update_username(invalid_id, update_username)
@@ -53,6 +55,7 @@ def test_update_username_id_not_string(invalid_id, update_username):
         assert str(e) == user_id_must_be_string
 
 
+# User Id missing
 def test_update_username_by_id_no_id(missing_id, update_username):
     try:
         user_service.update_username(missing_id, update_username)
@@ -97,7 +100,7 @@ def test_update_username_too_long(bad_id, username_too_long):
         assert str(e) == username_long
 
 
-# Delete Tests ----------------------------------------
+# Delete Tests --------------------------------------------------------------------------------
 
 def test_delete_user_by_id_not_string(invalid_id):
     try:
