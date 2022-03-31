@@ -19,8 +19,6 @@ user_id_not_provided: str = "A user id must be provided."
 
 # Read Tests ------------------------------------------
 
-# ID is integer instead of string
-
 def test_get_user_by_id_not_string(invalid_id):
     try:
         user_service.get_user_by_id(invalid_id)
@@ -29,7 +27,6 @@ def test_get_user_by_id_not_string(invalid_id):
         assert str(e) == user_id_must_be_string
 
 
-# ID was not provided
 def test_get_user_by_id_no_id(missing_id):
     try:
         user_service.get_user_by_id(missing_id)
@@ -37,6 +34,43 @@ def test_get_user_by_id_no_id(missing_id):
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
 
+# Username not string
+# Username missing
+# Username too short
+# Username too long
+
+
 # Update Tests ----------------------------------------
 
+def test_update_username_id_not_string(invalid_id, update_username):
+    try:
+        user_service.update_username(invalid_id, update_username)
+        assert False
+    except UserIdMustBeString as e:
+        assert str(e) == user_id_must_be_string
+
+
+def test_update_username_by_id_no_id(missing_id, update_username):
+    try:
+        user_service.update_username(missing_id, update_username)
+        assert False
+    except MissingUserId as e:
+        assert str(e) == user_id_not_provided
+
+
 # Delete Tests ----------------------------------------
+
+def test_delete_user_by_id_not_string(invalid_id):
+    try:
+        user_service.delete_user(invalid_id)
+        assert False
+    except UserIdMustBeString as e:
+        assert str(e) == user_id_must_be_string
+
+
+def test_delete_user_by_id_no_id(missing_id):
+    try:
+        user_service.delete_user(missing_id)
+        assert False
+    except MissingUserId as e:
+        assert str(e) == user_id_not_provided
