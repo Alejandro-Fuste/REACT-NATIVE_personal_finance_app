@@ -19,6 +19,23 @@ paper_trade_id_not_provided: str = "A paper trade id must be provided."
 
 
 # Creation Tests ----------------------------------------------------------------------------
+
+def test_add_paper_trade_user_id_not_string(invalid_id, create_new_paper_trade):
+    try:
+        paper_trade_service.add_paper_trade(invalid_id, create_new_paper_trade)
+        assert False
+    except UserIdMustBeString as e:
+        assert str(e) == user_id_must_be_string
+
+
+# id missing
+def test_add_paper_trade_user_id_missing(missing_id, create_new_paper_trade):
+    try:
+        paper_trade_service.add_paper_trade(missing_id, create_new_paper_trade)
+        assert False
+    except MissingUserId as e:
+        assert str(e) == user_id_not_provided
+
 # Read Tests --------------------------------------------------------------------------------
 
 # id not string
