@@ -143,6 +143,16 @@ def create_new_user_username_too_long() -> User:
     return new_user.make_dictionary()
 
 
+@fixture
+def create_new_user_password_too_long() -> User:
+    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                    "12345678901234567890123456789012"
+                    "345578682903458690234869032480682"
+                    "390460893240689230948609820923406"
+                    "8809")
+    return new_user.make_dictionary()
+
+
 # new paper trade -----------------------------------------------------------------
 @fixture
 def create_new_paper_trade() -> PaperTrade:
