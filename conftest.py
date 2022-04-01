@@ -186,7 +186,7 @@ def invalid_id() -> int:
 
 @fixture
 def missing_id() -> str:
-    return " "
+    return ""
 
 
 @fixture
