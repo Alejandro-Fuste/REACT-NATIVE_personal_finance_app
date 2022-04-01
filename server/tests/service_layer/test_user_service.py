@@ -70,9 +70,9 @@ def test_create_user_last_name_not_string(create_new_user_last_name_number):
 
 
 # Last name missing
-def test_create_user_last_name_missing():
+def test_create_user_last_name_missing(create_new_user_last_name_blank):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_last_name_blank)
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
