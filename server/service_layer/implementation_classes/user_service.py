@@ -34,6 +34,3 @@ class UserServiceImp(UserService):
     def delete_user(self, user_id: str) -> int:
         pass
 
-
-test_input = 1
-print(isinstance(test_input, str))

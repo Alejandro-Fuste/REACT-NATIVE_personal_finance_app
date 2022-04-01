@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from environment_variables import mongo_url
@@ -64,3 +66,4 @@ class UserDAOImp(UserDAO):
             raise UserNotFound(user_not_found)
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
+
