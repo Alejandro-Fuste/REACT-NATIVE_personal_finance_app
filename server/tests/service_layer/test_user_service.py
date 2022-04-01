@@ -160,9 +160,9 @@ def test_create_user_password_not_string(create_new_user_password_number):
 
 
 # Password missing
-def test_create_user_password_missing():
+def test_create_user_password_missing(create_new_user_password_name_blank):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_password_name_blank)
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
