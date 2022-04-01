@@ -108,7 +108,7 @@ def test_create_user_email_wrong_format(create_new_user_email_wrong_format):
 # Email missing
 def test_create_user_email_missing(create_new_user_email_name_blank):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_email_name_blank)
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
