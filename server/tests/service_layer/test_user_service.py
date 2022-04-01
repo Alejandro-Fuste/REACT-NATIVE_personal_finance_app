@@ -142,9 +142,9 @@ def test_create_user_username_too_short(create_new_user_username_too_short):
 
 
 # username too long
-def test_create_user_username_too_long():
+def test_create_user_username_too_long(create_new_user_username_too_long):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_username_too_long)
         assert False
     except InputTooLong as e:
         assert str(e) == input_too_long
