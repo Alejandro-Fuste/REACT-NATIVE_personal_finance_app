@@ -13,6 +13,8 @@ from server.service_layer.abstract_classes.user_service_abs import UserService
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
+username_must_be_string: str = "The username must be a string."
+username_not_provided: str = "A username must be provided."
 input_must_be_string: str = "The input must be a string."
 input_not_provided: str = "An input must be provided."
 input_too_short: str = "The input is too short."
@@ -40,7 +42,15 @@ class UserServiceImp(UserService):
         return self.user_dao.get_user_by_id(user_id)
 
     def get_user_by_username(self, username: str) -> dict:
-        pass
+        # check username is a string
+        if isinstance(username, str) is False:
+            raise InputNotString(username_must_be_string)
+
+        # check user_id not empty
+        if len(username.strip()) == 0:
+            raise InputMissing(username_not_provided)
+
+        return self.user_dao.get_user_by_username(username)
 
     def get_all_users(self) -> List[User]:
         return self.user_dao.get_all_users()

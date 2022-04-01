@@ -18,6 +18,8 @@ user_service: UserService = UserServiceImp(user_dao)
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
+username_must_be_string: str = "The username must be a string."
+username_not_provided: str = "A username must be provided."
 input_must_be_string: str = "The input must be a string."
 input_not_provided: str = "An input must be provided."
 input_too_short: str = "The input is too short."
@@ -204,6 +206,22 @@ def test_get_user_by_id_no_id(missing_id):
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
+
+
+def test_get_user_by_username_not_string(invalid_id):
+    try:
+        user_service.get_user_by_username(invalid_id)
+        assert False
+    except InputNotString as e:
+        assert str(e) == username_must_be_string
+
+
+def test_get_user_by_username_missing(missing_id):
+    try:
+        user_service.get_user_by_username(missing_id)
+        assert False
+    except InputMissing as e:
+        assert str(e) == username_not_provided
 
 
 # Update Tests --------------------------------------------------------------------------------
