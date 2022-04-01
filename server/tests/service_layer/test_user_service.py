@@ -79,9 +79,9 @@ def test_create_user_last_name_missing(create_new_user_last_name_blank):
 
 
 # Last name too short
-def test_create_user_last_name_too_short():
+def test_create_user_last_name_too_short(create_new_user_last_name_too_short):
     try:
-        user_service.create_new_user()
+        user_service.create_new_user(create_new_user_last_name_too_short)
         assert False
     except InputTooShort as e:
         assert str(e) == input_too_short
