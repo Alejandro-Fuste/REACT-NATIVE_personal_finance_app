@@ -16,6 +16,8 @@ user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
 paper_trade_id_must_be_string: str = "The paper trade id must be a string."
 paper_trade_id_not_provided: str = "A paper trade id must be provided."
+paper_trade_index_must_be_string: str = "The paper trade index must be a string."
+paper_trade_index_not_provided: str = "A paper trade index must be provided."
 
 
 # Creation Tests ----------------------------------------------------------------------------
@@ -75,6 +77,24 @@ def test_update_paper_trade_user_id_missing(missing_id):
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
+
+
+# index not string
+def test_update_paper_trade_index_not_string(bad_id, invalid_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(bad_id, '0', 111.11)
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == paper_trade_index_must_be_string
+
+
+# index missing
+def test_update_paper_trade_index_missing(bad_id, missing_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(bad_id, missing_id, 111.11)
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == paper_trade_index_not_provided
 
 
 # Delete Tests ------------------------------------------------------------------------------
