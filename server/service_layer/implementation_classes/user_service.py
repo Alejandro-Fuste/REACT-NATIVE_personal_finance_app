@@ -35,7 +35,7 @@ class UserServiceImp(UserService):
         pass
 
     def get_all_users(self) -> List[User]:
-        pass
+        return self.user_dao.get_all_users()
 
     # Update Methods -------------------------------------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:
