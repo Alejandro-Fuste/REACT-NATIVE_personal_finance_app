@@ -106,7 +106,7 @@ def test_create_user_email_wrong_format():
 
 
 # Email missing
-def test_create_user_email_missing():
+def test_create_user_email_missing(create_new_user_email_name_blank):
     try:
         user_service.create_new_user()
         assert False
