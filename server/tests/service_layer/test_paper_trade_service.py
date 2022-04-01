@@ -18,6 +18,7 @@ paper_trade_id_must_be_string: str = "The paper trade id must be a string."
 paper_trade_id_not_provided: str = "A paper trade id must be provided."
 paper_trade_index_must_be_string: str = "The paper trade index must be a string."
 paper_trade_value_must_be_string: str = "The paper trade object value must be a string."
+paper_trade_value_not_provided: str = "The paper trade object value must be provided."
 paper_trade_index_not_provided: str = "A paper trade index must be provided."
 sell_price_must_be_string: str = "The sell price must be a string."
 sell_price_index_not_provided: str = "A sell price must be provided."
@@ -43,12 +44,22 @@ def test_add_paper_trade_user_id_missing(missing_id, create_new_paper_trade):
         assert str(e) == user_id_not_provided
 
 
-def test_add_paper_trade_value_not_string(bad_id, trade_value_not_number):
+# value in new trade is not a number
+def test_add_paper_trade_value_not_number(bad_id, trade_value_not_number):
     try:
         paper_trade_service.add_paper_trade(bad_id, trade_value_not_number)
         assert False
     except PaperTradeException as e:
         assert str(e) == paper_trade_value_must_be_string
+
+
+# value in new trade is missing
+def test_add_paper_trade_value_missing(bad_id, trade_value_missing):
+    try:
+        paper_trade_service.add_paper_trade(bad_id, trade_value_missing)
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == paper_trade_value_not_provided
 
 
 # Read Tests --------------------------------------------------------------------------------
