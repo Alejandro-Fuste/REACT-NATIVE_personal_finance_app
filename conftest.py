@@ -86,21 +86,32 @@ def create_new_user_first_name_too_short() -> User:
     return new_user.make_dictionary()
 
 
+@fixture
 def create_new_user_last_name_too_short() -> User:
     new_user = User(fake.first_name(), "a", fake.ascii_company_email(), fake.domain_word(),
                     fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
+@fixture
 def create_new_user_username_too_short() -> User:
     new_user = User("a", fake.last_name(), fake.ascii_company_email(), "a",
                     fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
+@fixture
 def create_new_user_password_too_short() -> User:
     new_user = User("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                     "a")
+    return new_user.make_dictionary()
+
+
+# email errors -----------------------------------------------------------------
+@fixture
+def create_new_user_email_wrong_format() -> User:
+    new_user = User(fake.first_name(), fake.last_name(), "a", fake.domain_word(),
+                    fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
@@ -113,6 +124,7 @@ def create_new_user_first_name_too_long() -> User:
     return new_user.make_dictionary()
 
 
+# new paper trade -----------------------------------------------------------------
 @fixture
 def create_new_paper_trade() -> PaperTrade:
     new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
