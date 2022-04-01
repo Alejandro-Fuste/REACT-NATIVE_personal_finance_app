@@ -32,8 +32,10 @@ def test_delete_paper_trade_id_not_string(invalid_id):
 
 # id missing
 def test_delete_paper_trade_no_id(missing_id):
+    users: list = user_dao.get_all_users()
+    trade_id: int = users[0]["paperTrades"][0]["tradeId"]
     try:
-        paper_trade_service.delete_paper_trade(missing_id)
+        paper_trade_service.delete_paper_trade(missing_id, trade_id)
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
