@@ -13,6 +13,7 @@ def create_new_user() -> User:
     return new_user.make_dictionary()
 
 
+# number errors -----------------------------------------------------------------
 @fixture
 def create_new_user_first_name_number() -> User:
     new_user = User(fake.pyint(max_value=10000), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
@@ -41,10 +42,39 @@ def create_new_user_password_number() -> User:
     return new_user.make_dictionary()
 
 
+# blank errors -----------------------------------------------------------------
 @fixture
 def create_new_user_first_name_blank() -> User:
     new_user = User("", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                     fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
+def create_new_user_last_name_blank() -> User:
+    new_user = User(fake.first_name(), "", fake.ascii_company_email(), fake.domain_word(),
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
+def create_new_user_email_name_blank() -> User:
+    new_user = User(fake.first_name(), fake.last_name(), "", fake.domain_word(),
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
+def create_new_user_username_name_blank() -> User:
+    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), "",
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+@fixture
+def create_new_user_password_name_blank() -> User:
+    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                    "")
     return new_user.make_dictionary()
 
 
