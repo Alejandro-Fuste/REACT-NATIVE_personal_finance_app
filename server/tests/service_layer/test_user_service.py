@@ -1,3 +1,5 @@
+from bson.errors import InvalidId
+
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.input_not_string import InputNotString
