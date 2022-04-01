@@ -36,6 +36,7 @@ def test_add_paper_trade_user_id_missing(missing_id, create_new_paper_trade):
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
 
+
 # Read Tests --------------------------------------------------------------------------------
 
 # id not string
@@ -57,6 +58,25 @@ def test_get_paper_trades_user_id_missing(missing_id):
 
 
 # Update Tests ------------------------------------------------------------------------------
+
+# id not string
+def test_update_paper_trade_user_id_not_string(invalid_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(invalid_id, 0, 111.11)
+        assert False
+    except UserIdMustBeString as e:
+        assert str(e) == user_id_must_be_string
+
+
+# id missing
+def test_update_paper_trade_user_id_missing(missing_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(missing_id, 0, 111.11)
+        assert False
+    except MissingUserId as e:
+        assert str(e) == user_id_not_provided
+
+
 # Delete Tests ------------------------------------------------------------------------------
 # id not string
 def test_delete_paper_trade_user_id_not_string(invalid_id):
