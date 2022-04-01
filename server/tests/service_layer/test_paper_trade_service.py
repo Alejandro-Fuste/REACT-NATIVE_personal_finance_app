@@ -18,6 +18,9 @@ paper_trade_id_must_be_string: str = "The paper trade id must be a string."
 paper_trade_id_not_provided: str = "A paper trade id must be provided."
 paper_trade_index_must_be_string: str = "The paper trade index must be a string."
 paper_trade_index_not_provided: str = "A paper trade index must be provided."
+sell_price_must_be_string: str = "The sell price must be a string."
+sell_price_index_not_provided: str = "A sell price must be provided."
+sell_price_negative: str = "A sell price must be a positive number."
 
 
 # Creation Tests ----------------------------------------------------------------------------
@@ -95,6 +98,33 @@ def test_update_paper_trade_index_missing(bad_id, missing_id):
         assert False
     except PaperTradeException as e:
         assert str(e) == paper_trade_index_not_provided
+
+
+# sell price not string
+def test_update_paper_trade_sell_price_not_string(bad_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, "111.11")
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == sell_price_must_be_string
+
+
+# sell price missing
+def test_update_paper_trade_sell_price_missing(bad_id, missing_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, missing_id)
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == sell_price_index_not_provided
+
+
+# sell price negative number
+def test_update_paper_trade_sell_price_negative(bad_id):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, -111.11)
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == sell_price_negative
 
 
 # Delete Tests ------------------------------------------------------------------------------
