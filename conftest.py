@@ -78,13 +78,33 @@ def create_new_user_password_name_blank() -> User:
     return new_user.make_dictionary()
 
 
+# too short errors -----------------------------------------------------------------
 @fixture
 def create_new_user_first_name_too_short() -> User:
-    new_user = User("ab", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+    new_user = User("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                     fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
+def create_new_user_last_name_too_short() -> User:
+    new_user = User(fake.first_name(), "a", fake.ascii_company_email(), fake.domain_word(),
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+def create_new_user_username_too_short() -> User:
+    new_user = User("a", fake.last_name(), fake.ascii_company_email(), "a",
+                    fake.sha256(raw_output=False))
+    return new_user.make_dictionary()
+
+
+def create_new_user_password_too_short() -> User:
+    new_user = User("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                    "a")
+    return new_user.make_dictionary()
+
+
+# too long errors -----------------------------------------------------------------
 @fixture
 def create_new_user_first_name_too_long() -> User:
     new_user = User("1234567890123456789012345678901234557868290345869023486903248068239046089324068923094860982092340"
