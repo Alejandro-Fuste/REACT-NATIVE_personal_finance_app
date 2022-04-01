@@ -1,5 +1,9 @@
 from typing import List
 
+from server.custom_exceptions.input_too_long import InputTooLong
+from server.custom_exceptions.input_too_short import InputTooShort
+from server.custom_exceptions.input_missing import InputMissing
+from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 
@@ -9,6 +13,10 @@ from server.service_layer.abstract_classes.user_service_abs import UserService
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
+input_must_be_string: str = "The input must be a string."
+input_not_provided: str = "An input must be provided."
+input_too_short: str = "The input is too short."
+input_too_long: str = "The input is too long."
 
 
 class UserServiceImp(UserService):
@@ -39,10 +47,33 @@ class UserServiceImp(UserService):
 
     # Update Methods -------------------------------------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:
-        pass
+        # check user_id is a string
+        if isinstance(user_id, str) is False:
+            raise UserIdMustBeString(user_id_must_be_string)
+
+        # checks new_info is a string
+        if isinstance(new_info, str) is False:
+            raise InputNotString(input_must_be_string)
+
+        # check user_id not empty
+        if len(user_id.strip()) == 0:
+            raise MissingUserId(user_id_not_provided)
+
+        # check new_info not empty
+        if len(new_info.strip()) == 0:
+            raise InputMissing(input_not_provided)
+
+        # check new_info is too short
+        if len(new_info.strip()) < 2:
+            raise InputTooShort(input_too_short)
+
+        # check new_info is too long
+        if len(new_info.strip()) > 100:
+            raise InputTooLong(input_too_long)
+
+        return self.user_dao.update_username(user_id, new_info)
 
     # Delete Methods -------------------------------------------------------------------------------
     def delete_user(self, user_id: str) -> int:
         pass
-
 

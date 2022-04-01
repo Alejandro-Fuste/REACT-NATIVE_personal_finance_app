@@ -251,7 +251,7 @@ def username_missing() -> str:
 
 @fixture
 def username_too_short() -> str:
-    return "ab"
+    return "a"
 
 
 @fixture
