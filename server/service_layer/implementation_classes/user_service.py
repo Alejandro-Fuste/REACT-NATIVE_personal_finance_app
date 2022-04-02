@@ -27,7 +27,28 @@ class UserServiceImp(UserService):
 
     # Creation Methods ----------------------------------------------------------------------------
     def create_new_user(self, user: User) -> dict:
-        pass
+        # check if user properties are strings
+        if isinstance(user.first_name, str) is False or isinstance(user.last_name, str) is False \
+                or isinstance(user.email, str) is False or isinstance(user.username, str) is False \
+                or isinstance(user.password, str) is False:
+            raise InputNotString(input_must_be_string)
+
+        # check if any user properties are empty
+        if len(user.first_name.strip()) == 0 or len(user.last_name.strip()) == 0 or len(user.email.strip()) == 0 \
+                or len(user.username.strip()) == 0 or len(user.password.strip()) == 0:
+            raise InputMissing(input_not_provided)
+
+        # check if any user properties are too short
+        if len(user.first_name.strip()) < 2 or len(user.last_name.strip()) < 2 or len(user.email.strip()) < 5 \
+                or len(user.username.strip()) < 2 or len(user.password.strip()) < 8:
+            raise InputTooShort(input_too_short)
+
+        # check if any user properties are too long
+        if len(user.first_name.strip()) > 100 or len(user.last_name.strip()) > 100 or len(user.email.strip()) > 100 \
+                or len(user.username.strip()) > 100 or len(user.password.strip()) > 100:
+            raise InputTooLong(input_too_long)
+
+        return self.user_dao.create_new_user(user)
 
     # Read Methods --------------------------------------------------------------------------------
     def get_user_by_id(self, user_id: str) -> dict:
