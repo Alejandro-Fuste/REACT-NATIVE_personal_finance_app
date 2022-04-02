@@ -60,7 +60,23 @@ class PaperTradeServiceImp(PaperTradeService):
             raise InputNotString(user_id_must_be_string)
 
         # check if value is not empty
-        if len(paper_trade["tradeId"].strip()) == 0 or len(paper_trade["netProfitPercentage"].strip()) == 0:
+        if len(paper_trade["tradeId"].strip()) == 0 or len(paper_trade["ticker"].strip()) == 0\
+                or len(paper_trade["strikePrice"].strip()) == 0 \
+                or len(paper_trade["tradeType"].strip()) == 0\
+                or len(paper_trade["expirationDate"].strip()) == 0\
+                or len(paper_trade["strategyType"].strip()) == 0\
+                or len(paper_trade["callPrice"].strip()) == 0\
+                or len(paper_trade["putPrice"].strip()) == 0\
+                or len(paper_trade["callBreakevenPoint"].strip()) == 0\
+                or len(paper_trade["putBreakevenPoint"].strip()) == 0\
+                or len(paper_trade["straddle_call_breakeven_point"].strip()) == 0\
+                or len(paper_trade["straddle_put_breakeven_point"].strip()) == 0\
+                or len(paper_trade["sellPrice"].strip()) == 0\
+                or len(paper_trade["costPrice"].strip()) == 0\
+                or len(paper_trade["totalSell"].strip()) == 0\
+                or len(paper_trade["totalCost"].strip()) == 0\
+                or len(paper_trade["netProfit"].strip()) == 0\
+                or len(paper_trade["netProfitPercentage"].strip()) == 0:
             raise PaperTradeException(paper_trade_value_not_provided)
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
