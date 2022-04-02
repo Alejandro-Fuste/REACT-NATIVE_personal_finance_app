@@ -51,7 +51,7 @@ def test_add_paper_trade_value_not_number(bad_id, trade_value_not_number):
         paper_trade_service.add_paper_trade(bad_id, trade_value_not_number)
         assert False
     except PaperTradeException as e:
-        assert str(e) == paper_trade_value_must_be_string
+        assert str(e) == paper_trade_value_must_be_float
 
 
 # value in new trade is missing

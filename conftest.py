@@ -198,7 +198,7 @@ def trade_value_not_number() -> PaperTrade:
 def trade_value_missing() -> PaperTrade:
     new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            "Call", "3/25", "Straddle",
-                           "",
+                           None,
                            fake.pyfloat(left_digits=0, right_digits=2, positive=True),
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),

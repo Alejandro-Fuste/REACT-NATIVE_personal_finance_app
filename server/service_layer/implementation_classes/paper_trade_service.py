@@ -34,6 +34,26 @@ class PaperTradeServiceImp(PaperTradeService):
         if len(user_id.strip()) == 0:
             raise MissingUserId(user_id_not_provided)
 
+        # check if value is not empty
+        if paper_trade["tradeId"] is None or len(paper_trade["ticker"].strip()) == 0 \
+                or paper_trade["strikePrice"] is None \
+                or len(paper_trade["tradeType"].strip()) == 0 \
+                or len(paper_trade["expirationDate"].strip()) == 0 \
+                or len(paper_trade["strategyType"].strip()) == 0 \
+                or paper_trade["callPrice"] is None \
+                or paper_trade["putPrice"] is None \
+                or paper_trade["callBreakevenPoint"] is None \
+                or paper_trade["putBreakevenPoint"] is None \
+                or paper_trade["straddle_call_breakeven_point"] is None \
+                or paper_trade["straddle_put_breakeven_point"] is None \
+                or paper_trade["sellPrice"] is None \
+                or paper_trade["costPrice"] is None \
+                or paper_trade["totalSell"] is None \
+                or paper_trade["totalCost"] is None \
+                or paper_trade["netProfit"] is None \
+                or paper_trade["netProfitPercentage"] is None:
+            raise PaperTradeException(paper_trade_value_not_provided)
+
         # check if value is a string
         if isinstance(paper_trade["ticker"], str) is False or isinstance(paper_trade["tradeType"], str) is False \
                 or isinstance(paper_trade["expirationDate"], str) is False \
@@ -42,15 +62,15 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check if value is a float
         if isinstance(paper_trade["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
-                or isinstance(paper_trade["callBreakevenPoint"], float) is False\
-                or isinstance(paper_trade["putBreakevenPoint"], float) is False\
-                or isinstance(paper_trade["straddle_call_breakeven_point"], float) is False\
-                or isinstance(paper_trade["straddle_call_breakeven_point"], float) is False\
-                or isinstance(paper_trade["sellPrice"], float) is False\
-                or isinstance(paper_trade["costPrice"], float) is False\
-                or isinstance(paper_trade["totalSell"], float) is False\
-                or isinstance(paper_trade["totalCost"], float) is False\
-                or isinstance(paper_trade["netProfit"], float) is False\
+                or isinstance(paper_trade["callBreakevenPoint"], float) is False \
+                or isinstance(paper_trade["putBreakevenPoint"], float) is False \
+                or isinstance(paper_trade["straddle_call_breakeven_point"], float) is False \
+                or isinstance(paper_trade["straddle_call_breakeven_point"], float) is False \
+                or isinstance(paper_trade["sellPrice"], float) is False \
+                or isinstance(paper_trade["costPrice"], float) is False \
+                or isinstance(paper_trade["totalSell"], float) is False \
+                or isinstance(paper_trade["totalCost"], float) is False \
+                or isinstance(paper_trade["netProfit"], float) is False \
                 or isinstance(paper_trade["strikePrice"], float) is False:
             raise PaperTradeException(paper_trade_value_must_be_float)
 
@@ -58,26 +78,6 @@ class PaperTradeServiceImp(PaperTradeService):
         if isinstance(paper_trade["tradeId"], int) is False \
                 or isinstance(paper_trade["netProfitPercentage"], int) is False:
             raise InputNotString(user_id_must_be_string)
-
-        # check if value is not empty
-        if len(paper_trade["tradeId"].strip()) == 0 or len(paper_trade["ticker"].strip()) == 0\
-                or len(paper_trade["strikePrice"].strip()) == 0 \
-                or len(paper_trade["tradeType"].strip()) == 0\
-                or len(paper_trade["expirationDate"].strip()) == 0\
-                or len(paper_trade["strategyType"].strip()) == 0\
-                or len(paper_trade["callPrice"].strip()) == 0\
-                or len(paper_trade["putPrice"].strip()) == 0\
-                or len(paper_trade["callBreakevenPoint"].strip()) == 0\
-                or len(paper_trade["putBreakevenPoint"].strip()) == 0\
-                or len(paper_trade["straddle_call_breakeven_point"].strip()) == 0\
-                or len(paper_trade["straddle_put_breakeven_point"].strip()) == 0\
-                or len(paper_trade["sellPrice"].strip()) == 0\
-                or len(paper_trade["costPrice"].strip()) == 0\
-                or len(paper_trade["totalSell"].strip()) == 0\
-                or len(paper_trade["totalCost"].strip()) == 0\
-                or len(paper_trade["netProfit"].strip()) == 0\
-                or len(paper_trade["netProfitPercentage"].strip()) == 0:
-            raise PaperTradeException(paper_trade_value_not_provided)
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
 
@@ -89,3 +89,9 @@ class PaperTradeServiceImp(PaperTradeService):
 
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
         pass
+
+
+# test: int = None
+#
+# if test is None:
+#     print("it worked")
