@@ -85,5 +85,13 @@ class UserServiceImp(UserService):
 
     # Delete Methods -------------------------------------------------------------------------------
     def delete_user(self, user_id: str) -> int:
-        pass
+        # check user_id is a string
+        if isinstance(user_id, str) is False:
+            raise UserIdMustBeString(user_id_must_be_string)
+
+        # check user_id not empty
+        if len(user_id.strip()) == 0:
+            raise MissingUserId(user_id_not_provided)
+
+        return self.user_dao.delete_user(user_id)
 
