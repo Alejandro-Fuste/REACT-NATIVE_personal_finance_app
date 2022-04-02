@@ -6,6 +6,7 @@ from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
+from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
 from server.entities.user import User
@@ -19,6 +20,7 @@ input_must_be_string: str = "The input must be a string."
 input_not_provided: str = "An input must be provided."
 input_too_short: str = "The input is too short."
 input_too_long: str = "The input is too long."
+email_wrong_format: str = "The email is not in the correct format."
 
 
 class UserServiceImp(UserService):
@@ -28,24 +30,28 @@ class UserServiceImp(UserService):
     # Creation Methods ----------------------------------------------------------------------------
     def create_new_user(self, user: User) -> dict:
         # check if user properties are strings
-        if isinstance(user.first_name, str) is False or isinstance(user.last_name, str) is False \
-                or isinstance(user.email, str) is False or isinstance(user.username, str) is False \
-                or isinstance(user.password, str) is False:
+        if isinstance(user['firstName'], str) is False or isinstance(user["lastName"], str) is False \
+                or isinstance(user["email"], str) is False or isinstance(user["username"], str) is False \
+                or isinstance(user["password"], str) is False:
             raise InputNotString(input_must_be_string)
 
         # check if any user properties are empty
-        if len(user.first_name.strip()) == 0 or len(user.last_name.strip()) == 0 or len(user.email.strip()) == 0 \
-                or len(user.username.strip()) == 0 or len(user.password.strip()) == 0:
+        if len(user["firstName"].strip()) == 0 or len(user["lastName"].strip()) == 0 or len(user["email"].strip()) == 0 \
+                or len(user["username"].strip()) == 0 or len(user["password"].strip()) == 0:
             raise InputMissing(input_not_provided)
 
         # check if any user properties are too short
-        if len(user.first_name.strip()) < 2 or len(user.last_name.strip()) < 2 or len(user.email.strip()) < 5 \
-                or len(user.username.strip()) < 2 or len(user.password.strip()) < 8:
+        if len(user["firstName"].strip()) < 2 or len(user["lastName"].strip()) < 2 or len(user["username"].strip()) < 2\
+                or len(user["password"].strip()) < 8:
             raise InputTooShort(input_too_short)
 
+        # check if email is too short
+        if len(user["email"].strip()) < 5:
+            raise EmailWrongFormat(email_wrong_format)
+
         # check if any user properties are too long
-        if len(user.first_name.strip()) > 100 or len(user.last_name.strip()) > 100 or len(user.email.strip()) > 100 \
-                or len(user.username.strip()) > 100 or len(user.password.strip()) > 100:
+        if len(user["firstName"].strip()) > 100 or len(user["lastName"].strip()) > 100 or len(user["email"].strip()) > 100 \
+                or len(user["username"].strip()) > 100 or len(user["password"].strip()) > 100:
             raise InputTooLong(input_too_long)
 
         return self.user_dao.create_new_user(user)
