@@ -14,7 +14,7 @@ paper_trade_service: PaperTradeService = PaperTradeServiceImp(paper_trade_dao)
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
-paper_trade_id_must_be_string: str = "The paper trade id must be a string."
+paper_trade_id_must_be_int: str = "The paper trade id must be an integer."
 paper_trade_id_not_provided: str = "A paper trade id must be provided."
 paper_trade_index_must_be_string: str = "The paper trade index must be a string."
 paper_trade_value_must_be_string: str = "The paper trade object value must be a string."
@@ -160,14 +160,12 @@ def test_delete_paper_trade_user_id_not_string(invalid_id):
         assert str(e) == user_id_must_be_string
 
 
-def test_delete_paper_trade_id_not_string(invalid_id):
-    users: list = user_dao.get_all_users()
-    user_id: str = users[0]["_id"]
+def test_delete_paper_trade_id_not_int(bad_id):
     try:
-        paper_trade_service.delete_paper_trade(user_id, invalid_id)
+        paper_trade_service.delete_paper_trade(bad_id, bad_id)
         assert False
     except PaperTradeException as e:
-        assert str(e) == paper_trade_id_must_be_string
+        assert str(e) == paper_trade_id_must_be_int
 
 
 # id missing

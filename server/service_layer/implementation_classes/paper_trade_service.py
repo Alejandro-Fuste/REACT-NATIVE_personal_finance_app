@@ -9,7 +9,7 @@ from server.service_layer.abstract_classes.paper_trade_service_abs import PaperT
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
-paper_trade_id_must_be_string: str = "The paper trade id must be a string."
+paper_trade_id_must_be_int: str = "The paper trade id must be an integer."
 paper_trade_id_not_provided: str = "A paper trade id must be provided."
 paper_trade_index_must_be_string: str = "The paper trade index must be a string."
 paper_trade_value_must_be_string: str = "The paper trade object value must be a string."
@@ -96,8 +96,21 @@ class PaperTradeServiceImp(PaperTradeService):
         pass
 
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
-        pass
+        # check user_id is a string
+        if isinstance(user_id, str) is False:
+            raise UserIdMustBeString(user_id_must_be_string)
 
+        # check user_id not empty
+        if len(user_id.strip()) == 0:
+            raise MissingUserId(user_id_not_provided)
+
+        # check paper_trade_id is an int
+        if isinstance(paper_trade_id, int) is False:
+            raise PaperTradeException(paper_trade_id_must_be_int)
+
+
+
+        return self.paper_trade_dao.delete_paper_trade(user_id, paper_trade_id)
 
 # test: int = None
 #
