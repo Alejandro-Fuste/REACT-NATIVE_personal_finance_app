@@ -179,11 +179,9 @@ def test_delete_paper_trade_no_user_id(missing_id):
         assert str(e) == user_id_not_provided
 
 
-def test_delete_paper_trade_no_id(missing_id):
-    users: list = user_dao.get_all_users()
-    user_id: str = users[0]["_id"]
+def test_delete_paper_trade_no_id(bad_id, missing_paper_trade_id):
     try:
-        paper_trade_service.delete_paper_trade(user_id, missing_id)
+        paper_trade_service.delete_paper_trade(bad_id, missing_paper_trade_id)
         assert False
     except PaperTradeException as e:
         assert str(e) == paper_trade_id_not_provided

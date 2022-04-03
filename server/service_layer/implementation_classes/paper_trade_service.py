@@ -104,15 +104,13 @@ class PaperTradeServiceImp(PaperTradeService):
         if len(user_id.strip()) == 0:
             raise MissingUserId(user_id_not_provided)
 
+        # check paper_trade_id is missing
+        if paper_trade_id is None:
+            raise PaperTradeException(paper_trade_id_not_provided)
+
         # check paper_trade_id is an int
         if isinstance(paper_trade_id, int) is False:
             raise PaperTradeException(paper_trade_id_must_be_int)
 
-
-
         return self.paper_trade_dao.delete_paper_trade(user_id, paper_trade_id)
 
-# test: int = None
-#
-# if test is None:
-#     print("it worked")

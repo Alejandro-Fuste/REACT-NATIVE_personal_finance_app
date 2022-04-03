@@ -230,6 +230,11 @@ def missing_id() -> str:
 
 
 @fixture
+def missing_paper_trade_id() -> None:
+    return None
+
+
+@fixture
 def update_username() -> str:
     return fake.domain_word()
 
