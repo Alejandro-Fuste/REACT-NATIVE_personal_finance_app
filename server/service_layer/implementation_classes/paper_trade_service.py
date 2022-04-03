@@ -11,13 +11,13 @@ user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
 paper_trade_id_must_be_int: str = "The paper trade id must be an integer."
 paper_trade_id_not_provided: str = "A paper trade id must be provided."
-paper_trade_index_must_be_string: str = "The paper trade index must be a string."
+paper_trade_index_must_be_int: str = "The paper trade index must be a integer."
 paper_trade_value_must_be_string: str = "The paper trade object value must be a string."
 paper_trade_value_must_be_float: str = "The paper trade object value must be a float."
 paper_trade_value_not_provided: str = "The paper trade object value must be provided."
 paper_trade_index_not_provided: str = "A paper trade index must be provided."
-sell_price_must_be_string: str = "The sell price must be a string."
-sell_price_index_not_provided: str = "A sell price must be provided."
+sell_price_must_be_float: str = "The sell price must be a float."
+sell_price_not_provided: str = "A sell price must be provided."
 sell_price_negative: str = "A sell price must be a positive number."
 
 
@@ -101,7 +101,25 @@ class PaperTradeServiceImp(PaperTradeService):
         if len(user_id.strip()) == 0:
             raise MissingUserId(user_id_not_provided)
 
+        # check paper_trade_index is missing
+        if paper_trade_index is None:
+            raise PaperTradeException(paper_trade_index_not_provided)
 
+        # check paper_trade_index is an int
+        if isinstance(paper_trade_index, int) is False:
+            raise PaperTradeException(paper_trade_index_must_be_int)
+
+        # check sell_price is missing
+        if sell_price is None:
+            raise PaperTradeException(sell_price_not_provided)
+
+        # check sell_price is a float
+        if isinstance(sell_price, float) is False:
+            raise PaperTradeException(sell_price_must_be_float)
+
+        # check if sell_price is a negative number
+        if sell_price < 0:
+            raise PaperTradeException(sell_price_negative)
 
         return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, sell_price)
 
@@ -123,4 +141,3 @@ class PaperTradeServiceImp(PaperTradeService):
             raise PaperTradeException(paper_trade_id_must_be_int)
 
         return self.paper_trade_dao.delete_paper_trade(user_id, paper_trade_id)
-
