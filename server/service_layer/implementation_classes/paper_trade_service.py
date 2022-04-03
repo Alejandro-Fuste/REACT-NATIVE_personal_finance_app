@@ -93,7 +93,17 @@ class PaperTradeServiceImp(PaperTradeService):
         return self.paper_trade_dao.get_paper_trades(user_id)
 
     def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, sell_price: float) -> bool:
-        pass
+        # check user_id is a string
+        if isinstance(user_id, str) is False:
+            raise UserIdMustBeString(user_id_must_be_string)
+
+        # check user_id not empty
+        if len(user_id.strip()) == 0:
+            raise MissingUserId(user_id_not_provided)
+
+
+
+        return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, sell_price)
 
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
         # check user_id is a string
