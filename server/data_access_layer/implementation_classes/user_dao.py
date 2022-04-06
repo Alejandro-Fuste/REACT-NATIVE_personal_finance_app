@@ -1,8 +1,6 @@
-from pprint import pprint
-
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from environment_variables import mongo_url
+from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.entities.user import User
 from server.custom_exceptions.user_not_found import UserNotFound

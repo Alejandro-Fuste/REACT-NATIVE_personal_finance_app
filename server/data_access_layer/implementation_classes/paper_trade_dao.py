@@ -1,7 +1,5 @@
-from pprint import pprint
-
 from pymongo import MongoClient
-from environment_variables import mongo_url
+from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
 from bson.objectid import ObjectId
 from server.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
 from server.entities.paper_trade import PaperTrade

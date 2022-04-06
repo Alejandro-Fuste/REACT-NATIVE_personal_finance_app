@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from environment_variables import mongo_url
+from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
 
 
 def test_connection():

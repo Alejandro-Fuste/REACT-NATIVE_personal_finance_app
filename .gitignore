@@ -144,4 +144,4 @@ dmypy.json
 .DS_Store
 
 #Environment variables file
-/environment_variables.py
+/server/django_app/finance_app/dao_sample/environment_variables.py
