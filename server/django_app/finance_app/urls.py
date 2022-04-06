@@ -19,6 +19,6 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', views.home_page),
+    path('home/', views.get_all_users_controller),
     path('api/', include('api.urls'))
 ]
