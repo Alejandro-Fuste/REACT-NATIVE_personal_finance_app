@@ -1,5 +1,3 @@
-from typing import List
-
 from server.django_app.api.custom_exceptions.input_too_long import InputTooLong
 from server.django_app.api.custom_exceptions.input_too_short import InputTooShort
 from server.django_app.api.custom_exceptions.input_missing import InputMissing
@@ -9,7 +7,6 @@ from server.django_app.api.custom_exceptions.user_id_not_provided import Missing
 from server.django_app.api.custom_exceptions.email_wrong_format import EmailWrongFormat
 
 from server.django_app.api.data_access_layer.implementation_classes.user_dao import UserDAOImp
-from server.django_app.api.entities.user import User
 from server.django_app.api.service_layer.abstract_classes.user_service_abs import UserService
 
 user_id_must_be_string: str = "The user id must be a string."
@@ -28,7 +25,7 @@ class UserServiceImp(UserService):
         self.user_dao: UserDAOImp = user_dao
 
     # Creation Methods ----------------------------------------------------------------------------
-    def create_new_user(self, user: User) -> dict:
+    def create_new_user(self, user: dict) -> dict:
         # check if user properties are strings
         if isinstance(user['firstName'], str) is False or isinstance(user["lastName"], str) is False \
                 or isinstance(user["email"], str) is False or isinstance(user["username"], str) is False \
@@ -36,7 +33,7 @@ class UserServiceImp(UserService):
             raise InputNotString(input_must_be_string)
 
         # check if any user properties are empty
-        if len(user["firstName"].strip()) == 0 or len(user["lastName"].strip()) == 0 or len(user["email"].strip()) == 0 \
+        if len(user["firstName"].strip()) == 0 or len(user["lastName"].strip()) == 0 or len(user["email"].strip()) == 0\
                 or len(user["username"].strip()) == 0 or len(user["password"].strip()) == 0:
             raise InputMissing(input_not_provided)
 
@@ -50,7 +47,8 @@ class UserServiceImp(UserService):
             raise EmailWrongFormat(email_wrong_format)
 
         # check if any user properties are too long
-        if len(user["firstName"].strip()) > 100 or len(user["lastName"].strip()) > 100 or len(user["email"].strip()) > 100 \
+        if len(user["firstName"].strip()) > 100 or len(user["lastName"].strip()) > 100 \
+                or len(user["email"].strip()) > 100 \
                 or len(user["username"].strip()) > 100 or len(user["password"].strip()) > 100:
             raise InputTooLong(input_too_long)
 
@@ -79,7 +77,7 @@ class UserServiceImp(UserService):
 
         return self.user_dao.get_user_by_username(username)
 
-    def get_all_users(self) -> List[User]:
+    def get_all_users(self) -> list[dict]:
         return self.user_dao.get_all_users()
 
     # Update Methods -------------------------------------------------------------------------------
@@ -121,4 +119,3 @@ class UserServiceImp(UserService):
             raise MissingUserId(user_id_not_provided)
 
         return self.user_dao.delete_user(user_id)
-
