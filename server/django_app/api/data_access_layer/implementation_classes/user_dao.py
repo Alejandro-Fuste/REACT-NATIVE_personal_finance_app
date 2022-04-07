@@ -67,7 +67,3 @@ class UserDAOImp(UserDAO):
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
 
-
-test = list(collection.find())
-oid = test[0]['_id']
-pprint(ObjectId(oid))

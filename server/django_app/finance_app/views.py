@@ -1,7 +1,5 @@
-from django.http import HttpResponse
 from django.http import JsonResponse
 from .dao_sample.user_dao_sample import get_all_users
-from bson.objectid import ObjectId
 
 
 def get_all_users_controller(request):
