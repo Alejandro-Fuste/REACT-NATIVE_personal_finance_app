@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from server.entities.paper_trade import PaperTrade
+from server.django_app.api.entities.paper_trade import PaperTrade
 
 
 class PaperTradeService(ABC):

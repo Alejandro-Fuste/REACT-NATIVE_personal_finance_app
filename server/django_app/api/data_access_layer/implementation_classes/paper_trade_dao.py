@@ -2,7 +2,7 @@ from pymongo import MongoClient
 from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
 from bson.objectid import ObjectId
 from server.django_app.api.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
-from server.entities.paper_trade import PaperTrade
+from server.django_app.api.entities.paper_trade import PaperTrade
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.trade_not_found import TradeNotFound
 from server.custom_exceptions.user_not_found import UserNotFound
