@@ -8,7 +8,7 @@ from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
-from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
+from server.django_app.api.data_access_layer.implementation_classes import UserDAOImp
 from server.entities.user import User
 from server.service_layer.abstract_classes.user_service_abs import UserService
 
