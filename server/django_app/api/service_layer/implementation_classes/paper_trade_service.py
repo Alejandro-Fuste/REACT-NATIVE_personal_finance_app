@@ -44,8 +44,8 @@ class PaperTradeServiceImp(PaperTradeService):
                 or paper_trade["putPrice"] is None \
                 or paper_trade["callBreakevenPoint"] is None \
                 or paper_trade["putBreakevenPoint"] is None \
-                or paper_trade["straddle_call_breakeven_point"] is None \
-                or paper_trade["straddle_put_breakeven_point"] is None \
+                or paper_trade["straddleCallBreakevenPoint"] is None \
+                or paper_trade["straddlePutBreakevenPoint"] is None \
                 or paper_trade["sellPrice"] is None \
                 or paper_trade["costPrice"] is None \
                 or paper_trade["totalSell"] is None \
@@ -64,8 +64,8 @@ class PaperTradeServiceImp(PaperTradeService):
         if isinstance(paper_trade["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
                 or isinstance(paper_trade["callBreakevenPoint"], float) is False \
                 or isinstance(paper_trade["putBreakevenPoint"], float) is False \
-                or isinstance(paper_trade["straddle_call_breakeven_point"], float) is False \
-                or isinstance(paper_trade["straddle_call_breakeven_point"], float) is False \
+                or isinstance(paper_trade["straddleCallBreakevenPoint"], float) is False \
+                or isinstance(paper_trade["straddlePutBreakevenPoint"], float) is False \
                 or isinstance(paper_trade["sellPrice"], float) is False \
                 or isinstance(paper_trade["costPrice"], float) is False \
                 or isinstance(paper_trade["totalSell"], float) is False \
