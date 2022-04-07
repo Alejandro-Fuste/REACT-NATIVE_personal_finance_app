@@ -4,6 +4,7 @@ from server.django_app.finance_app.dao_sample.environment_variables import mongo
 from server.django_app.api.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.django_app.api.custom_exceptions.user_not_found import UserNotFound
 from server.django_app.api.custom_exceptions.duplicate_user import DuplicateUser
+from server.django_app.api.entities.db_user import DatabaseUser
 
 # database connection -------------
 connection_string = mongo_url
@@ -17,7 +18,7 @@ duplicate_user: str = "This user already exists."
 
 class UserDAOImp(UserDAO):
     # Create method -----------------------------------------------
-    def create_new_user(self, user: dict) -> dict:
+    def create_new_user(self, user: DatabaseUser) -> dict:
         result = collection.find_one({"username": user["username"]})
 
         if result is None:
