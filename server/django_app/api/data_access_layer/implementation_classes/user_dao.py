@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
@@ -65,3 +67,7 @@ class UserDAOImp(UserDAO):
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
 
+
+test = list(collection.find())
+oid = test[0]['_id']
+pprint(ObjectId(oid))

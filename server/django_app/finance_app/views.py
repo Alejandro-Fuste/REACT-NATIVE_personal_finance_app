@@ -1,8 +1,10 @@
 from django.http import HttpResponse
 from django.http import JsonResponse
 from .dao_sample.user_dao_sample import get_all_users
+from bson.objectid import ObjectId
 
 
 def get_all_users_controller(request):
-    data = get_all_users()
-    return JsonResponse(data, safe=False, status=200)
+    data = get_all_users()[0]
+    oid = str(data['_id'])
+    return JsonResponse(oid, safe=False, status=200)
