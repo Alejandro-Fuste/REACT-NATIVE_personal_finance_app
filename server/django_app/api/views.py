@@ -9,6 +9,8 @@ user_dao = UserDAOImp()
 user_service = UserServiceImp(user_dao)
 
 
+# User Controllers -----------------------------------------------------------------------------------------------------
+
 # Create functions ------------------------------------------------------------
 def create_new_user(request):
     pass
@@ -34,4 +36,26 @@ def update_username(request):
 
 # Delete functions ------------------------------------------------------------
 def delete_user(request):
+    pass
+
+
+# Paper Trade Controllers ----------------------------------------------------------------------------------------------
+
+# Create functions ------------------------------------------------------------
+def add_paper_trade(request):
+    pass
+
+
+# Read functions ------------------------------------------------------------
+def get_paper_trades(request):
+    pass
+
+
+# Update functions ------------------------------------------------------------
+def update_paper_trade_sell_price(request):
+    pass
+
+
+# Delete functions ------------------------------------------------------------
+def delete_paper_trade(request):
     pass
