@@ -1,155 +1,161 @@
 from pytest import fixture
 from faker import Faker
 from server.django_app.api.entities.paper_trade import PaperTrade
-from server.django_app.api.entities.user import User
+from server.django_app.api.entities.db_user import DatabaseUser
 
 fake = Faker()
 
 
 @fixture
-def create_new_user() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 # number errors -----------------------------------------------------------------
 @fixture
-def create_new_user_first_name_number() -> User:
-    new_user = User(fake.pyint(max_value=10000), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_first_name_number() -> DatabaseUser:
+    new_user = DatabaseUser(fake.pyint(max_value=10000), fake.last_name(), fake.ascii_company_email(),
+                            fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_last_name_number() -> User:
-    new_user = User(fake.first_name(), fake.pyint(max_value=10000), fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_last_name_number() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.pyint(max_value=10000), fake.ascii_company_email(),
+                            fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_username_number() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.pyint(max_value=10000),
-                    fake.sha256(raw_output=False))
+def create_new_user_username_number() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(),
+                            fake.pyint(max_value=10000),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_password_number() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    fake.pyint(max_value=10000))
+def create_new_user_password_number() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            fake.pyint(max_value=10000))
     return new_user.make_dictionary()
 
 
 # blank errors -----------------------------------------------------------------
 @fixture
-def create_new_user_first_name_blank() -> User:
-    new_user = User("", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_first_name_blank() -> DatabaseUser:
+    new_user = DatabaseUser("", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_last_name_blank() -> User:
-    new_user = User(fake.first_name(), "", fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_last_name_blank() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), "", fake.ascii_company_email(), fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_email_name_blank() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), "", fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_email_name_blank() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), "", fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_username_name_blank() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), "",
-                    fake.sha256(raw_output=False))
+def create_new_user_username_name_blank() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(), "",
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_password_name_blank() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    "")
+def create_new_user_password_name_blank() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            "")
     return new_user.make_dictionary()
 
 
 # too short errors -----------------------------------------------------------------
 @fixture
-def create_new_user_first_name_too_short() -> User:
-    new_user = User("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_first_name_too_short() -> DatabaseUser:
+    new_user = DatabaseUser("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_last_name_too_short() -> User:
-    new_user = User(fake.first_name(), "a", fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_last_name_too_short() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), "a", fake.ascii_company_email(), fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_username_too_short() -> User:
-    new_user = User("a", fake.last_name(), fake.ascii_company_email(), "a",
-                    fake.sha256(raw_output=False))
+def create_new_user_username_too_short() -> DatabaseUser:
+    new_user = DatabaseUser("a", fake.last_name(), fake.ascii_company_email(), "a",
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_password_too_short() -> User:
-    new_user = User("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    "a")
+def create_new_user_password_too_short() -> DatabaseUser:
+    new_user = DatabaseUser("a", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            "a")
     return new_user.make_dictionary()
 
 
 # email errors -----------------------------------------------------------------
 @fixture
-def create_new_user_email_wrong_format() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), "a", fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_email_wrong_format() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), "a", fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 # too long errors -----------------------------------------------------------------
 @fixture
-def create_new_user_first_name_too_long() -> User:
-    new_user = User("1234567890123456789012345678901234557868290345869023486903248068239046089324068923094860982092340"
-                    "68809", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_first_name_too_long() -> DatabaseUser:
+    new_user = DatabaseUser(
+        "1234567890123456789012345678901234557868290345869023486903248068239046089324068923094860982092340"
+        "68809", fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+        fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_last_name_too_long() -> User:
-    new_user = User(fake.first_name(), "123456789012345678901234567890123455786829034586902348690324806823904608932406"
-                                       "8923094860982092340"
-                                       "68809", fake.ascii_company_email(), fake.domain_word(),
-                    fake.sha256(raw_output=False))
+def create_new_user_last_name_too_long() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(),
+                            "123456789012345678901234567890123455786829034586902348690324806823904608932406"
+                            "8923094860982092340"
+                            "68809", fake.ascii_company_email(), fake.domain_word(),
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_username_too_long() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), "12345678901234567890123456789012"
-                                                                                     "345578682903458690234869032480682"
-                                                                                     "390460893240689230948609820923406"
-                                                                                     "8809",
-                    fake.sha256(raw_output=False))
+def create_new_user_username_too_long() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(),
+                            "12345678901234567890123456789012"
+                            "345578682903458690234869032480682"
+                            "390460893240689230948609820923406"
+                            "8809",
+                            fake.sha256(raw_output=False))
     return new_user.make_dictionary()
 
 
 @fixture
-def create_new_user_password_too_long() -> User:
-    new_user = User(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
-                    "12345678901234567890123456789012"
-                    "345578682903458690234869032480682"
-                    "390460893240689230948609820923406"
-                    "8809")
+def create_new_user_password_too_long() -> DatabaseUser:
+    new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
+                            "12345678901234567890123456789012"
+                            "345578682903458690234869032480682"
+                            "390460893240689230948609820923406"
+                            "8809")
     return new_user.make_dictionary()
 
 
@@ -261,8 +267,8 @@ def username_too_short() -> str:
 
 @fixture
 def username_too_long() -> str:
-    return "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567" \
-           "89012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234" \
-           "56789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901" \
-           "2345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567" \
-           "89012345678901234567890123456789012345678901234567890123456789012345678901"
+    return "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" \
+           "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" \
+           "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" \
+           "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" \
+           "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901"
