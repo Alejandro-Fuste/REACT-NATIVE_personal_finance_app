@@ -2,11 +2,11 @@ from server.django_app.api.custom_exceptions.user_id_must_be_string import UserI
 from server.django_app.api.custom_exceptions.user_id_not_provided import MissingUserId
 from server.django_app.api.custom_exceptions.paper_trade_exception import PaperTradeException
 
-from server.django_app.api.data_access_layer.implementation_classes import UserDAO, UserDAOImp
+from server.django_app.api.data_access_layer.implementation_classes.user_dao import UserDAO, UserDAOImp
 from server.django_app.api.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
-from server.django_app.api.data_access_layer.implementation_classes import PaperTradeDAOImp
+from server.django_app.api.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
 
-from server.django_app.api.service_layer.implementation_classes import PaperTradeService, PaperTradeServiceImp
+from server.django_app.api.service_layer.implementation_classes.paper_trade_service import PaperTradeService, PaperTradeServiceImp
 
 user_dao: UserDAO = UserDAOImp()
 paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
