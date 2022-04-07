@@ -82,12 +82,12 @@ paper_trade_4 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_d
 #   Users  --------------------------
 
 test_user_1 = DatabaseUser("Luke", "Skywalker", "luke.skywalker@jedi.com",
-                   "Master Luke", fake.sha256(raw_output=False), [paper_trade_1.make_dictionary(),
-                                                                  paper_trade_2.make_dictionary()])
+                           "Master Luke", fake.sha256(raw_output=False), [paper_trade_1.make_dictionary(),
+                                                                          paper_trade_2.make_dictionary()])
 
 test_user_2 = DatabaseUser("Leia", "Organa", "leia.organa@jedi.net",
-                   "Princess Leia", fake.sha256(raw_output=False), [paper_trade_3.make_dictionary(),
-                                                                    paper_trade_4.make_dictionary()])
+                           "Princess Leia", fake.sha256(raw_output=False), [paper_trade_3.make_dictionary(),
+                                                                            paper_trade_4.make_dictionary()])
 
 test_user_3 = DatabaseUser("Rey", "Skywalker", "rey.skywalker@jedi.com", "Jedi Knight", fake.sha256(raw_output=False))
 
