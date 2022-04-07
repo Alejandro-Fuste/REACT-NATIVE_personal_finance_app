@@ -3,10 +3,10 @@ from server.django_app.finance_app.dao_sample.environment_variables import mongo
 from bson.objectid import ObjectId
 from server.django_app.api.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
 from server.django_app.api.entities.paper_trade import PaperTrade
-from server.custom_exceptions.duplicate_trade import DuplicateTrade
-from server.custom_exceptions.trade_not_found import TradeNotFound
-from server.custom_exceptions.user_not_found import UserNotFound
-from server.custom_exceptions.no_trades import NoTrades
+from server.django_app.api.custom_exceptions.duplicate_trade import DuplicateTrade
+from server.django_app.api.custom_exceptions.trade_not_found import TradeNotFound
+from server.django_app.api.custom_exceptions.user_not_found import UserNotFound
+from server.django_app.api.custom_exceptions.no_trades import NoTrades
 
 # database connection -------------
 connection_string = mongo_url

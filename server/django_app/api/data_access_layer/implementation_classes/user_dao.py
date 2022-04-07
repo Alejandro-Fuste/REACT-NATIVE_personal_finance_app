@@ -3,8 +3,8 @@ from bson.objectid import ObjectId
 from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
 from server.django_app.api.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.django_app.api.entities.user import User
-from server.custom_exceptions.user_not_found import UserNotFound
-from server.custom_exceptions.duplicate_user import DuplicateUser
+from server.django_app.api.custom_exceptions.user_not_found import UserNotFound
+from server.django_app.api.custom_exceptions.duplicate_user import DuplicateUser
 from typing import List
 
 # database connection -------------
