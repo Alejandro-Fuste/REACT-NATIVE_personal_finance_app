@@ -2,14 +2,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
 
+from .data_access_layer.implementation_classes.user_dao import UserDAOImp
+from .service_layer.implementation_classes.user_service import UserServiceImp
 
-#
-# import server.data_access_layer.implementation_classes.user_dao
-# from server.service_layer.implementation_classes.user_service import UserServiceImp
-#
-#
-# user_dao = UserDAOImp()
-# user_service = UserServiceImp(user_dao)
+user_dao = UserDAOImp()
+user_service = UserServiceImp(user_dao)
 
 
 # Create functions ------------------------------------------------------------
