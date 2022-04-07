@@ -10,7 +10,7 @@ from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
 from server.django_app.api.data_access_layer.implementation_classes import UserDAOImp
 from server.entities.user import User
-from server.service_layer.abstract_classes.user_service_abs import UserService
+from server.django_app.api.service_layer.abstract_classes.user_service_abs import UserService
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."

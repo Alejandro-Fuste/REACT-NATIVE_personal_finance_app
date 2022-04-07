@@ -5,7 +5,7 @@ from server.custom_exceptions.input_not_string import InputNotString
 
 from server.django_app.api.data_access_layer.implementation_classes import PaperTradeDAOImp
 from server.entities.paper_trade import PaperTrade
-from server.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService
+from server.django_app.api.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."

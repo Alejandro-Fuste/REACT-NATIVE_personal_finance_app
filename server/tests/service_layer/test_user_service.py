@@ -9,7 +9,7 @@ from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 from server.django_app.api.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.django_app.api.data_access_layer.implementation_classes import UserDAOImp
 
-from server.service_layer.implementation_classes.user_service import UserService, UserServiceImp
+from server.django_app.api.service_layer.implementation_classes.user_service import UserService, UserServiceImp
 
 user_dao: UserDAO = UserDAOImp()
 user_service: UserService = UserServiceImp(user_dao)
