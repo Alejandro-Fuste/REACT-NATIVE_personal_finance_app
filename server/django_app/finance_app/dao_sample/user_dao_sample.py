@@ -8,5 +8,4 @@ collection = database.users
 
 
 def get_all_users() -> list[dict]:
-    # return list(collection.find({}, {'_id': False}))
     return list(collection.find())
