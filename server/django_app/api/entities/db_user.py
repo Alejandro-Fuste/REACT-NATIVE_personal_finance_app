@@ -1,4 +1,4 @@
-class User:
+class DatabaseUser:
     def __init__(self,
                  first_name: str = None,
                  last_name: str = None,

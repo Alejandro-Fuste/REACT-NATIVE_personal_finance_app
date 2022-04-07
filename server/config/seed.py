@@ -1,6 +1,6 @@
 from pymongo import MongoClient
 from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
-from server.django_app.api.entities.user import User
+from server.django_app.api.entities.db_user import DatabaseUser
 from server.django_app.api.entities.paper_trade import PaperTrade
 from faker import Faker
 
@@ -81,15 +81,15 @@ paper_trade_4 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_d
 
 #   Users  --------------------------
 
-test_user_1 = User(None, "Luke", "Skywalker", "luke.skywalker@jedi.com",
+test_user_1 = DatabaseUser("Luke", "Skywalker", "luke.skywalker@jedi.com",
                    "Master Luke", fake.sha256(raw_output=False), [paper_trade_1.make_dictionary(),
                                                                   paper_trade_2.make_dictionary()])
 
-test_user_2 = User(None, "Leia", "Organa", "leia.organa@jedi.net",
+test_user_2 = DatabaseUser("Leia", "Organa", "leia.organa@jedi.net",
                    "Princess Leia", fake.sha256(raw_output=False), [paper_trade_3.make_dictionary(),
                                                                     paper_trade_4.make_dictionary()])
 
-test_user_3 = User(None, "Rey", "Skywalker", "rey.skywalker@jedi.com", "Jedi Knight", fake.sha256(raw_output=False))
+test_user_3 = DatabaseUser("Rey", "Skywalker", "rey.skywalker@jedi.com", "Jedi Knight", fake.sha256(raw_output=False))
 
 #   Add users to database  ----------
 
