@@ -52,15 +52,6 @@ class UserDAOImp(UserDAO):
             raise UserNotFound(users_not_found)
         else:
             return data
-        # data_list = []
-        # dictionary_data = []
-        # for item in data:
-        #     data_list.append(User(str(item["_id"]), item["firstName"], item["lastName"], item["email"],
-        #                           item["username"], item["password"], item['paperTrades']))
-        #
-        # for d in data_list:
-        #     dictionary_data.append(d.make_dictionary())
-        # return dictionary_data
 
     # Update methods ------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:
@@ -79,6 +70,3 @@ class UserDAOImp(UserDAO):
             raise UserNotFound(user_not_found)
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
-
-print(list(collection.find()))
-print(len(list(collection.find())))
