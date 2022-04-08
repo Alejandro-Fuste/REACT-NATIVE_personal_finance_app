@@ -5,7 +5,7 @@ from server.data_access_layer.abstract_classes.paper_trade_dao import PaperTrade
 from server.entities.paper_trade import PaperTrade
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.trade_not_found import TradeNotFound
-from server.custom_exceptions import UserNotFound
+from server.custom_exceptions.user_not_found import UserNotFound
 from server.custom_exceptions.no_trades import NoTrades
 
 # database connection -------------

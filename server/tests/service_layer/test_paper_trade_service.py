@@ -3,7 +3,7 @@ from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
 
 from server.data_access_layer.implementation_classes.user_dao import UserDAO, UserDAOImp
-from server.data_access_layer import PaperTradeDAO
+from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAO
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
 
 from server.service_layer.implementation_classes.paper_trade_service import PaperTradeService, PaperTradeServiceImp

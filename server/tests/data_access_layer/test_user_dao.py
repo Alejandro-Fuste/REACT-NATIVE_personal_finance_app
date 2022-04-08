@@ -1,6 +1,6 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
-from server.custom_exceptions import UserNotFound
-from server.custom_exceptions import DuplicateUser
+from server.custom_exceptions.user_not_found import UserNotFound
+from server.custom_exceptions.duplicate_user import DuplicateUser
 
 user_dao: UserDAO = UserDAOImp()
 

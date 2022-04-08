@@ -1,8 +1,7 @@
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
-from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp, \
-    PaperTradeDAO
+from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp, PaperTradeDAO
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
-from server.custom_exceptions import UserNotFound
+from server.custom_exceptions.user_not_found import UserNotFound
 from server.custom_exceptions.trade_not_found import TradeNotFound
 from server.custom_exceptions.no_trades import NoTrades
 

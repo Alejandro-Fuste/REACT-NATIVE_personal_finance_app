@@ -1,15 +1,15 @@
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
-from server.custom_exceptions import InputNotString
+from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_too_short import InputTooShort
 from server.custom_exceptions.input_too_long import InputTooLong
-from server.custom_exceptions import EmailWrongFormat
+from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
 from server.data_access_layer.abstract_classes.user_dao import UserDAO
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
 
-from server.service_layer.implementation_classes import UserService, UserServiceImp
+from server.service_layer.implementation_classes.user_service import UserService, UserServiceImp
 
 user_dao: UserDAO = UserDAOImp()
 user_service: UserService = UserServiceImp(user_dao)
