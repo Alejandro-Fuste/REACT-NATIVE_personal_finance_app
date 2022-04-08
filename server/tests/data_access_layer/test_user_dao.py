@@ -63,7 +63,7 @@ def test_get_all_users_success():
     users = user_dao.get_all_users()
     assert len(users) >= 1
 
-
+# change collection variable value in user dao to get this test to pass
 # def test_get_all_users_failure():
 #     try:
 #         user_dao.get_all_users()
