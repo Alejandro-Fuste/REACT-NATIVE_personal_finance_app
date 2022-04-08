@@ -47,6 +47,34 @@ def on():
 # Create routes -------
 # Read routes -------
 
+@app.get("/api/user/<user_id>")
+def get_user_by_id(user_id):
+    try:
+        data = user_service.get_user_by_id(user_id)
+        user = User(str(data["_id"]), data["firstName"], data["lastName"], data["email"],
+                    data["username"], data["password"], data['paperTrades'])
+
+        return jsonify(user.make_dictionary()), 200
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 404
+
+
+@app.get("/api/user/username/<username>")
+def get_user_by_username(username):
+    try:
+        data = user_service.get_user_by_username(username)
+        user = User(str(data["_id"]), data["firstName"], data["lastName"], data["email"],
+                    data["username"], data["password"], data['paperTrades'])
+
+        return jsonify(user.make_dictionary()), 200
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 404
+
+
 @app.get("/api/users")
 def get_all_users():
     try:
