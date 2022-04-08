@@ -1,14 +1,14 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from server.entities.user import User
+from server.entities.db_user import DatabaseUser
 
 
 class UserDAO(ABC):
 
     # Create method -------
     @abstractmethod
-    def create_new_user(self, user: User) -> dict:
+    def create_new_user(self, user: DatabaseUser) -> dict:
         pass
 
     # Read methods -------
@@ -21,7 +21,7 @@ class UserDAO(ABC):
         pass
 
     @abstractmethod
-    def get_all_users(self) -> List[User]:
+    def get_all_users(self) -> List[DatabaseUser]:
         pass
 
     # Update method -------
