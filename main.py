@@ -26,16 +26,29 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 import logging
+
 logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
 
 app: Flask = Flask(__name__)
 CORS(app)
+
+user_dao: UserDAO = UserDAOImp()
+user_service: UserService = UserServiceImp(user_dao)
+paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
+paper_trade_service: PaperTradeService = PaperTradeServiceImp(paper_trade_dao)
 
 
 @app.route("/")
 def on():
     return "Python is running!"
 
+
+# User Routes ---------------------------------------------------------------------------------------------------------
+# Create routes -------
+# Read routes -------
+
+@app.get("/api/users")
+def get_all_users():
 
 # data_list = []
 # dictionary_data = []
@@ -46,5 +59,15 @@ def on():
 # for d in data_list:
 #     dictionary_data.append(d.make_dictionary())
 # return dictionary_data
+
+# Update routes -------
+# Delete routes -------
+
+# Paper Trade Routes --------------------------------------------------------------------------------------------------
+# Create routes -------
+# Read routes -------
+# Update routes -------
+# Delete routes -------
+
 
 app.run()
