@@ -1,14 +1,11 @@
 from abc import ABC, abstractmethod
-from typing import List
-
-from server.django_app.api.entities.user import User
 
 
 class UserService(ABC):
 
     # Create method -------
     @abstractmethod
-    def create_new_user(self, user: User) -> dict:
+    def create_new_user(self, user: dict) -> dict:
         pass
 
     # Read methods -------
@@ -21,7 +18,7 @@ class UserService(ABC):
         pass
 
     @abstractmethod
-    def get_all_users(self) -> List[User]:
+    def get_all_users(self) -> list[dict]:
         pass
 
     # Update method -------
