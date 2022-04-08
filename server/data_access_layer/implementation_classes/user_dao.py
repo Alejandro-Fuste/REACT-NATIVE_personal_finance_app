@@ -14,6 +14,7 @@ database = client.finance_app
 collection = database.user
 
 user_not_found: str = "The user could not be found."
+users_not_found: str = "Users could not be found."
 duplicate_user: str = "This user already exists."
 
 
@@ -46,15 +47,17 @@ class UserDAOImp(UserDAO):
 
     def get_all_users(self) -> list[User]:
         data = list(collection.find())
-        data_list = []
-        dictionary_data = []
-        for item in data:
-            data_list.append(User(str(item["_id"]), item["firstName"], item["lastName"], item["email"],
-                                  item["username"], item["password"], item['paperTrades']))
 
-        for d in data_list:
-            dictionary_data.append(d.make_dictionary())
-        return dictionary_data
+
+        # data_list = []
+        # dictionary_data = []
+        # for item in data:
+        #     data_list.append(User(str(item["_id"]), item["firstName"], item["lastName"], item["email"],
+        #                           item["username"], item["password"], item['paperTrades']))
+        #
+        # for d in data_list:
+        #     dictionary_data.append(d.make_dictionary())
+        # return dictionary_data
 
     # Update methods ------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:

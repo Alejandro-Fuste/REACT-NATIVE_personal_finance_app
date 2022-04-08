@@ -6,6 +6,7 @@ user_dao: UserDAO = UserDAOImp()
 
 user_not_found_message: str = "The user could not be found."
 duplicate_user_message: str = "This user already exists."
+users_not_found: str = "Users could not be found."
 
 
 # Creation Tests --------------------------------------
@@ -64,8 +65,11 @@ def test_get_all_users_success():
 
 
 def test_get_all_users_failure():
-    users = user_dao.get_all_users()
-    assert len(users) > 1
+    try:
+        user_dao.get_all_users()
+        assert False
+    except UserNotFound as e:
+        assert str(e) == users_not_found
 
 
 # Update Tests ----------------------------------------
