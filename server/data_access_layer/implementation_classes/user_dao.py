@@ -11,7 +11,7 @@ from server.entities.user import User
 connection_string = mongo_url
 client = MongoClient(connection_string)
 database = client.finance_app
-collection = database.user
+collection = database.users
 
 user_not_found: str = "The user could not be found."
 users_not_found: str = "Users could not be found."
