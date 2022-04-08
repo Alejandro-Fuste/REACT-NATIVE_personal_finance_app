@@ -67,5 +67,3 @@ class PaperTradeDAOImp(PaperTradeDAO):
             deleted = collection.update_one({"_id": ObjectId(user_id)},
                                             {"$pull": {"paperTrades": {"tradeId": paper_trade_id}}})
             return deleted.acknowledged
-
-

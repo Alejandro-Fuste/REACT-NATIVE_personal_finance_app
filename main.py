@@ -73,6 +73,30 @@ def get_all_users():
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
 # Create routes -------
 # Read routes -------
+
+@app.get("/api/paperTrades/<user_id>")
+def get_paper_trades(user_id):
+    try:
+        data = paper_trade_service.get_paper_trades(user_id)
+        return jsonify(data), 200
+    except UserIdMustBeString as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 404
+    except MissingUserId as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 404
+    except NoTrades as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 404
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 404
+
+
 # Update routes -------
 # Delete routes -------
 
