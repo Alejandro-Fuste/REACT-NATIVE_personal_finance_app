@@ -63,6 +63,11 @@ def test_get_all_users_success():
     assert len(users) >= 1
 
 
+def test_get_all_users_failure():
+    users = user_dao.get_all_users()
+    assert len(users) > 1
+
+
 # Update Tests ----------------------------------------
 
 def test_update_username_success(update_username):

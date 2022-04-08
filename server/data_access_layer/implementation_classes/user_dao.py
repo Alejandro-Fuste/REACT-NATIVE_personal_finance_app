@@ -11,7 +11,7 @@ from server.entities.user import User
 connection_string = mongo_url
 client = MongoClient(connection_string)
 database = client.finance_app
-collection = database.users
+collection = database.user
 
 user_not_found: str = "The user could not be found."
 duplicate_user: str = "This user already exists."
@@ -73,3 +73,5 @@ class UserDAOImp(UserDAO):
             raise UserNotFound(user_not_found)
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
+
+print(list(collection.find()))
