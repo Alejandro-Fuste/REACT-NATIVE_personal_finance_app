@@ -5,6 +5,8 @@ from django.http import JsonResponse
 from .data_access_layer.implementation_classes.user_dao import UserDAOImp
 from .service_layer.implementation_classes.user_service import UserServiceImp
 
+from .entities.user import User
+
 user_dao = UserDAOImp()
 user_service = UserServiceImp(user_dao)
 
@@ -26,7 +28,13 @@ def get_user_by_username(request):
 
 
 def get_all_users(request):
-    pass
+    users: list = user_service.get_all_users()
+    data: list = []
+    for user in users:
+        dictionary_user = user.make_dictionary()
+        data.append(dictionary_user)
+
+    return JsonResponse(data, safe=False, status=200)
 
 
 # Update functions ------------------------------------------------------------

@@ -1,13 +1,13 @@
-from server.django_app.api.custom_exceptions.input_too_long import InputTooLong
-from server.django_app.api.custom_exceptions.input_too_short import InputTooShort
-from server.django_app.api.custom_exceptions.input_missing import InputMissing
-from server.django_app.api.custom_exceptions.input_not_string import InputNotString
-from server.django_app.api.custom_exceptions.user_id_must_be_string import UserIdMustBeString
-from server.django_app.api.custom_exceptions.user_id_not_provided import MissingUserId
-from server.django_app.api.custom_exceptions.email_wrong_format import EmailWrongFormat
+from ...custom_exceptions.input_too_long import InputTooLong
+from ...custom_exceptions.input_too_short import InputTooShort
+from ...custom_exceptions.input_missing import InputMissing
+from ...custom_exceptions.input_not_string import InputNotString
+from ...custom_exceptions.user_id_must_be_string import UserIdMustBeString
+from ...custom_exceptions.user_id_not_provided import MissingUserId
+from ...custom_exceptions.email_wrong_format import EmailWrongFormat
 
-from server.django_app.api.data_access_layer.implementation_classes.user_dao import UserDAOImp
-from server.django_app.api.service_layer.abstract_classes.user_service_abs import UserService
+from ...data_access_layer.implementation_classes.user_dao import UserDAOImp
+from ..abstract_classes.user_service_abs import UserService
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."

@@ -1,10 +1,13 @@
+from pprint import pprint
+
 from pymongo import MongoClient
 from bson.objectid import ObjectId
-from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
-from server.django_app.api.data_access_layer.abstract_classes.user_dao import UserDAO
-from server.django_app.api.custom_exceptions.user_not_found import UserNotFound
-from server.django_app.api.custom_exceptions.duplicate_user import DuplicateUser
-from server.django_app.api.entities.db_user import DatabaseUser
+from .environment_variables import mongo_url
+from ..abstract_classes.user_dao import UserDAO
+from ...custom_exceptions.user_not_found import UserNotFound
+from ...custom_exceptions.duplicate_user import DuplicateUser
+from ...entities.db_user import DatabaseUser
+from ...entities.user import User
 
 # database connection -------------
 connection_string = mongo_url
@@ -43,8 +46,13 @@ class UserDAOImp(UserDAO):
         else:
             return result
 
-    def get_all_users(self) -> list[dict]:
-        return list(collection.find())
+    def get_all_users(self) -> list[User]:
+        data = list(collection.find())
+        data_list = []
+        for d in data:
+            data_list.append(User(*d))
+
+        return data_list
 
     # Update methods ------------------------------------------------
     def update_username(self, user_id: str, new_info: str) -> dict:
@@ -63,3 +71,7 @@ class UserDAOImp(UserDAO):
             raise UserNotFound(user_not_found)
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
+
+
+# for d in dlist:
+#     pprint(d.make_dictionary())
