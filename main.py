@@ -64,7 +64,7 @@ def get_all_users():
     except UserNotFound as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 400
+        return exception_json, 404
 
 
 # Update routes -------
