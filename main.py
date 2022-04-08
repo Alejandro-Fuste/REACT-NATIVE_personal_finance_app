@@ -82,19 +82,19 @@ def get_paper_trades(user_id):
     except UserIdMustBeString as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 404
+        return exception_json, 400
     except MissingUserId as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 404
+        return exception_json, 400
     except NoTrades as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 404
+        return exception_json, 400
     except UserNotFound as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 404
+        return exception_json, 400
 
 
 # Update routes -------
