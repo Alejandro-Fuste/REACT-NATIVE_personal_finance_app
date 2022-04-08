@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from server.environment_variables import mongo_url
-from server.django_app.api.entities.db_user import DatabaseUser
-from server.django_app.api.entities.paper_trade import PaperTrade
+from server.entities.db_user import DatabaseUser
+from server.entities.paper_trade import PaperTrade
 from faker import Faker
 
 # database connection -------------

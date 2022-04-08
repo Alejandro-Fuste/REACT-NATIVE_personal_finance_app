@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from typing import List
 
-from server.django_app.api.entities.user import User
+from server.entities.user import User
 
 
 class UserDAO(ABC):

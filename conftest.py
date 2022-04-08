@@ -1,7 +1,7 @@
 from pytest import fixture
 from faker import Faker
-from server.django_app.api.entities.paper_trade import PaperTrade
-from server.django_app.api.entities.db_user import DatabaseUser
+from server.entities.paper_trade import PaperTrade
+from server.entities.db_user import DatabaseUser
 
 fake = Faker()
 
