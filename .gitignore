@@ -60,7 +60,7 @@ coverage.xml
 local_settings.py
 db.sqlite3
 db.sqlite3-journal
-/server/django_app/finance_app/settings.py
+
 
 # Flask stuff:
 instance/
@@ -145,4 +145,5 @@ dmypy.json
 .DS_Store
 
 #Environment variables file
-/server/django_app/finance_app/dao_sample/environment_variables.py
+/server/environment_variables.py
+/server/environment_variables.py

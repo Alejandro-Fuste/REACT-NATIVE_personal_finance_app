@@ -1,6 +1,6 @@
 from server.django_app.api.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
-from server.django_app.api.custom_exceptions.user_not_found import UserNotFound
-from server.django_app.api.custom_exceptions.duplicate_user import DuplicateUser
+from server.custom_exceptions import UserNotFound
+from server.custom_exceptions import DuplicateUser
 
 user_dao: UserDAO = UserDAOImp()
 

@@ -1,5 +1,5 @@
 from pymongo import MongoClient
-from server.django_app.finance_app.dao_sample.environment_variables import mongo_url
+from server.environment_variables import mongo_url
 from server.django_app.api.entities.db_user import DatabaseUser
 from server.django_app.api.entities.paper_trade import PaperTrade
 from faker import Faker

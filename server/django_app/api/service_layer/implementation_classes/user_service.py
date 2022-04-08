@@ -1,10 +1,10 @@
-from ...custom_exceptions.input_too_long import InputTooLong
-from ...custom_exceptions.input_too_short import InputTooShort
-from ...custom_exceptions.input_missing import InputMissing
-from ...custom_exceptions.input_not_string import InputNotString
-from ...custom_exceptions.user_id_must_be_string import UserIdMustBeString
-from ...custom_exceptions.user_id_not_provided import MissingUserId
-from ...custom_exceptions.email_wrong_format import EmailWrongFormat
+from server.custom_exceptions import InputTooLong
+from server.custom_exceptions import InputTooShort
+from server.custom_exceptions import InputMissing
+from server.custom_exceptions.input_not_string import InputNotString
+from server.custom_exceptions import UserIdMustBeString
+from server.custom_exceptions import MissingUserId
+from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
 from ...data_access_layer.implementation_classes.user_dao import UserDAOImp
 from ..abstract_classes.user_service_abs import UserService

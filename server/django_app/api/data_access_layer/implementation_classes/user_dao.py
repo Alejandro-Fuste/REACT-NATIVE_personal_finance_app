@@ -1,11 +1,9 @@
-from pprint import pprint
-
 from pymongo import MongoClient
 from bson.objectid import ObjectId
 from .environment_variables import mongo_url
 from ..abstract_classes.user_dao import UserDAO
-from ...custom_exceptions.user_not_found import UserNotFound
-from ...custom_exceptions.duplicate_user import DuplicateUser
+from server.custom_exceptions.user_not_found import UserNotFound
+from server.custom_exceptions.duplicate_user import DuplicateUser
 from ...entities.db_user import DatabaseUser
 from ...entities.user import User
 
@@ -51,7 +49,6 @@ class UserDAOImp(UserDAO):
         data_list = []
         for d in data:
             data_list.append(User(*d))
-
         return data_list
 
     # Update methods ------------------------------------------------
@@ -72,6 +69,3 @@ class UserDAOImp(UserDAO):
         else:
             return collection.delete_one({"_id": ObjectId(user_id)})
 
-
-# for d in dlist:
-#     pprint(d.make_dictionary())
