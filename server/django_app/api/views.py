@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 
 from server.data_access_layer.implementation_classes import UserDAOImp
-from .service_layer.implementation_classes.user_service import UserServiceImp
+from server.service_layer.implementation_classes.user_service import UserServiceImp
 
 user_dao = UserDAOImp()
 user_service = UserServiceImp(user_dao)

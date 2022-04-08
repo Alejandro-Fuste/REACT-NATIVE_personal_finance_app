@@ -6,7 +6,7 @@ from server.data_access_layer.implementation_classes.user_dao import UserDAO, Us
 from server.data_access_layer import PaperTradeDAO
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
 
-from server.django_app.api.service_layer.implementation_classes.paper_trade_service import PaperTradeService, PaperTradeServiceImp
+from server.service_layer.implementation_classes.paper_trade_service import PaperTradeService, PaperTradeServiceImp
 
 user_dao: UserDAO = UserDAOImp()
 paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
