@@ -48,7 +48,10 @@ class UserDAOImp(UserDAO):
     def get_all_users(self) -> list[User]:
         data = list(collection.find())
 
-
+        if len(data) == 0:
+            raise UserNotFound(users_not_found)
+        else:
+            return data
         # data_list = []
         # dictionary_data = []
         # for item in data:
@@ -78,3 +81,4 @@ class UserDAOImp(UserDAO):
             return collection.delete_one({"_id": ObjectId(user_id)})
 
 print(list(collection.find()))
+print(len(list(collection.find())))
