@@ -1,7 +1,7 @@
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
-from server.custom_exceptions import InputNotString
+from server.custom_exceptions.input_not_string import InputNotString
 
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
 from server.entities.paper_trade import PaperTrade
