@@ -4,8 +4,8 @@ from .environment_variables import mongo_url
 from ..abstract_classes.user_dao import UserDAO
 from server.custom_exceptions.user_not_found import UserNotFound
 from server.custom_exceptions.duplicate_user import DuplicateUser
-from ...entities.db_user import DatabaseUser
-from ...entities.user import User
+from server.django_app.api.entities.db_user import DatabaseUser
+from server.django_app.api.entities.user import User
 
 # database connection -------------
 connection_string = mongo_url

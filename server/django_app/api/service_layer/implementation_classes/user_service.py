@@ -6,7 +6,7 @@ from server.custom_exceptions import UserIdMustBeString
 from server.custom_exceptions import MissingUserId
 from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 
-from ...data_access_layer.implementation_classes.user_dao import UserDAOImp
+from server.data_access_layer.implementation_classes import UserDAOImp
 from ..abstract_classes.user_service_abs import UserService
 
 user_id_must_be_string: str = "The user id must be a string."

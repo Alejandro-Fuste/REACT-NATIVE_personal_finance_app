@@ -3,7 +3,7 @@ from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
 from server.custom_exceptions import InputNotString
 
-from server.django_app.api.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
+from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
 from server.django_app.api.entities.paper_trade import PaperTrade
 from server.django_app.api.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService
 

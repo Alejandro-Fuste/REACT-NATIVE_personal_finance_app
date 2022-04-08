@@ -1,5 +1,5 @@
-from server.django_app.api.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
-from server.django_app.api.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp, \
+from server.data_access_layer.implementation_classes.user_dao import UserDAOImp, UserDAO
+from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp, \
     PaperTradeDAO
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions import UserNotFound

@@ -1,11 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponse
 from django.http import JsonResponse
 
-from .data_access_layer.implementation_classes.user_dao import UserDAOImp
+from server.data_access_layer.implementation_classes import UserDAOImp
 from .service_layer.implementation_classes.user_service import UserServiceImp
-
-from .entities.user import User
 
 user_dao = UserDAOImp()
 user_service = UserServiceImp(user_dao)
