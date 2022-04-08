@@ -49,16 +49,23 @@ def on():
 
 @app.get("/api/users")
 def get_all_users():
+    try:
+        data = user_service.get_all_users()
+        data_list = []
+        dictionary_data = []
+        for item in data:
+            data_list.append(User(str(item["_id"]), item["firstName"], item["lastName"], item["email"],
+                                  item["username"], item["password"], item['paperTrades']))
 
-# data_list = []
-# dictionary_data = []
-# for item in data:
-#     data_list.append(User(str(item["_id"]), item["firstName"], item["lastName"], item["email"],
-#                           item["username"], item["password"], item['paperTrades']))
-#
-# for d in data_list:
-#     dictionary_data.append(d.make_dictionary())
-# return dictionary_data
+        for d in data_list:
+            dictionary_data.append(d.make_dictionary())
+        return jsonify(dictionary_data), 200
+
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+
 
 # Update routes -------
 # Delete routes -------
