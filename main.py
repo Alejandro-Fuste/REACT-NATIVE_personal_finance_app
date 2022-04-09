@@ -58,7 +58,7 @@ def get_user_by_id(user_id):
     except UserNotFound as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 404
+        return exception_json, 400
 
 
 @app.get("/api/user/username/<username>")
@@ -72,7 +72,7 @@ def get_user_by_username(username):
     except UserNotFound as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
-        return exception_json, 404
+        return exception_json, 400
 
 
 @app.get("/api/users")
