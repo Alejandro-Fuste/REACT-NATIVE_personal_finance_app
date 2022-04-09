@@ -47,7 +47,20 @@ def on():
 # Create routes -------
 @app.post("/api/createUser")
 def create_user():
-    pass
+    try:
+        data = request.get_json()
+        new_user = DatabaseUser(data["firstName"], data["lastName"], data["email"], data["username"], data["password"])
+        user_to_return = user_service.create_new_user(new_user)
+        user = User(str(user_to_return["_id"]), user_to_return["firstName"], user_to_return["lastName"],
+                    user_to_return["email"], user_to_return["username"], user_to_return["password"],
+                    user_to_return['paperTrades'])
+
+        return jsonify(user.make_dictionary()), 201
+
+    except DuplicateUser as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
 
 
 # Read routes -------
@@ -106,9 +119,22 @@ def get_all_users():
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
 # Create routes -------
 
-@app.post("/api/createPaperTrade")
-def create_paper_trade():
-    pass
+@app.post("/api/createPaperTrade/<user_id>")
+def create_paper_trade(user_id):
+    try:
+        data = request.get_json()
+        new_trade = PaperTrade(data["tradeId"], data["ticker"], data["strikePrice"], data["tradeType"],
+                               data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"],
+                               data["callBreakevenPoint"], data["putBreakevenPoint"], data["straddleCallBreakevenPoint"]
+                               , data["straddlePutBreakevenPoint"], data["sellPrice"], data["costPrice"],
+                               data["totalSell"], data["totalCost"], data["netProfit"], data["netProfitPercentage"])
+        trade_to_return = paper_trade_service.add_paper_trade(user_id, new_trade)
+        return jsonify(trade_to_return), 201
+
+    except DuplicateTrade as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
 
 
 # Read routes -------

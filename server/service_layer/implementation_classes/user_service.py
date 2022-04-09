@@ -9,6 +9,8 @@ from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 from server.data_access_layer.implementation_classes.user_dao import UserDAOImp
 from server.service_layer.abstract_classes.user_service_abs import UserService
 
+from server.entities.db_user import DatabaseUser
+
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
 username_must_be_string: str = "The username must be a string."
@@ -25,7 +27,7 @@ class UserServiceImp(UserService):
         self.user_dao: UserDAOImp = user_dao
 
     # Creation Methods ----------------------------------------------------------------------------
-    def create_new_user(self, user: dict) -> dict:
+    def create_new_user(self, user: DatabaseUser) -> dict:
         # check if user properties are strings
         if isinstance(user['firstName'], str) is False or isinstance(user["lastName"], str) is False \
                 or isinstance(user["email"], str) is False or isinstance(user["username"], str) is False \

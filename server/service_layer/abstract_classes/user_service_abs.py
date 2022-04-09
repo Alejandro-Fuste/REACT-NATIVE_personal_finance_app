@@ -1,11 +1,13 @@
 from abc import ABC, abstractmethod
 
+from server.entities.db_user import DatabaseUser
+
 
 class UserService(ABC):
 
     # Create method -------
     @abstractmethod
-    def create_new_user(self, user: dict) -> dict:
+    def create_new_user(self, user: DatabaseUser) -> dict:
         pass
 
     # Read methods -------
