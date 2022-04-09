@@ -45,7 +45,7 @@ def on():
 
 # User Routes ---------------------------------------------------------------------------------------------------------
 # Create routes -------
-@app.post("api/createUser")
+@app.post("/api/createUser")
 def create_user():
     pass
 
@@ -106,7 +106,7 @@ def get_all_users():
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
 # Create routes -------
 
-@app.post("api/createPaperTrade")
+@app.post("/api/createPaperTrade")
 def create_paper_trade():
     pass
 
