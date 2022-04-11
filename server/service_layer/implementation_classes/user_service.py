@@ -29,7 +29,7 @@ class UserServiceImp(UserService):
     # Creation Methods ----------------------------------------------------------------------------
     def create_new_user(self, user: DatabaseUser) -> dict:
         # check if user properties are strings
-        if isinstance(user['firstName'], str) is False or isinstance(user["lastName"], str) is False \
+        if isinstance(user["firstName"], str) is False or isinstance(user["lastName"], str) is False \
                 or isinstance(user["email"], str) is False or isinstance(user["username"], str) is False \
                 or isinstance(user["password"], str) is False:
             raise InputNotString(input_must_be_string)

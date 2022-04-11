@@ -27,7 +27,10 @@ from flask_cors import CORS
 
 import logging
 
-logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
+# logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
+
+logging.basicConfig(filename="records.log", level=logging.DEBUG,
+                    format="[%(levelname)s] - %(asctime)s - %(name)s - : %(message)s in %(pathname)s:%(lineno)d")
 
 app: Flask = Flask(__name__)
 CORS(app)
@@ -50,12 +53,10 @@ def create_user():
     try:
         data = request.get_json()
         new_user = DatabaseUser(data["firstName"], data["lastName"], data["email"], data["username"], data["password"])
-        user_to_return = user_service.create_new_user(new_user)
-        user = User(str(user_to_return["_id"]), user_to_return["firstName"], user_to_return["lastName"],
-                    user_to_return["email"], user_to_return["username"], user_to_return["password"],
-                    user_to_return['paperTrades'])
+        user_to_return = user_service.create_new_user(new_user.make_dictionary())
+        new_user_id = str(user_to_return.inserted_id)
 
-        return jsonify(user.make_dictionary()), 201
+        return jsonify(new_user_id), 201
 
     except DuplicateUser as e:
         exception_dictionary = {"errorMessage": str(e)}
