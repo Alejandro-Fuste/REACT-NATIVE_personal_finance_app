@@ -67,28 +67,3 @@ class PaperTradeDAOImp(PaperTradeDAO):
             deleted = collection.update_one({"_id": ObjectId(user_id)},
                                             {"$pull": {"paperTrades": {"tradeId": paper_trade_id}}})
             return deleted.acknowledged
-
-paper_trade = {
-    "tradeId": 834,
-    "ticker": "APPL",
-    "strikePrice": 216.22,
-    "tradeType": "Call",
-    "expirationDate": "4/11",
-    "strategyType": "Straddle",
-    "callPrice": 467.55,
-    "putPrice": 274.05,
-    "callBreakevenPoint": 122.36,
-    "putBreakevenPoint": 871.56,
-    "straddleCallBreakevenPoint": 378.18,
-    "straddlePutBreakevenPoint": 625.42,
-    "sellPrice": 768.43,
-    "costPrice": 973.35,
-    "totalSell": 142.09,
-    "totalCost": 791.52,
-    "netProfit": 127.58,
-    "netProfitPercentage": 783
-}
-
-trade = collection.update_one({"_id": ObjectId("62509ef329cb009744ceaab9")}, {"$push": {"paperTrades": paper_trade}})
-
-print(trade.modified_count)
