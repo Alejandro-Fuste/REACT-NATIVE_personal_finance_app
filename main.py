@@ -115,6 +115,19 @@ def get_all_users():
 
 
 # Update routes -------
+
+@app.patch("/api/updateUser/<user_id>")
+def update_username(user_id):
+    try:
+        data = request.get_json()
+        update_user = user_service.update_username(str(user_id), data["username"])
+        return jsonify(update_user.modified_count), 200
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+
+
 # Delete routes -------
 
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
