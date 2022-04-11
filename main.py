@@ -129,8 +129,8 @@ def create_paper_trade(user_id):
                                data["callBreakevenPoint"], data["putBreakevenPoint"], data["straddleCallBreakevenPoint"]
                                , data["straddlePutBreakevenPoint"], data["sellPrice"], data["costPrice"],
                                data["totalSell"], data["totalCost"], data["netProfit"], data["netProfitPercentage"])
-        trade_to_return = paper_trade_service.add_paper_trade(user_id, new_trade)
-        return jsonify(trade_to_return), 201
+        trade_to_return = paper_trade_service.add_paper_trade(str(user_id), new_trade.make_dictionary())
+        return jsonify(trade_to_return.modified_count), 201
 
     except DuplicateTrade as e:
         exception_dictionary = {"errorMessage": str(e)}
