@@ -130,6 +130,17 @@ def update_username(user_id):
 
 # Delete routes -------
 
+@app.delete("/api/deleteUser/<user_id>")
+def delete_user(user_id):
+    try:
+        update_user = user_service.delete_user(user_id)
+        return jsonify(update_user.deleted_count), 200
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+
+
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
 # Create routes -------
 
