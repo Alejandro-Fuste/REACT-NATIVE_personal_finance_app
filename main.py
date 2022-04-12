@@ -188,7 +188,42 @@ def get_paper_trades(user_id):
 
 
 # Update routes -------
+
+@app.patch("/api/updateSellPrice")
+def update_sell_price():
+    try:
+        data = request.get_json()
+        new_sell_price = paper_trade_service.update_paper_trade_sell_price(data["userId"], data["paperTradeIndex"],
+                                                                           data["sellPrice"])
+        return jsonify(new_sell_price), 200
+
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except TradeNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+
+
 # Delete routes -------
+
+@app.delete("/api/deleteTrade")
+def update_delete_trade():
+    try:
+        data = request.get_json()
+        new_sell_price = paper_trade_service.delete_paper_trade(data["userId"], data["paperTradeId"])
+        return jsonify(new_sell_price), 200
+
+    except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except TradeNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
 
 
 app.run()
