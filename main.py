@@ -130,12 +130,21 @@ def update_username(user_id):
 
 # Delete routes -------
 
-@app.delete("/api/deleteUser/<user_id>")
-def delete_user(user_id):
+@app.delete("/api/deleteUser")
+def delete_user():
     try:
-        update_user = user_service.delete_user(user_id)
+        data = request.get_json()
+        update_user = user_service.delete_user(data["userId"])
         return jsonify(update_user.deleted_count), 200
     except UserNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except MissingUserId as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except UserIdMustBeString as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400

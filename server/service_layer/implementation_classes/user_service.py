@@ -121,3 +121,4 @@ class UserServiceImp(UserService):
             raise MissingUserId(user_id_not_provided)
 
         return self.user_dao.delete_user(user_id)
+
