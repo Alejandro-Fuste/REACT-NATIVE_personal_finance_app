@@ -110,7 +110,7 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check paper_trade_index is an int
         if isinstance(paper_trade_index, int) is False:
-            raise PaperTradeException(paper_trade_index_must_be_int)
+            raise InputNotInteger(paper_trade_index_must_be_int)
 
         # check sell_price is missing
         if sell_price is None:

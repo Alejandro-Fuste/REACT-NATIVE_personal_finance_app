@@ -119,7 +119,7 @@ def test_update_paper_trade_index_not_int(bad_id, invalid_id):
     try:
         paper_trade_service.update_paper_trade_sell_price(bad_id, '0', 111.11)
         assert False
-    except PaperTradeException as e:
+    except InputNotInteger as e:
         assert str(e) == paper_trade_index_must_be_int
 
 

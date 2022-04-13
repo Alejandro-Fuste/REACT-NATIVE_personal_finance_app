@@ -291,6 +291,10 @@ def update_sell_price():
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
+    except InputNotInteger as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
     except PaperTradeException as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
