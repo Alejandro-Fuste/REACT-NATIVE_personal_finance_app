@@ -231,9 +231,6 @@ def create_paper_trade(user_id):
         return exception_json, 400
 
 
-
-
-
 # Read routes -------
 
 @app.get("/api/paperTrades/<user_id>")
@@ -274,6 +271,18 @@ def update_sell_price():
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
     except TradeNotFound as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except UserIdMustBeString as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except MissingUserId as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except PaperTradeException as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
