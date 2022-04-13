@@ -19,6 +19,7 @@ paper_trade_id_not_provided: str = "A paper trade id must be provided."
 paper_trade_index_must_be_int: str = "The paper trade index must be a integer."
 paper_trade_value_must_be_string: str = "The paper trade object value must be a string."
 paper_trade_value_must_be_float: str = "The paper trade object value must be a float."
+paper_trade_value_must_be_int: str = "The paper trade object value must be an integer."
 paper_trade_value_not_provided: str = "The paper trade object value must be provided."
 paper_trade_index_not_provided: str = "A paper trade index must be provided."
 sell_price_must_be_float: str = "The sell price must be a float."
@@ -45,13 +46,21 @@ def test_add_paper_trade_user_id_missing(missing_id, create_new_paper_trade):
         assert str(e) == user_id_not_provided
 
 
-# value in new trade is not a number
-def test_add_paper_trade_value_not_number(bad_id, trade_value_not_number):
+# value in new trade is not a float
+def test_add_paper_trade_value_not_float(bad_id, trade_value_not_number):
     try:
         paper_trade_service.add_paper_trade(bad_id, trade_value_not_number)
         assert False
     except PaperTradeException as e:
         assert str(e) == paper_trade_value_must_be_float
+
+
+def test_add_paper_trade_value_not_int(bad_id, trade_value_not_int):
+    try:
+        paper_trade_service.add_paper_trade(bad_id, trade_value_not_int)
+        assert False
+    except PaperTradeException as e:
+        assert str(e) == paper_trade_value_must_be_int
 
 
 # value in new trade is missing
