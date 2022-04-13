@@ -2,6 +2,7 @@ from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.duplicate_user import DuplicateUser
 from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 from server.custom_exceptions.input_missing import InputMissing
+from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_too_long import InputTooLong
 from server.custom_exceptions.input_too_short import InputTooShort
@@ -229,7 +230,7 @@ def create_paper_trade():
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
-    except PaperTradeException as e:
+    except InputNotInteger as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400

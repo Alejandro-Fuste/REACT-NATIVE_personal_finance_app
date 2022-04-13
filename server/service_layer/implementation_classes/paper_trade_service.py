@@ -1,3 +1,4 @@
+from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
@@ -78,7 +79,7 @@ class PaperTradeServiceImp(PaperTradeService):
         # check if value is an integer
         if isinstance(paper_trade["tradeId"], int) is False \
                 or isinstance(paper_trade["netProfitPercentage"], int) is False:
-            raise PaperTradeException(paper_trade_value_must_be_int)
+            raise InputNotInteger(paper_trade_value_must_be_int)
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
 
