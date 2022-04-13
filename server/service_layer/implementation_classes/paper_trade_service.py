@@ -36,6 +36,12 @@ class PaperTradeServiceImp(PaperTradeService):
         if len(user_id.strip()) == 0:
             raise MissingUserId(user_id_not_provided)
 
+        # check if value is a string
+        if isinstance(paper_trade["ticker"], str) is False or isinstance(paper_trade["tradeType"], str) is False \
+                or isinstance(paper_trade["expirationDate"], str) is False \
+                or isinstance(paper_trade["strategyType"], str) is False:
+            raise InputNotString(paper_trade_value_must_be_string)
+
         # check if value is not empty
         if paper_trade["tradeId"] is None or len(paper_trade["ticker"].strip()) == 0 \
                 or paper_trade["strikePrice"] is None \
@@ -55,12 +61,6 @@ class PaperTradeServiceImp(PaperTradeService):
                 or paper_trade["netProfit"] is None \
                 or paper_trade["netProfitPercentage"] is None:
             raise PaperTradeException(paper_trade_value_not_provided)
-
-        # check if value is a string
-        if isinstance(paper_trade["ticker"], str) is False or isinstance(paper_trade["tradeType"], str) is False \
-                or isinstance(paper_trade["expirationDate"], str) is False \
-                or isinstance(paper_trade["strategyType"], str) is False:
-            raise InputNotString(paper_trade_value_must_be_string)
 
         # check if value is a float
         if isinstance(paper_trade["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
