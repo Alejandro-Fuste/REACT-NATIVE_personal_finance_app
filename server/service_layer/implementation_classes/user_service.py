@@ -45,7 +45,7 @@ class UserServiceImp(UserService):
             raise InputTooShort(input_too_short)
 
         # check if email is too short
-        if len(user["email"].strip()) < 5:
+        if len(user["email"].strip()) <= 9:
             raise EmailWrongFormat(email_wrong_format)
 
         # check if any user properties are too long
