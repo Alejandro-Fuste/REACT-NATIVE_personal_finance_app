@@ -1,5 +1,7 @@
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
+from server.custom_exceptions.paper_trade_id_missing import PaperTradeIdMissing
+from server.custom_exceptions.paper_trade_id_not_int import PaperTradeIdNotInt
 from server.custom_exceptions.sell_price_missing import SellPriceMissing
 from server.custom_exceptions.sell_price_negative import SellPriceNegative
 from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
@@ -140,10 +142,10 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check paper_trade_id is missing
         if paper_trade_id is None:
-            raise PaperTradeException(paper_trade_id_not_provided)
+            raise PaperTradeIdMissing(paper_trade_id_not_provided)
 
         # check paper_trade_id is an int
         if isinstance(paper_trade_id, int) is False:
-            raise PaperTradeException(paper_trade_id_must_be_int)
+            raise PaperTradeIdNotInt(paper_trade_id_must_be_int)
 
         return self.paper_trade_dao.delete_paper_trade(user_id, paper_trade_id)

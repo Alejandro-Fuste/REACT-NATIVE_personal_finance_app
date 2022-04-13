@@ -8,6 +8,8 @@ from server.custom_exceptions.input_too_long import InputTooLong
 from server.custom_exceptions.input_too_short import InputTooShort
 from server.custom_exceptions.no_trades import NoTrades
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
+from server.custom_exceptions.paper_trade_id_missing import PaperTradeIdMissing
+from server.custom_exceptions.paper_trade_id_not_int import PaperTradeIdNotInt
 from server.custom_exceptions.sell_price_missing import SellPriceMissing
 from server.custom_exceptions.sell_price_negative import SellPriceNegative
 from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
@@ -337,7 +339,11 @@ def delete_trade():
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
-    except PaperTradeException as e:
+    except PaperTradeIdMissing as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except PaperTradeIdNotInt as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
