@@ -1,3 +1,4 @@
+from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
@@ -127,7 +128,7 @@ def test_update_paper_trade_index_missing(bad_id, missing_paper_trade_id):
     try:
         paper_trade_service.update_paper_trade_sell_price(bad_id, missing_paper_trade_id, 111.11)
         assert False
-    except PaperTradeException as e:
+    except InputMissing as e:
         assert str(e) == paper_trade_index_not_provided
 
 

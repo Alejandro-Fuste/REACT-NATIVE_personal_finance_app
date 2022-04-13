@@ -1,3 +1,4 @@
+from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
@@ -105,7 +106,7 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check paper_trade_index is missing
         if paper_trade_index is None:
-            raise PaperTradeException(paper_trade_index_not_provided)
+            raise InputMissing(paper_trade_index_not_provided)
 
         # check paper_trade_index is an int
         if isinstance(paper_trade_index, int) is False:
