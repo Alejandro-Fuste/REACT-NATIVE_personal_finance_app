@@ -1,6 +1,8 @@
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.sell_price_missing import SellPriceMissing
+from server.custom_exceptions.sell_price_negative import SellPriceNegative
+from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
@@ -119,11 +121,11 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check sell_price is a float
         if isinstance(sell_price, float) is False:
-            raise PaperTradeException(sell_price_must_be_float)
+            raise SellPriceNotFloat(sell_price_must_be_float)
 
         # check if sell_price is a negative number
         if sell_price < 0:
-            raise PaperTradeException(sell_price_negative)
+            raise SellPriceNegative(sell_price_negative)
 
         return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, sell_price)
 

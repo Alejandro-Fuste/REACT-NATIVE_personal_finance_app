@@ -9,6 +9,8 @@ from server.custom_exceptions.input_too_short import InputTooShort
 from server.custom_exceptions.no_trades import NoTrades
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
 from server.custom_exceptions.sell_price_missing import SellPriceMissing
+from server.custom_exceptions.sell_price_negative import SellPriceNegative
+from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
 from server.custom_exceptions.trade_not_found import TradeNotFound
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
@@ -300,7 +302,11 @@ def update_sell_price():
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
-    except PaperTradeException as e:
+    except SellPriceNotFloat as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except SellPriceNegative as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
