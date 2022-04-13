@@ -196,8 +196,8 @@ def delete_user():
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
 # Create routes -------
 
-@app.post("/api/createPaperTrade/<user_id>")
-def create_paper_trade(user_id):
+@app.post("/api/createPaperTrade")
+def create_paper_trade():
     try:
         data = request.get_json()
         new_trade = PaperTrade(data["tradeId"], data["ticker"], data["strikePrice"], data["tradeType"],
@@ -206,7 +206,7 @@ def create_paper_trade(user_id):
                                data["straddleCallBreakevenPoint"], data["straddlePutBreakevenPoint"],
                                data["sellPrice"], data["costPrice"], data["totalSell"],
                                data["totalCost"], data["netProfit"], data["netProfitPercentage"])
-        trade_to_return = paper_trade_service.add_paper_trade(str(user_id), new_trade.make_dictionary())
+        trade_to_return = paper_trade_service.add_paper_trade(data["userId"], new_trade.make_dictionary())
         return jsonify(trade_to_return.modified_count), 201
 
     except DuplicateTrade as e:
