@@ -14,6 +14,7 @@ paper_trade_id_not_provided: str = "A paper trade id must be provided."
 paper_trade_index_must_be_int: str = "The paper trade index must be a integer."
 paper_trade_value_must_be_string: str = "The paper trade object value must be a string."
 paper_trade_value_must_be_float: str = "The paper trade object value must be a float."
+paper_trade_value_must_be_int: str = "The paper trade object value must be an integer."
 paper_trade_value_not_provided: str = "The paper trade object value must be provided."
 paper_trade_index_not_provided: str = "A paper trade index must be provided."
 sell_price_must_be_float: str = "The sell price must be a float."
@@ -77,7 +78,7 @@ class PaperTradeServiceImp(PaperTradeService):
         # check if value is an integer
         if isinstance(paper_trade["tradeId"], int) is False \
                 or isinstance(paper_trade["netProfitPercentage"], int) is False:
-            raise InputNotString(user_id_must_be_string)
+            raise PaperTradeException(paper_trade_value_must_be_int)
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
 
