@@ -1,5 +1,6 @@
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
+from server.custom_exceptions.sell_price_missing import SellPriceMissing
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
@@ -114,7 +115,7 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check sell_price is missing
         if sell_price is None:
-            raise PaperTradeException(sell_price_not_provided)
+            raise SellPriceMissing(sell_price_not_provided)
 
         # check sell_price is a float
         if isinstance(sell_price, float) is False:
