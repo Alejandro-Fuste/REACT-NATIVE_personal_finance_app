@@ -1,3 +1,4 @@
+from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
@@ -59,7 +60,7 @@ def test_add_paper_trade_value_not_int(bad_id, trade_value_not_int):
     try:
         paper_trade_service.add_paper_trade(bad_id, trade_value_not_int)
         assert False
-    except PaperTradeException as e:
+    except InputNotInteger as e:
         assert str(e) == paper_trade_value_must_be_int
 
 
