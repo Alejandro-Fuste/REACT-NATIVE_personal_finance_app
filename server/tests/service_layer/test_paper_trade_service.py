@@ -1,6 +1,7 @@
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.paper_trade_id_missing import PaperTradeIdMissing
+from server.custom_exceptions.paper_trade_id_not_int import PaperTradeIdNotInt
 from server.custom_exceptions.sell_price_missing import SellPriceMissing
 from server.custom_exceptions.sell_price_negative import SellPriceNegative
 from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
@@ -179,7 +180,7 @@ def test_delete_paper_trade_id_not_int(bad_id):
     try:
         paper_trade_service.delete_paper_trade(bad_id, bad_id)
         assert False
-    except PaperTradeException as e:
+    except PaperTradeIdNotInt as e:
         assert str(e) == paper_trade_id_must_be_int
 
 
