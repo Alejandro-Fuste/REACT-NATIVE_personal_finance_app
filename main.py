@@ -27,7 +27,6 @@ from flask_cors import CORS
 
 import logging
 
-# logging.basicConfig(filename="records.log", level=logging.DEBUG, format=f"%(asctime)s %(levelname)s %(message)s")
 
 logging.basicConfig(filename="records.log", level=logging.DEBUG,
                     format="[%(levelname)s] - %(asctime)s - %(name)s - : %(message)s in %(pathname)s:%(lineno)d")
@@ -203,9 +202,10 @@ def create_paper_trade(user_id):
         data = request.get_json()
         new_trade = PaperTrade(data["tradeId"], data["ticker"], data["strikePrice"], data["tradeType"],
                                data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"],
-                               data["callBreakevenPoint"], data["putBreakevenPoint"], data["straddleCallBreakevenPoint"]
-                               , data["straddlePutBreakevenPoint"], data["sellPrice"], data["costPrice"],
-                               data["totalSell"], data["totalCost"], data["netProfit"], data["netProfitPercentage"])
+                               data["callBreakevenPoint"], data["putBreakevenPoint"],
+                               data["straddleCallBreakevenPoint"], data["straddlePutBreakevenPoint"],
+                               data["sellPrice"], data["costPrice"], data["totalSell"],
+                               data["totalCost"], data["netProfit"], data["netProfitPercentage"])
         trade_to_return = paper_trade_service.add_paper_trade(str(user_id), new_trade.make_dictionary())
         return jsonify(trade_to_return.modified_count), 201
 
@@ -291,7 +291,7 @@ def update_sell_price():
 # Delete routes -------
 
 @app.delete("/api/deleteTrade")
-def update_delete_trade():
+def delete_trade():
     try:
         data = request.get_json()
         new_sell_price = paper_trade_service.delete_paper_trade(data["userId"], data["paperTradeId"])
