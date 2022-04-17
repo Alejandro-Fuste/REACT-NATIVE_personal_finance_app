@@ -1,6 +1,7 @@
-from server.data_access_layer.abstract_classes.stock_info_dao import StockInfoDAO
+from server.data_access_layer.abstract_classes.options_info_dao import StockInfoDAO
 
 import yahoo_fin.stock_info as si
+from yahoo_fin.options import get_calls
 
 
 class StockInfoImp(StockInfoDAO):
@@ -10,3 +11,5 @@ class StockInfoImp(StockInfoDAO):
 
 # print()
 # print(isinstance(si.get_live_price("t"), float))
+# print(get_options_chain("t"))
+print(get_calls("t"))
