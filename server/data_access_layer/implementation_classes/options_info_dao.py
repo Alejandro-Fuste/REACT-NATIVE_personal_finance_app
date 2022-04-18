@@ -22,8 +22,3 @@ class OptionsInfoImp(OptionsInfoDAO):
         response = requests.request("GET", url, headers=headers, params=querystring)
         return response.json()
 
-
-new_opt = OptionsInfoImp()
-one = new_opt.get_calls("t")
-print(isinstance(one, dict))
-print(len(one))
