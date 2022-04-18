@@ -9,4 +9,6 @@ def test_get_live_stock_price(ticker):
     assert isinstance(price, float)
 
 
-
+def test_expiration_dates(ticker):
+    dates = options_dao.get_expiration_dates(ticker)
+    assert len(dates) > 1

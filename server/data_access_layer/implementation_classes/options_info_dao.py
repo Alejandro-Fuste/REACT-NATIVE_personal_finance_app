@@ -2,6 +2,7 @@ from server.data_access_layer.abstract_classes.options_info_dao import OptionsIn
 
 import yahoo_fin.stock_info as si
 from yahoo_fin.options import get_options_chain
+from yahoo_fin.options import get_expiration_dates
 
 
 class OptionsInfoImp(OptionsInfoDAO):
@@ -10,7 +11,7 @@ class OptionsInfoImp(OptionsInfoDAO):
         return si.get_live_price(ticker)
 
     def get_expiration_dates(self, ticker: str) -> list:
-        pass
+        return get_expiration_dates(ticker)
 
     def get_calls(self, ticker: str) -> dict:
         pass
