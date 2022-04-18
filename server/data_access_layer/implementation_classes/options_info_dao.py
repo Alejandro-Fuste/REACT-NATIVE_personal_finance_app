@@ -21,6 +21,8 @@ class OptionsInfoImp(OptionsInfoDAO):
 
 # print()
 # print(isinstance(si.get_live_price("t"), float))
-options = get_options_chain("t")
-print(len(options["calls"]))
+# options = get_options_chain("t")
+# print(len(options["calls"]))
+
+print(si.get_live_price("t"))
 

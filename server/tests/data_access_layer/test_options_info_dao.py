@@ -2,4 +2,8 @@ from server.data_access_layer.implementation_classes.options_info_dao import Opt
 
 options_dao: OptionsInfoDAO = OptionsInfoImp()
 
+
 # Read Tests ------------------------------------------
+def test_get_live_stock_price():
+    price = options_dao.get_live_stock_price()
+    assert isinstance(price, float)
