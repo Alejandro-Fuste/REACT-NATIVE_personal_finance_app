@@ -4,6 +4,9 @@ options_dao: OptionsInfoDAO = OptionsInfoImp()
 
 
 # Read Tests ------------------------------------------
-def test_get_live_stock_price():
-    price = options_dao.get_live_stock_price()
+def test_get_live_stock_price(ticker):
+    price = options_dao.get_live_stock_price(ticker)
     assert isinstance(price, float)
+
+
+
