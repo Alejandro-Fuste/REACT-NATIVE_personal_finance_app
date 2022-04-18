@@ -219,6 +219,7 @@ def trade_value_not_int() -> PaperTrade:
                            )
     return new_trade.make_dictionary()
 
+
 @fixture
 def trade_value_missing() -> PaperTrade:
     new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
@@ -291,3 +292,8 @@ def username_too_long() -> str:
            "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" \
            "1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890" \
            "12345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901"
+
+
+@fixture
+def ticker() -> str:
+    return "t"
