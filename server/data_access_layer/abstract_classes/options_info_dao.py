@@ -8,14 +8,5 @@ class OptionsInfoDAO(ABC):
         pass
 
     @abstractmethod
-    def get_expiration_dates(self, ticker: str) -> list:
+    def get_options(self, ticker: str) -> dict:
         pass
-
-    @abstractmethod
-    def get_calls(self, ticker: str) -> dict:
-        pass
-
-    @abstractmethod
-    def get_puts(self, ticker: str) -> dict:
-        pass
-

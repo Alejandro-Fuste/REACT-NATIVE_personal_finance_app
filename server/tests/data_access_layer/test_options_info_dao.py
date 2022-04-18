@@ -22,4 +22,3 @@ def test_get_calls(ticker):
 def test_get_puts(ticker):
     puts = options_dao.get_puts(ticker)
     assert len(puts) == 27
-    
