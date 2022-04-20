@@ -1,5 +1,5 @@
 from server.data_access_layer.abstract_classes.options_info_dao import OptionsInfoDAO
-from server.custom_exceptions.price_not_found import PriceNotFound
+from server.custom_exceptions.option_not_found import OptionNotFound
 
 from yahoo_fin import options
 from yahoo_fin import stock_info
@@ -19,23 +19,28 @@ class OptionsInfoImp(OptionsInfoDAO):
             return e.args[0]['chart']['error']['description']
 
     def get_calls(self, ticker: str) -> pandas:
-        try:
-            calls = options.get_calls(ticker)
+        calls = options.get_calls(ticker)
+        columns = list(calls.columns)
+
+        if columns[0] == 'Contract Name':
             return calls
-        except AssertionError as e:
-            return e.args[0]['chart']['error']['description']
+        else:
+            raise OptionNotFound(stock_not_found)
 
     def get_puts(self, ticker: str) -> pandas:
-        try:
-            puts = options.get_puts(ticker)
+        puts = options.get_puts(ticker)
+        columns = list(puts.columns)
+
+        if columns[0] == 'Contract Name':
             return puts
-        except AssertionError as e:
-            return e.args[0]['chart']['error']['description']
+        else:
+            raise OptionNotFound(stock_not_found)
 
 
-priced = OptionsInfoImp()
-new_p = priced.get_calls("2t")
-print(new_p)
+# priced = OptionsInfoImp()
+# new_p = options.get_calls("t")
+# columns = list(new_p.columns)
+# print(columns[0])
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):
