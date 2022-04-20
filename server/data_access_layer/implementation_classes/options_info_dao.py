@@ -19,16 +19,24 @@ class OptionsInfoImp(OptionsInfoDAO):
             return e.args[0]['chart']['error']['description']
 
     def get_calls(self, ticker: str) -> pandas:
-        return options.get_calls(ticker)
+        try:
+            calls = options.get_calls(ticker)
+            return calls
+        except AssertionError as e:
+            return e.args[0]['chart']['error']['description']
 
     def get_puts(self, ticker: str) -> pandas:
-        return options.get_puts(ticker)
+        try:
+            puts = options.get_puts(ticker)
+            return puts
+        except AssertionError as e:
+            return e.args[0]['chart']['error']['description']
 
 
 priced = OptionsInfoImp()
-new_p = priced.get_stock_price("2t")
+new_p = priced.get_calls("2t")
 print(new_p)
-# print(isinstance(calls.loc[4, "Strike"], float))
-
-# for i in range(len(calls)):
-#     print(calls.loc[i, "Strike"])
+# # print(isinstance(calls.loc[4, "Strike"], float))
+#
+# # for i in range(len(calls)):
+# #     print(calls.loc[i, "Strike"])

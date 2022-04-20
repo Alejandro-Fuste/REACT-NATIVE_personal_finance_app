@@ -24,11 +24,11 @@ def test_get_calls_failure(bad_ticker):
     assert price == "No data found, symbol may be delisted"
 
 
-def test_get_puts(ticker):
+def test_get_puts_success(ticker):
     options = options_dao.get_puts(ticker)
     assert len(options) == 27
 
-    
+
 def test_get_puts_failure(bad_ticker):
     price = options_dao.get_puts(bad_ticker)
     assert price == "No data found, symbol may be delisted"
