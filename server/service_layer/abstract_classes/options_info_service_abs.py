@@ -3,7 +3,7 @@ from abc import ABC, abstractmethod
 import pandas
 
 
-class OptionsInfoDAO(ABC):
+class OptionsInfoService(ABC):
 
     @abstractmethod
     def get_stock_price(self, ticker: str) -> float:
