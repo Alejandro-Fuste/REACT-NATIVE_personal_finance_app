@@ -297,3 +297,8 @@ def username_too_long() -> str:
 @fixture
 def ticker() -> str:
     return "t"
+
+
+@fixture
+def bad_ticker() -> str:
+    return "2t"

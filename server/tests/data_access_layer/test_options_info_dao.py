@@ -4,9 +4,14 @@ options_dao: OptionsInfoDAO = OptionsInfoImp()
 
 
 # Read Tests ------------------------------------------
-def test_stock_price(ticker):
+def test_stock_price_success(ticker):
     price = options_dao.get_stock_price(ticker)
     assert isinstance(price, float)
+
+
+def test_stock_price_failure(bad_ticker):
+    price = options_dao.get_stock_price(bad_ticker)
+    assert price == "No data found, symbol may be delisted"
 
 
 def test_get_calls(ticker):

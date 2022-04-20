@@ -1,15 +1,22 @@
-import pandas
-
 from server.data_access_layer.abstract_classes.options_info_dao import OptionsInfoDAO
+from server.custom_exceptions.price_not_found import PriceNotFound
 
 from yahoo_fin import options
 from yahoo_fin import stock_info
+
+import pandas
+
+stock_not_found = "Your stock was not able to be located."
 
 
 class OptionsInfoImp(OptionsInfoDAO):
 
     def get_stock_price(self, ticker: str) -> float:
-        return stock_info.get_live_price(ticker)
+        try:
+            price = stock_info.get_live_price(ticker)
+            return price
+        except AssertionError as e:
+            return e.args[0]['chart']['error']['description']
 
     def get_calls(self, ticker: str) -> pandas:
         return options.get_calls(ticker)
@@ -18,10 +25,10 @@ class OptionsInfoImp(OptionsInfoDAO):
         return options.get_puts(ticker)
 
 
-# price = stock_info.get_live_price("t")
-# # print(isinstance(calls.loc[4, "Strike"], float))
-# print(float(price))
-
+priced = OptionsInfoImp()
+new_p = priced.get_stock_price("2t")
+print(new_p)
+# print(isinstance(calls.loc[4, "Strike"], float))
 
 # for i in range(len(calls)):
 #     print(calls.loc[i, "Strike"])
