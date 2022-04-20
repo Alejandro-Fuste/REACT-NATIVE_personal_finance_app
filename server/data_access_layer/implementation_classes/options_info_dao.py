@@ -36,11 +36,6 @@ class OptionsInfoImp(OptionsInfoDAO):
         else:
             raise OptionNotFound(stock_not_found)
 
-
-# priced = OptionsInfoImp()
-# new_p = options.get_calls("t")
-# columns = list(new_p.columns)
-# print(columns[0])
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):
