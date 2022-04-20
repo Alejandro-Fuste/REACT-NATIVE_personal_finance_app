@@ -19,7 +19,8 @@ class OptionsInfoImp(OptionsInfoDAO):
 
 calls = options.get_calls("t")
 # print(isinstance(calls.loc[4, "Strike"], float))
-# print(len(calls))
+print(type(calls))
+print(isinstance(calls, pandas))
 
 # for i in range(len(calls)):
 #     print(calls.loc[i, "Strike"])

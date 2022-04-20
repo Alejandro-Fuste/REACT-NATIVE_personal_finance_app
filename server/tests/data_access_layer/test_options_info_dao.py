@@ -4,10 +4,16 @@ options_dao: OptionsInfoDAO = OptionsInfoImp()
 
 
 # Read Tests ------------------------------------------
-def test_get_live_stock_price(ticker):
-    pass
+def test_stock_price(ticker):
+    price = options_dao.get_stock_price(ticker)
+    assert isinstance(price, float)
 
 
-def test_get_options(ticker):
-    options = options_dao.get_options(ticker)
-    assert len(options) > 1 and isinstance(options, dict)
+def test_get_calls(ticker):
+    options = options_dao.get_calls(ticker)
+    assert len(options) == 27
+
+
+def test_get_puts(ticker):
+    options = options_dao.get_puts(ticker)
+    assert len(options) == 27
