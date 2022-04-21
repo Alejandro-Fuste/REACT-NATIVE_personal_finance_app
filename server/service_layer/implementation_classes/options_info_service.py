@@ -26,8 +26,24 @@ class OptionsInfoServiceImp(OptionsInfoService):
         return self.options_info_dao.get_stock_price(ticker)
 
     def get_calls(self, ticker: str) -> pandas:
-        pass
+        # check ticker is a string
+        if isinstance(ticker, str) is False:
+            raise InputNotString(input_must_be_string)
+
+        # check ticker not empty
+        if len(ticker.strip()) == 0:
+            raise InputMissing(input_not_provided)
+
+        return self.options_info_dao.get_calls(ticker)
 
     def get_puts(self, ticker: str) -> pandas:
-        pass
+        # check ticker is a string
+        if isinstance(ticker, str) is False:
+            raise InputNotString(input_must_be_string)
+
+        # check ticker not empty
+        if len(ticker.strip()) == 0:
+            raise InputMissing(input_not_provided)
+
+        return self.options_info_dao.get_puts(ticker)
 
