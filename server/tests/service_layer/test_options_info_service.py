@@ -39,7 +39,11 @@ def test_get_stock_price_ticker_blank(none_ticker):
 
 # Get Calls Tests ---------------------------------------------------------------------
 def test_get_calls_ticker_not_string():
-    pass
+    try:
+        options_info_service.get_stock_price(int_ticker)
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
 
 
 def test_get_calls_ticker_empty_string():
