@@ -1,4 +1,5 @@
 from server.custom_exceptions.input_not_string import InputNotString
+from server.custom_exceptions.input_missing import InputMissing
 
 from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAO, OptionsInfoImp
 from server.service_layer.implementation_classes.options_info_service import OptionsInfoService, OptionsInfoServiceImp
@@ -7,6 +8,7 @@ options_info_dao: OptionsInfoDAO = OptionsInfoImp()
 options_info_service: OptionsInfoService = OptionsInfoServiceImp(options_info_dao)
 
 input_must_be_string: str = "The input must be a string."
+input_not_provided: str = "An input must be provided."
 
 
 # Read Tests --------------------------------------------------------------------------------
@@ -19,12 +21,20 @@ def test_get_stock_price_ticker_not_string(int_ticker):
         assert str(e) == input_must_be_string
 
 
-def test_get_stock_price_ticker_empty_string():
-    pass
+def test_get_stock_price_ticker_empty_string(empty_string):
+    try:
+        options_info_service.get_stock_price(empty_string)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
 
 
-def test_get_stock_price_ticker_blank():
-    pass
+def test_get_stock_price_ticker_blank(none_ticker):
+    try:
+        options_info_service.get_stock_price(none_ticker)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
 
 
 # Get Calls Tests ---------------------------------------------------------------------
