@@ -63,13 +63,25 @@ def test_get_calls_ticker_blank(none_ticker):
 
 
 # Get Puts Tests ---------------------------------------------------------------------
-def test_get_puts_ticker_not_string():
-    pass
+def test_get_puts_ticker_not_string(int_ticker):
+    try:
+        options_info_service.get_puts(int_ticker)
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
 
 
-def test_get_puts_ticker_empty_string():
-    pass
+def test_get_puts_ticker_empty_string(empty_string):
+    try:
+        options_info_service.get_puts(empty_string)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
 
 
-def test_get_puts_ticker_blank():
-    pass
+def test_get_puts_ticker_blank(none_ticker):
+    try:
+        options_info_service.get_puts(none_ticker)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
