@@ -15,6 +15,10 @@ class OptionsInfoServiceImp(OptionsInfoService):
         self.options_info_dao: OptionsInfoImp = options_info_dao
 
     def get_stock_price(self, ticker: str) -> float:
+        # check ticker not blank
+        if ticker is None:
+            raise InputMissing(input_not_provided)
+
         # check ticker is a string
         if isinstance(ticker, str) is False:
             raise InputNotString(input_must_be_string)
@@ -46,4 +50,3 @@ class OptionsInfoServiceImp(OptionsInfoService):
             raise InputMissing(input_not_provided)
 
         return self.options_info_dao.get_puts(ticker)
-
