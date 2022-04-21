@@ -302,3 +302,18 @@ def ticker() -> str:
 @fixture
 def bad_ticker() -> str:
     return "2t"
+
+
+@fixture
+def int_ticker() -> int:
+    return fake.pyint(max_value=10000)
+
+
+@fixture
+def empty_string() -> str:
+    return ""
+
+
+@fixture
+def none_ticker() -> None:
+    return None
