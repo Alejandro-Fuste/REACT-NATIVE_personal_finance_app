@@ -1,7 +1,13 @@
 import pandas
 
+from server.custom_exceptions.input_not_string import InputNotString
+from server.custom_exceptions.input_missing import InputMissing
+
 from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoImp
 from server.service_layer.abstract_classes.options_info_service_abs import OptionsInfoService
+
+input_must_be_string: str = "The input must be a string."
+input_not_provided: str = "An input must be provided."
 
 
 class OptionsInfoServiceImp(OptionsInfoService):
