@@ -56,7 +56,7 @@ def test_get_calls_ticker_empty_string(empty_string):
 
 def test_get_calls_ticker_blank(none_ticker):
     try:
-        options_info_service.get_stock_price(none_ticker)
+        options_info_service.get_calls(none_ticker)
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
