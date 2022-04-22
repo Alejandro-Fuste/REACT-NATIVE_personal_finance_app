@@ -36,7 +36,22 @@ class OptionsInfoImp(OptionsInfoDAO):
         else:
             raise OptionNotFound(stock_not_found)
 
+
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):
 # #     print(calls.loc[i, "Strike"])
+
+# dow = stock_info.tickers_dow()
+# div = stock_info.get_dividends(dow[0], "01-01-2022")
+# print(div)
+# div_top = div.head()
+# div_first_row = list(div_top.index)
+# time = div_first_row[0]
+# ftime = time.strftime('%Y-%m-%d')
+# # print(ftime)
+# print(div.loc[ftime, "dividend"])
+
+
+
+
