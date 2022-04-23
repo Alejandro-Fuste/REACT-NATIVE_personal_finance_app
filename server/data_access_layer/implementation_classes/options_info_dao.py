@@ -11,6 +11,7 @@ stock_not_found = "Your stock was not able to be located."
 
 class OptionsInfoImp(OptionsInfoDAO):
 
+    # Get stock price -------------------------------------------------------------
     def get_stock_price(self, ticker: str) -> float:
         try:
             price = stock_info.get_live_price(ticker)
@@ -18,6 +19,7 @@ class OptionsInfoImp(OptionsInfoDAO):
         except AssertionError as e:
             return e.args[0]['chart']['error']['description']
 
+    # Get options -----------------------------------------------------------------
     def get_calls(self, ticker: str) -> pandas:
         calls = options.get_calls(ticker)
         columns = list(calls.columns)
@@ -35,6 +37,8 @@ class OptionsInfoImp(OptionsInfoDAO):
             return puts
         else:
             raise OptionNotFound(stock_not_found)
+
+    # Get tickers -----------------------------------------------------------------
 
 
 # # print(isinstance(calls.loc[4, "Strike"], float))

@@ -17,3 +17,22 @@ class OptionsInfoDAO(ABC):
     def get_puts(self, ticker: str) -> pandas:
         pass
 
+    @abstractmethod
+    def get_tickers_dow(self) -> list:
+        pass
+
+    @abstractmethod
+    def get_tickers_ftse100(self) -> list:
+        pass
+
+    @abstractmethod
+    def get_tickers_ftse250(self) -> list:
+        pass
+
+    @abstractmethod
+    def get_tickers_nasdaq(self) -> list:
+        pass
+
+    @abstractmethod
+    def get_tickers_sp500(self) -> list:
+        pass
