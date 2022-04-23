@@ -22,14 +22,6 @@ class OptionsInfoDAO(ABC):
         pass
 
     @abstractmethod
-    def get_tickers_ftse100(self) -> list:
-        pass
-
-    @abstractmethod
-    def get_tickers_ftse250(self) -> list:
-        pass
-
-    @abstractmethod
     def get_tickers_nasdaq(self) -> list:
         pass
 
@@ -62,5 +54,5 @@ class OptionsInfoDAO(ABC):
         pass
 
     @abstractmethod
-    def get_dividend_investment_amount(self, tickers: list) -> dict:
+    def get_dividend_investment_amount(self, tickers: list, stock_price: float, investment: float) -> list:
         pass

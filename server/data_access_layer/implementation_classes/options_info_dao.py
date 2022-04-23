@@ -45,12 +45,6 @@ class OptionsInfoImp(OptionsInfoDAO):
     def get_tickers_dow(self) -> list:
         return stock_info.tickers_dow()
 
-    def get_tickers_ftse100(self) -> list:
-        return stock_info.tickers_ftse100()
-
-    def get_tickers_ftse250(self) -> list:
-        return stock_info.tickers_ftse250()
-
     def get_tickers_nasdaq(self) -> list:
         return stock_info.tickers_nasdaq()
 
@@ -97,11 +91,14 @@ class OptionsInfoImp(OptionsInfoDAO):
         res = option.get_targeted_dividends(companies)
         return res
 
-    def get_dividend_investment_amount(self, tickers: list) -> dict:
-        pass
+    def get_dividend_investment_amount(self, tickers: list, stock_price: float, investment: float) -> list:
+        array = []
 
+        for ticker in tickers:
+            amount = (investment / stock_price) * ticker["amount"]
+            array.append({"ticker": ticker, "dividendAmount": amount})
+
+        return array
 
 
 option = OptionsInfoImp()
-
-
