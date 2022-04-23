@@ -98,7 +98,7 @@ class OptionsInfoImp(OptionsInfoDAO):
         return res
 
 
+
 option = OptionsInfoImp()
 
-# pprint(res)
-print(option.get_dow_targets())
+
