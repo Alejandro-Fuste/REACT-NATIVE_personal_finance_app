@@ -1,5 +1,3 @@
-from pprint import pprint
-
 from server.data_access_layer.abstract_classes.options_info_dao import OptionsInfoDAO
 from server.custom_exceptions.option_not_found import OptionNotFound
 
@@ -7,6 +5,8 @@ from yahoo_fin import options
 from yahoo_fin import stock_info
 
 import pandas
+from datetime import datetime
+
 
 stock_not_found = "Your stock was not able to be located."
 
@@ -64,11 +64,15 @@ class OptionsInfoImp(OptionsInfoDAO):
         return stock_info.get_dividends(ticker, start_date, end_date, index_as_date=False)
 
     def get_dividends_previous_year(self, ticker: str) -> pandas:
-        pass
+        previous_year = datetime.now().year - 1
+        start_date = f'01-01-{previous_year}'
+        end_date = f'12-31-{previous_year}'
+        return stock_info.get_dividends(ticker, start_date, end_date, index_as_date=False)
 
 
 option = OptionsInfoImp()
-print(option.get_dividends_for_specific_period('t', "01-01-2021", "12-31-2021"))
+print(option.get_dividends_previous_year('t'))
+# print(option.get_dividends_for_specific_period('t', "01-01-2021", "12-31-2021"))
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):
