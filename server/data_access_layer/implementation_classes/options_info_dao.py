@@ -58,18 +58,25 @@ class OptionsInfoImp(OptionsInfoDAO):
 
     # Get Dividends -----------------------------------------------------------------
     def get_all_dividends(self, ticker: str) -> pandas:
+        return stock_info.get_dividends(ticker, index_as_date=False)
+
+    def get_dividends_for_specific_period(self, ticker: str, start_date: str, end_date: str) -> pandas:
+        return stock_info.get_dividends(ticker, start_date, end_date, index_as_date=False)
+
+    def get_dividends_previous_year(self, ticker: str) -> pandas:
         pass
 
-option = OptionsInfoImp()
 
+option = OptionsInfoImp()
+print(option.get_dividends_for_specific_period('t', "01-01-2021", "12-31-2021"))
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):
 # #     print(calls.loc[i, "Strike"])
 
-dow = stock_info.tickers_dow()
-div = stock_info.get_dividends(dow[0], start_date="01-01-2021", end_date="12-31-2021", index_as_date=False)
-print(div)
+# dow = stock_info.tickers_dow()
+# div = stock_info.get_dividends()
+# print(div)
 # div_top = div.head()
 # div_first_row = list(div_top.index)
 # time = div_first_row[0]
