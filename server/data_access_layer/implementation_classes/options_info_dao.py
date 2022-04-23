@@ -7,7 +7,6 @@ from yahoo_fin import stock_info
 import pandas
 from datetime import datetime
 
-
 stock_not_found = "Your stock was not able to be located."
 
 
@@ -74,16 +73,25 @@ class OptionsInfoImp(OptionsInfoDAO):
         start_date = f'01-01-{current_year}'
         return stock_info.get_dividends(ticker, start_date, index_as_date=False)
 
+    def get_targeted_dividends(self, tickers: list) -> list:
+        ticker_list = []
+        for ticker in tickers:
+            div = 0
+            result = option.get_dividends_current_year(ticker)
+            result_length = len(result)
+
+            if result_length == 0:
+                div += 0
+            else:
+                div = result.loc[result_length - 1, "dividend"]
+
+            if div > 1.00:
+                ticker_list.append(ticker)
+
+        return ticker_list
+
 
 option = OptionsInfoImp()
-tickers = option.get_tickers_dow()
-result = option.get_dividends_current_year(tickers[0])
-result_length = len(result)
-print(result)
-dividend = result.loc[result_length - 1, "dividend"]
-print(dividend)
-# for ticker in tickers:
-#     print
 
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
