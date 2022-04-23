@@ -69,10 +69,22 @@ class OptionsInfoImp(OptionsInfoDAO):
         end_date = f'12-31-{previous_year}'
         return stock_info.get_dividends(ticker, start_date, end_date, index_as_date=False)
 
+    def get_dividends_current_year(self, ticker: str) -> pandas:
+        current_year = datetime.now().year
+        start_date = f'01-01-{current_year}'
+        return stock_info.get_dividends(ticker, start_date, index_as_date=False)
+
 
 option = OptionsInfoImp()
-print(option.get_dividends_previous_year('t'))
-# print(option.get_dividends_for_specific_period('t', "01-01-2021", "12-31-2021"))
+tickers = option.get_tickers_dow()
+result = option.get_dividends_current_year(tickers[0])
+result_length = len(result)
+print(result)
+dividend = result.loc[result_length - 1, "dividend"]
+print(dividend)
+# for ticker in tickers:
+#     print
+
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):

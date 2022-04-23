@@ -52,3 +52,7 @@ class OptionsInfoDAO(ABC):
     @abstractmethod
     def get_dividends_current_year(self, ticker: str) -> pandas:
         pass
+
+    @abstractmethod
+    def get_targeted_dividends(self, tickers: list) -> list:
+        pass
