@@ -60,3 +60,7 @@ class OptionsInfoDAO(ABC):
     @abstractmethod
     def get_dow_targets(self) -> list:
         pass
+
+    @abstractmethod
+    def get_dividend_investment_amount(self) -> dict:
+        pass
