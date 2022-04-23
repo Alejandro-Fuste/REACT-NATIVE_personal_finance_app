@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from server.data_access_layer.abstract_classes.options_info_dao import OptionsInfoDAO
 from server.custom_exceptions.option_not_found import OptionNotFound
 
@@ -39,23 +41,38 @@ class OptionsInfoImp(OptionsInfoDAO):
             raise OptionNotFound(stock_not_found)
 
     # Get tickers -----------------------------------------------------------------
+    def get_tickers_dow(self) -> list:
+        return stock_info.tickers_dow()
 
+    def get_tickers_ftse100(self) -> list:
+        return stock_info.tickers_ftse100()
+
+    def get_tickers_ftse250(self) -> list:
+        return stock_info.tickers_ftse250()
+
+    def get_tickers_nasdaq(self) -> list:
+        return stock_info.tickers_nasdaq()
+
+    def get_tickers_sp500(self) -> list:
+        return stock_info.tickers_sp500()
+
+    # Get Dividends -----------------------------------------------------------------
+    def get_all_dividends(self, ticker: str) -> pandas:
+        pass
+
+option = OptionsInfoImp()
 
 # # print(isinstance(calls.loc[4, "Strike"], float))
 #
 # # for i in range(len(calls)):
 # #     print(calls.loc[i, "Strike"])
 
-# dow = stock_info.tickers_dow()
-# div = stock_info.get_dividends(dow[0], "01-01-2022")
-# print(div)
+dow = stock_info.tickers_dow()
+div = stock_info.get_dividends(dow[0], start_date="01-01-2021", end_date="12-31-2021", index_as_date=False)
+print(div)
 # div_top = div.head()
 # div_first_row = list(div_top.index)
 # time = div_first_row[0]
 # ftime = time.strftime('%Y-%m-%d')
 # # print(ftime)
 # print(div.loc[ftime, "dividend"])
-
-
-
-

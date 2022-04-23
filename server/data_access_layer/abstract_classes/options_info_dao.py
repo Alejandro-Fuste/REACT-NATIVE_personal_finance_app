@@ -36,3 +36,15 @@ class OptionsInfoDAO(ABC):
     @abstractmethod
     def get_tickers_sp500(self) -> list:
         pass
+
+    @abstractmethod
+    def get_all_dividends(self, ticker: str) -> pandas:
+        pass
+
+    @abstractmethod
+    def get_dividends_for_specific_period(self, ticker: str, start_date: str, end_date: str) -> pandas:
+        pass
+
+    @abstractmethod
+    def get_dividends_previous_year(self, ticker: str) -> pandas:
+        pass
