@@ -62,5 +62,5 @@ class OptionsInfoDAO(ABC):
         pass
 
     @abstractmethod
-    def get_dividend_investment_amount(self) -> dict:
+    def get_dividend_investment_amount(self, tickers: list) -> dict:
         pass

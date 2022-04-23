@@ -97,6 +97,9 @@ class OptionsInfoImp(OptionsInfoDAO):
         res = option.get_targeted_dividends(companies)
         return res
 
+    def get_dividend_investment_amount(self, tickers: list) -> dict:
+        pass
+
 
 
 option = OptionsInfoImp()
