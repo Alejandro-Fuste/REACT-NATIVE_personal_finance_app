@@ -1,3 +1,5 @@
+from pprint import pprint
+
 from server.data_access_layer.abstract_classes.options_info_dao import OptionsInfoDAO
 from server.custom_exceptions.option_not_found import OptionNotFound
 
@@ -86,24 +88,17 @@ class OptionsInfoImp(OptionsInfoDAO):
                 div = result.loc[result_length - 1, "dividend"]
 
             if div > 1.00:
-                ticker_list.append(ticker)
+                ticker_list.append({"ticker": ticker, "amount": div})
 
         return ticker_list
+
+    def get_dow_targets(self):
+        companies = option.get_tickers_dow()
+        res = option.get_targeted_dividends(companies)
+        return res
 
 
 option = OptionsInfoImp()
 
-# # print(isinstance(calls.loc[4, "Strike"], float))
-#
-# # for i in range(len(calls)):
-# #     print(calls.loc[i, "Strike"])
-
-# dow = stock_info.tickers_dow()
-# div = stock_info.get_dividends()
-# print(div)
-# div_top = div.head()
-# div_first_row = list(div_top.index)
-# time = div_first_row[0]
-# ftime = time.strftime('%Y-%m-%d')
-# # print(ftime)
-# print(div.loc[ftime, "dividend"])
+# pprint(res)
+print(option.get_dow_targets())
