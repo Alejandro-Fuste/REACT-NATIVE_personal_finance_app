@@ -41,9 +41,6 @@ class OptionsInfoImp(OptionsInfoDAO):
             raise OptionNotFound(stock_not_found)
 
 
-option = OptionsInfoImp()
-r = option.get_dow_targets()
-pprint(r)
 
 
 

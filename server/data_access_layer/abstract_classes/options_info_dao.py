@@ -17,4 +17,3 @@ class OptionsInfoDAO(ABC):
     def get_puts(self, ticker: str) -> pandas:
         pass
 
-   
