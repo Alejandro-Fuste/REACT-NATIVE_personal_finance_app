@@ -80,14 +80,19 @@ class DividendInfoImp(DividendInfoDao):
         amount = (investment / stock_price) * dividend
         return amount
 
+    # Write to json file --------------------------------------------------------------
+
+    @staticmethod
+    def write_to_json():
+        json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
+        pprint(json_string)
+
+        with open('tickers.json', 'w') as outfile:
+            outfile.writelines(json_string)
+
 
 div = DividendInfoImp()
-# pprint(div.sp500_ticker_dictionary())
-# json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
-# pprint(json_string)
-#
-# with open('tickers.json', 'w') as outfile:
-#     outfile.write(json_string)
+pprint(div.sp500_ticker_dictionary())
 
 # print(f'GS - {round(div.get_dividend_investment_amount(2.00, 319.77, 5000.00),2)}')
 # print(f'HD - {round(div.get_dividend_investment_amount(1.90, 300.11, 5000.00),2)}')
