@@ -1,6 +1,7 @@
 from pprint import pprint
 
 import pandas
+import json
 
 from server.data_access_layer.abstract_classes.dividend_info_dao import DividendInfoDao
 
@@ -86,4 +87,10 @@ class DividendInfoImp(DividendInfoDao):
 
 
 div = DividendInfoImp()
-pprint(div.sp500_ticker_dictionary())
+# pprint(div.sp500_ticker_dictionary())
+
+json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
+pprint(json_string)
+
+with open('tickers.json', 'w') as outfile:
+    outfile.write(json_string)
