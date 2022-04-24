@@ -73,14 +73,15 @@ class OptionsInfoImp(OptionsInfoDAO):
         ticker_list = []
         for ticker in tickers:
             div = 0
-            result = option.get_dividends_current_year(ticker)
+            first_div_payment_date = None
+            result = self.get_dividends_current_year(ticker)
             result_length = len(result)
-            first_div_payment_date = r.loc[0, "date"]
 
             if result_length == 0:
                 div += 0
             else:
                 div = result.loc[result_length - 1, "dividend"]
+                first_div_payment_date = result.loc[0, "date"].strftime('%m-%d-%Y')
 
             if div > 1.00:
                 ticker_list.append({"ticker": ticker, "amount": div, "first_payment_date": first_div_payment_date})
@@ -88,8 +89,8 @@ class OptionsInfoImp(OptionsInfoDAO):
         return ticker_list
 
     def get_dow_targets(self):
-        companies = option.get_tickers_dow()
-        res = option.get_targeted_dividends(companies)
+        companies = self.get_tickers_dow()
+        res = self.get_targeted_dividends(companies)
         return res
 
     def get_dividend_investment_amount(self, tickers: list, stock_price: float, investment: float) -> list:
@@ -103,6 +104,8 @@ class OptionsInfoImp(OptionsInfoDAO):
 
 
 option = OptionsInfoImp()
-r = option.get_dividends_current_year('t')
-print()
+r = option.get_dow_targets()
+pprint(r)
+
+
 
