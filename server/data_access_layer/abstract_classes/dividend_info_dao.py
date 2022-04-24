@@ -5,6 +5,7 @@ import pandas
 
 class DividendInfoDao(ABC):
 
+    # Get tickers -----------------------------------------------------------------
     @abstractmethod
     def get_tickers_dow(self) -> list:
         pass
@@ -17,6 +18,11 @@ class DividendInfoDao(ABC):
     def get_tickers_sp500(self) -> list:
         pass
 
+    @abstractmethod
+    def sp500_ticker_dictionary(self) -> dict:
+        pass
+
+    # Get Dividends -----------------------------------------------------------------
     @abstractmethod
     def get_all_dividends(self, ticker: str) -> pandas:
         pass

@@ -20,7 +20,7 @@ class DividendInfoImp(DividendInfoDao):
     def get_tickers_sp500(self) -> list:
         return stock_info.tickers_sp500()
 
-    def sp500_ticker_dictionary(self) -> list:
+    def sp500_ticker_dictionary(self) -> dict:
         begin = 0
         end = 36
         array = []
@@ -31,7 +31,7 @@ class DividendInfoImp(DividendInfoDao):
             begin += 37
             end += 36
 
-        return array
+        return {"sp500": array}
 
     # Get Dividends -----------------------------------------------------------------
     def get_all_dividends(self, ticker: str) -> pandas:
