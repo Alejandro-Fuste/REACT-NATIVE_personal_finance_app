@@ -76,20 +76,19 @@ class DividendInfoImp(DividendInfoDao):
         res = self.get_targeted_dividends(companies)
         return res
 
-    def get_dividend_investment_amount(self, tickers: list, stock_price: float, investment: float) -> list:
-        array = []
-
-        for ticker in tickers:
-            amount = (investment / stock_price) * ticker["amount"]
-            array.append({"ticker": ticker, "dividendAmount": amount})
-
-        return array
+    def get_dividend_investment_amount(self, dividend: float, stock_price: float, investment: float) -> float:
+        amount = (investment / stock_price) * dividend
+        return amount
 
 
-# div = DividendInfoImp()
+div = DividendInfoImp()
 # pprint(div.sp500_ticker_dictionary())
 # json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
 # pprint(json_string)
 #
 # with open('tickers.json', 'w') as outfile:
 #     outfile.write(json_string)
+
+# print(f'GS - {round(div.get_dividend_investment_amount(2.00, 319.77, 5000.00),2)}')
+# print(f'HD - {round(div.get_dividend_investment_amount(1.90, 300.11, 5000.00),2)}')
+# print(f'UNH - {round(div.get_dividend_investment_amount(2.00, 520.94, 5000.00),2)}')
