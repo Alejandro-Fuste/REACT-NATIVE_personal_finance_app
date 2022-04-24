@@ -1,3 +1,5 @@
+from pprint import pprint
+
 import pandas
 
 from server.data_access_layer.abstract_classes.dividend_info_dao import DividendInfoDao
@@ -17,6 +19,19 @@ class DividendInfoImp(DividendInfoDao):
 
     def get_tickers_sp500(self) -> list:
         return stock_info.tickers_sp500()
+
+    def sp500_ticker_dictionary(self) -> list:
+        begin = 0
+        end = 36
+        array = []
+        tickers = self.get_tickers_sp500()
+
+        for i in range(3):
+            array.append({i: tickers[begin:end]})
+            begin += 37
+            end += 36
+
+        return array
 
     # Get Dividends -----------------------------------------------------------------
     def get_all_dividends(self, ticker: str) -> pandas:
@@ -70,3 +85,5 @@ class DividendInfoImp(DividendInfoDao):
         return array
 
 
+div = DividendInfoImp()
+pprint(div.sp500_ticker_dictionary())
