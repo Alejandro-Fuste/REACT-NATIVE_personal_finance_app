@@ -27,7 +27,7 @@ class DividendInfoImp(DividendInfoDao):
         array = []
         tickers = self.get_tickers_sp500()
 
-        for i in range(3):
+        for i in range(14):
             array.append({i: tickers[begin:end]})
             begin += 37
             end += 36
@@ -86,11 +86,10 @@ class DividendInfoImp(DividendInfoDao):
         return array
 
 
-div = DividendInfoImp()
+# div = DividendInfoImp()
 # pprint(div.sp500_ticker_dictionary())
-
-json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
-pprint(json_string)
-
-with open('tickers.json', 'w') as outfile:
-    outfile.write(json_string)
+# json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
+# pprint(json_string)
+#
+# with open('tickers.json', 'w') as outfile:
+#     outfile.write(json_string)
