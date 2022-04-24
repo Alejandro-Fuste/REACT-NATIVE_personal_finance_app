@@ -21,20 +21,8 @@ class DividendInfoImp(DividendInfoDao):
     def get_tickers_sp500(self) -> list:
         return stock_info.tickers_sp500()
 
-    def sp500_ticker_dictionary(self) -> dict:
-        begin = 0
-        end = 36
-        array = []
-        tickers = self.get_tickers_sp500()
-
-        for i in range(14):
-            array.append({i: tickers[begin:end]})
-            begin += 37
-            end += 36
-
-        return {"sp500": array}
-
     # Get Dividends -----------------------------------------------------------------
+
     def get_all_dividends(self, ticker: str) -> pandas:
         return stock_info.get_dividends(ticker, index_as_date=False)
 
@@ -80,19 +68,46 @@ class DividendInfoImp(DividendInfoDao):
         amount = (investment / stock_price) * dividend
         return amount
 
+    # Make dictionaries ---------------------------------------------------------------
+
+    def nasdaq_ticker_dictionary(self) -> dict:
+        tickers = self.get_tickers_nasdaq()
+        array = [{0: tickers[0:78]}]
+        begin = 79
+        end = 128
+
+        for i in range(112):
+            array.append({i + 1: tickers[begin:end]})
+            begin += 50
+            end += 50
+
+        return {"nasdaq": array}
+
+    def sp500_ticker_dictionary(self) -> dict:
+        begin = 0
+        end = 36
+        array = []
+        tickers = self.get_tickers_sp500()
+
+        for i in range(14):
+            array.append({i: tickers[begin:end]})
+            begin += 37
+            end += 36
+
+        return {"sp500": array}
+
     # Write to json file --------------------------------------------------------------
 
-    @staticmethod
-    def write_to_json():
-        json_string = json.dumps(div.sp500_ticker_dictionary(), indent=1)
+    def write_tickers_to_json(self):
+        array = [self.nasdaq_ticker_dictionary(), self.sp500_ticker_dictionary()]
+        json_string = json.dumps(array, indent=1)
         pprint(json_string)
 
         with open('tickers.json', 'w') as outfile:
             outfile.writelines(json_string)
 
 
-div = DividendInfoImp()
-pprint(div.sp500_ticker_dictionary())
+# div = DividendInfoImp()
 
 # print(f'GS - {round(div.get_dividend_investment_amount(2.00, 319.77, 5000.00),2)}')
 # print(f'HD - {round(div.get_dividend_investment_amount(1.90, 300.11, 5000.00),2)}')
