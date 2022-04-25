@@ -62,7 +62,7 @@ class DividendInfoImp(DividendInfoDao):
     def get_dow_targets(self):
         companies = self.get_tickers_dow()
         res = self.get_targeted_dividends(companies)
-        return res
+        return sorted(res, key=lambda i: i['first_payment_date'])
 
     def get_dividend_investment_amount(self, dividend: float, stock_price: float, investment: float) -> float:
         amount = (investment / stock_price) * dividend
@@ -107,7 +107,10 @@ class DividendInfoImp(DividendInfoDao):
             outfile.writelines(json_string)
 
 
-# div = DividendInfoImp()
+div = DividendInfoImp()
+s = div.get_dow_targets()
+
+pprint(s)
 
 # print(f'GS - {round(div.get_dividend_investment_amount(2.00, 319.77, 5000.00),2)}')
 # print(f'HD - {round(div.get_dividend_investment_amount(1.90, 300.11, 5000.00),2)}')
