@@ -1,0 +1,14 @@
+{
+ "dividend_targets": [
+  {
+   "ticker": "ADP",
+   "amount": 1.04,
+   "first_payment_date": "03-10-2022"
+  },
+  {
+   "ticker": "AMGN",
+   "amount": 1.94,
+   "first_payment_date": "02-14-2022"
+  }
+ ]
+}

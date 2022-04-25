@@ -98,16 +98,38 @@ class DividendInfoImp(DividendInfoDao):
 
     # Write to json file --------------------------------------------------------------
 
-    def write_to_json(self, array: list, file_name: str):
-        json_string = json.dumps(array, indent=1)
+    def write_to_json(self, data, file_name: str):
+        json_string = json.dumps(data, indent=1)
         pprint(json_string)
 
         with open(file_name, 'w') as outfile:
             outfile.writelines(json_string)
 
+    # Append to JSON
+    def append_to_json(self, new_data, file_name: str):
+        with open(file_name, 'r+') as file:
+            # First we load existing data into a dict.
+            file_data = json.load(file)
+            # Join new_data with file_data inside emp_details
+            file_data["dividend_targets"].append(new_data)
+            # Sets file's current position at offset.
+            file.seek(0)
+            # convert back to json.
+            json.dump(file_data, file, indent=1)
 
-div = DividendInfoImp()
-s = div.get_dow_targets()
 
-pprint(s)
+d = DividendInfoImp()
+
+f = open('tickers.json', "r")
+da = json.load(f)
+nasdaq = da[0]["nasdaq"]
+nasdaq_result = nasdaq[5]['5']
+dat = d.get_targeted_dividends(nasdaq_result)
+
+# pprint(dat)
+
+for i in dat:
+    d.append_to_json(i, "dividend_targets.json")
+
+
 
