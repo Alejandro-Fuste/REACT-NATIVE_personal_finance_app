@@ -57,12 +57,12 @@ class DividendInfoImp(DividendInfoDao):
             if div > 1.00:
                 ticker_list.append({"ticker": ticker, "amount": div, "first_payment_date": first_div_payment_date})
 
-        return ticker_list
+        return sorted(ticker_list, key=lambda i: i['first_payment_date'])
 
     def get_dow_targets(self):
         companies = self.get_tickers_dow()
         res = self.get_targeted_dividends(companies)
-        return sorted(res, key=lambda i: i['first_payment_date'])
+        return res
 
     def get_dividend_investment_amount(self, dividend: float, stock_price: float, investment: float) -> float:
         amount = (investment / stock_price) * dividend
@@ -98,12 +98,11 @@ class DividendInfoImp(DividendInfoDao):
 
     # Write to json file --------------------------------------------------------------
 
-    def write_tickers_to_json(self):
-        array = [self.nasdaq_ticker_dictionary(), self.sp500_ticker_dictionary()]
+    def write_to_json(self, array: list, file_name: str):
         json_string = json.dumps(array, indent=1)
         pprint(json_string)
 
-        with open('tickers.json', 'w') as outfile:
+        with open(file_name, 'w') as outfile:
             outfile.writelines(json_string)
 
 
@@ -112,6 +111,3 @@ s = div.get_dow_targets()
 
 pprint(s)
 
-# print(f'GS - {round(div.get_dividend_investment_amount(2.00, 319.77, 5000.00),2)}')
-# print(f'HD - {round(div.get_dividend_investment_amount(1.90, 300.11, 5000.00),2)}')
-# print(f'UNH - {round(div.get_dividend_investment_amount(2.00, 520.94, 5000.00),2)}')

@@ -50,3 +50,7 @@ class DividendInfoDao(ABC):
     @abstractmethod
     def get_dividend_investment_amount(self, tickers: list, stock_price: float, investment: float) -> list:
         pass
+
+    # Write to json file --------------------------------------------------------------
+    def write_to_json(self, array: list, file_name: str):
+        pass
