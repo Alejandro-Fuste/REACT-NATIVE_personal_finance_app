@@ -144,6 +144,36 @@
    "ticker": "WING",
    "amount": 4.0,
    "first_payment_date": "03-10-2022"
+  },
+  {
+   "ticker": "ABBV",
+   "amount": 1.41,
+   "first_payment_date": "01-13-2022"
+  },
+  {
+   "ticker": "AMP",
+   "amount": 1.13,
+   "first_payment_date": "02-10-2022"
+  },
+  {
+   "ticker": "AMGN",
+   "amount": 1.94,
+   "first_payment_date": "02-14-2022"
+  },
+  {
+   "ticker": "ADP",
+   "amount": 1.04,
+   "first_payment_date": "03-10-2022"
+  },
+  {
+   "ticker": "AAP",
+   "amount": 1.5,
+   "first_payment_date": "03-17-2022"
+  },
+  {
+   "ticker": "AMT",
+   "amount": 1.4,
+   "first_payment_date": "04-12-2022"
   }
  ]
 }
