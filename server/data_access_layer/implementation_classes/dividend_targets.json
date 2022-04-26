@@ -339,6 +339,36 @@
    "ticker": "NOC",
    "amount": 1.57,
    "first_payment_date": "02-25-2022"
+  },
+  {
+   "ticker": "PNC",
+   "amount": 1.5,
+   "first_payment_date": "01-14-2022"
+  },
+  {
+   "ticker": "PRU",
+   "amount": 1.2,
+   "first_payment_date": "02-14-2022"
+  },
+  {
+   "ticker": "PXD",
+   "amount": 3.78,
+   "first_payment_date": "02-25-2022"
+  },
+  {
+   "ticker": "PSA",
+   "amount": 2.0,
+   "first_payment_date": "03-15-2022"
+  },
+  {
+   "ticker": "RE",
+   "amount": 1.55,
+   "first_payment_date": "03-15-2022"
+  },
+  {
+   "ticker": "PM",
+   "amount": 1.25,
+   "first_payment_date": "03-23-2022"
   }
  ]
 }
