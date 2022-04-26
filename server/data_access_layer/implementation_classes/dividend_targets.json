@@ -409,6 +409,11 @@
    "ticker": "TROW",
    "amount": 1.2,
    "first_payment_date": "03-14-2022"
+  },
+  {
+   "ticker": "WHR",
+   "amount": 1.75,
+   "first_payment_date": "02-24-2022"
   }
  ]
 }
