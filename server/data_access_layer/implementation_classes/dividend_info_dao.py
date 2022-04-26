@@ -123,7 +123,7 @@ d = DividendInfoImp()
 f = open('tickers.json', "r")
 da = json.load(f)
 sp500 = da[1]["sp500"]
-sp500_result = sp500[5]['5']
+sp500_result = sp500[6]['6']
 
 dat = d.get_targeted_dividends(sp500_result)
 

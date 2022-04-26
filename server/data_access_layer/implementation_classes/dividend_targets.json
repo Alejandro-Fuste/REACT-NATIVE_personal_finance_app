@@ -269,6 +269,16 @@
    "ticker": "GS",
    "amount": 2.0,
    "first_payment_date": "03-01-2022"
+  },
+  {
+   "ticker": "IBM",
+   "amount": 1.64,
+   "first_payment_date": "02-10-2022"
+  },
+  {
+   "ticker": "ITW",
+   "amount": 1.22,
+   "first_payment_date": "03-30-2022"
   }
  ]
 }
