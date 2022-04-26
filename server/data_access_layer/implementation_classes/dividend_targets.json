@@ -314,6 +314,21 @@
    "ticker": "LRCX",
    "amount": 1.5,
    "first_payment_date": "03-15-2022"
+  },
+  {
+   "ticker": "MMM",
+   "amount": 1.49,
+   "first_payment_date": "02-17-2022"
+  },
+  {
+   "ticker": "MSCI",
+   "amount": 1.04,
+   "first_payment_date": "02-17-2022"
+  },
+  {
+   "ticker": "MTB",
+   "amount": 1.2,
+   "first_payment_date": "02-25-2022"
   }
  ]
 }
