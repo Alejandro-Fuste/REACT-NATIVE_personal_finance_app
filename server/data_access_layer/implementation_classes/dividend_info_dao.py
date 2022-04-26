@@ -64,7 +64,8 @@ class DividendInfoImp(DividendInfoDao):
         res = self.get_targeted_dividends(companies)
         return res
 
-    def get_dividend_investment_amount(self, dividend: float, stock_price: float, investment: float) -> float:
+    def get_dividend_investment_amount(self, dividend: float, ticker: str, investment: float) -> float:
+        stock_price = stock_info.get_live_price(ticker)
         amount = (investment / stock_price) * dividend
         return amount
 
@@ -120,17 +121,22 @@ class DividendInfoImp(DividendInfoDao):
 
 d = DividendInfoImp()
 
-f = open('tickers.json', "r")
+f = open('dividend_targets.json', "r")
 da = json.load(f)
-sp500 = da[1]["sp500"]
-sp500_result = sp500[13]['13']
+dt = da['dividend_targets']
 
-dat = d.get_targeted_dividends(sp500_result)
+# pprint(dt)
 
-pprint(dat)
+investment_amount = 5000
+a = []
 
-for i in dat:
-    d.append_to_json(i, "dividend_targets.json")
+for i in dt:
+    amount = d.get_dividend_investment_amount(i["amount"], i["ticker"], investment_amount)
+    a.append({"ticker": i["ticker"], "dividend": i["amount"], "first_payment_date": i["first_payment_date"],
+              "potential_quarterly_payment": round(amount, 2)})
+    a.append(i)
 
+sorted(a, key=lambda j: j['first_payment_date'])
+print(a)
 
-
+d.write_to_json(a, "investment_list")
