@@ -279,6 +279,41 @@
    "ticker": "ITW",
    "amount": 1.22,
    "first_payment_date": "03-30-2022"
+  },
+  {
+   "ticker": "KLAC",
+   "amount": 1.05,
+   "first_payment_date": "02-11-2022"
+  },
+  {
+   "ticker": "LMT",
+   "amount": 2.8,
+   "first_payment_date": "02-28-2022"
+  },
+  {
+   "ticker": "KMB",
+   "amount": 1.16,
+   "first_payment_date": "03-03-2022"
+  },
+  {
+   "ticker": "LYB",
+   "amount": 1.13,
+   "first_payment_date": "03-04-2022"
+  },
+  {
+   "ticker": "LHX",
+   "amount": 1.12,
+   "first_payment_date": "03-10-2022"
+  },
+  {
+   "ticker": "LIN",
+   "amount": 1.17,
+   "first_payment_date": "03-10-2022"
+  },
+  {
+   "ticker": "LRCX",
+   "amount": 1.5,
+   "first_payment_date": "03-15-2022"
   }
  ]
 }
