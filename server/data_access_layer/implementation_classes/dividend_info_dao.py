@@ -123,7 +123,7 @@ d = DividendInfoImp()
 f = open('tickers.json', "r")
 da = json.load(f)
 nasdaq = da[0]["nasdaq"]
-nasdaq_result = nasdaq[32]['32']
+nasdaq_result = nasdaq[112]['112']
 dat = d.get_targeted_dividends(nasdaq_result)
 
 pprint(dat)
