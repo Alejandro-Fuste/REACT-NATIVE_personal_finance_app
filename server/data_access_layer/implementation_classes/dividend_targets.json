@@ -384,6 +384,31 @@
    "ticker": "SRE",
    "amount": 1.145,
    "first_payment_date": "03-24-2022"
+  },
+  {
+   "ticker": "TXN",
+   "amount": 1.15,
+   "first_payment_date": "01-28-2022"
+  },
+  {
+   "ticker": "UPS",
+   "amount": 1.52,
+   "first_payment_date": "02-18-2022"
+  },
+  {
+   "ticker": "UNP",
+   "amount": 1.18,
+   "first_payment_date": "02-25-2022"
+  },
+  {
+   "ticker": "UNH",
+   "amount": 1.45,
+   "first_payment_date": "03-11-2022"
+  },
+  {
+   "ticker": "TROW",
+   "amount": 1.2,
+   "first_payment_date": "03-14-2022"
   }
  ]
 }
