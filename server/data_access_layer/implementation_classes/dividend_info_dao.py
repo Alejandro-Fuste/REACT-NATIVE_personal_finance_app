@@ -121,22 +121,26 @@ class DividendInfoImp(DividendInfoDao):
 
 d = DividendInfoImp()
 
-f = open('dividend_targets.json', "r")
-da = json.load(f)
-dt = da['dividend_targets']
+# f = open('dividend_targets.json', "r")
+# da = json.load(f)
+# dt = da['dividend_targets']
+#
+# print(len(dt))
 
-# pprint(dt)
+g = open('investment_list.json.json', "r")
+dat = json.load(g)
+print(dat)
 
-investment_amount = 5000
-a = []
-
-for i in dt:
-    amount = d.get_dividend_investment_amount(i["amount"], i["ticker"], investment_amount)
-    a.append({"ticker": i["ticker"], "dividend": i["amount"], "first_payment_date": i["first_payment_date"],
-              "potential_quarterly_payment": round(amount, 2)})
-    a.append(i)
-
-sorted(a, key=lambda j: j['first_payment_date'])
-print(a)
-
-d.write_to_json(a, "investment_list")
+# investment_amount = 5000
+# a = []
+#
+# for i in dt:
+#     amount = d.get_dividend_investment_amount(i["amount"], i["ticker"], investment_amount)
+#     a.append({"ticker": i["ticker"], "dividend": i["amount"], "first_payment_date": i["first_payment_date"],
+#               "potential_quarterly_payment": round(amount, 2)})
+#     a.append(i)
+#
+# sorted(a, key=lambda j: j['first_payment_date'])
+# print(a)
+#
+# d.write_to_json(a, "investment_list.json")

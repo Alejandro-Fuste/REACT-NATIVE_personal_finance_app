@@ -1,0 +1,490 @@
+{
+"potential_investments_list":[
+ {
+  "ticker": "ADP",
+  "dividend": 1.04,
+  "first_payment_date": "03-10-2022",
+  "potential_quarterly_payment": 23.16
+ },
+ {
+  "ticker": "AMGN",
+  "dividend": 1.94,
+  "first_payment_date": "02-14-2022",
+  "potential_quarterly_payment": 38.61
+ },
+ {
+  "ticker": "ATRI",
+  "dividend": 1.95,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 14.51
+ },
+ {
+  "ticker": "AVGOP",
+  "dividend": 20.0,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 56.4
+ },
+ {
+  "ticker": "AVGO",
+  "dividend": 4.1,
+  "first_payment_date": "03-21-2022",
+  "potential_quarterly_payment": 35.96
+ },
+ {
+  "ticker": "BSET",
+  "dividend": 1.5,
+  "first_payment_date": "02-10-2022",
+  "potential_quarterly_payment": 439.37
+ },
+ {
+  "ticker": "CBRL",
+  "dividend": 1.3,
+  "first_payment_date": "01-13-2022",
+  "potential_quarterly_payment": 54.35
+ },
+ {
+  "ticker": "CHK",
+  "dividend": 1.768,
+  "first_payment_date": "03-04-2022",
+  "potential_quarterly_payment": 104.85
+ },
+ {
+  "ticker": "DHIL",
+  "dividend": 1.5,
+  "first_payment_date": "03-04-2022",
+  "potential_quarterly_payment": 42.26
+ },
+ {
+  "ticker": "EGLE",
+  "dividend": 2.05,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 171.38
+ },
+ {
+  "ticker": "ERIE",
+  "dividend": 1.11,
+  "first_payment_date": "01-04-2022",
+  "potential_quarterly_payment": 32.88
+ },
+ {
+  "ticker": "EQIX",
+  "dividend": 3.1,
+  "first_payment_date": "03-04-2022",
+  "potential_quarterly_payment": 20.75
+ },
+ {
+  "ticker": "EWCZ",
+  "dividend": 3.3,
+  "first_payment_date": "04-21-2022",
+  "potential_quarterly_payment": 612.7
+ },
+ {
+  "ticker": "HIFS",
+  "dividend": 1.3,
+  "first_payment_date": "01-03-2022",
+  "potential_quarterly_payment": 19.07
+ },
+ {
+  "ticker": "IEP",
+  "dividend": 2.0,
+  "first_payment_date": "03-17-2022",
+  "potential_quarterly_payment": 190.69
+ },
+ {
+  "ticker": "KLAC",
+  "dividend": 1.05,
+  "first_payment_date": "02-11-2022",
+  "potential_quarterly_payment": 16.39
+ },
+ {
+  "ticker": "LAMR",
+  "dividend": 1.1,
+  "first_payment_date": "03-18-2022",
+  "potential_quarterly_payment": 48.9
+ },
+ {
+  "ticker": "MRBK",
+  "dividend": 1.2,
+  "first_payment_date": "02-11-2022",
+  "potential_quarterly_payment": 188.26
+ },
+ {
+  "ticker": "NFTY",
+  "dividend": 1.295,
+  "first_payment_date": "03-25-2022",
+  "potential_quarterly_payment": 141.22
+ },
+ {
+  "ticker": "PARAP",
+  "dividend": 1.438,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 160.67
+ },
+ {
+  "ticker": "PEP",
+  "dividend": 1.075,
+  "first_payment_date": "03-03-2022",
+  "potential_quarterly_payment": 30.8
+ },
+ {
+  "ticker": "QRTEP",
+  "dividend": 2.0,
+  "first_payment_date": "02-25-2022",
+  "potential_quarterly_payment": 121.95
+ },
+ {
+  "ticker": "RNDB",
+  "dividend": 2.15,
+  "first_payment_date": "02-07-2022",
+  "potential_quarterly_payment": 407.2
+ },
+ {
+  "ticker": "ROLLP",
+  "dividend": 1.25,
+  "first_payment_date": "03-31-2022",
+  "potential_quarterly_payment": 68.43
+ },
+ {
+  "ticker": "SABRP",
+  "dividend": 1.625,
+  "first_payment_date": "02-14-2022",
+  "potential_quarterly_payment": 58.21
+ },
+ {
+  "ticker": "SBLK",
+  "dividend": 2.0,
+  "first_payment_date": "03-01-2022",
+  "potential_quarterly_payment": 366.77
+ },
+ {
+  "ticker": "VRTS",
+  "dividend": 1.5,
+  "first_payment_date": "01-27-2022",
+  "potential_quarterly_payment": 39.81
+ },
+ {
+  "ticker": "WING",
+  "dividend": 4.0,
+  "first_payment_date": "03-10-2022",
+  "potential_quarterly_payment": 204.09
+ },
+ {
+  "ticker": "ABBV",
+  "dividend": 1.41,
+  "first_payment_date": "01-13-2022",
+  "potential_quarterly_payment": 45.07
+ },
+ {
+  "ticker": "AMP",
+  "dividend": 1.13,
+  "first_payment_date": "02-10-2022",
+  "potential_quarterly_payment": 21.15
+ },
+ {
+  "ticker": "AMGN",
+  "dividend": 1.94,
+  "first_payment_date": "02-14-2022",
+  "potential_quarterly_payment": 38.62
+ },
+ {
+  "ticker": "ADP",
+  "dividend": 1.04,
+  "first_payment_date": "03-10-2022",
+  "potential_quarterly_payment": 23.16
+ },
+ {
+  "ticker": "AAP",
+  "dividend": 1.5,
+  "first_payment_date": "03-17-2022",
+  "potential_quarterly_payment": 33.22
+ },
+ {
+  "ticker": "AMT",
+  "dividend": 1.4,
+  "first_payment_date": "04-12-2022",
+  "potential_quarterly_payment": 27.2
+ },
+ {
+  "ticker": "APD",
+  "dividend": 1.62,
+  "first_payment_date": "01-03-2022",
+  "potential_quarterly_payment": 34.17
+ },
+ {
+  "ticker": "BLK",
+  "dividend": 4.88,
+  "first_payment_date": "03-04-2022",
+  "potential_quarterly_payment": 37.36
+ },
+ {
+  "ticker": "ANTM",
+  "dividend": 1.28,
+  "first_payment_date": "03-09-2022",
+  "potential_quarterly_payment": 12.64
+ },
+ {
+  "ticker": "AVGO",
+  "dividend": 4.1,
+  "first_payment_date": "03-21-2022",
+  "potential_quarterly_payment": 35.97
+ },
+ {
+  "ticker": "ARE",
+  "dividend": 1.15,
+  "first_payment_date": "03-30-2022",
+  "potential_quarterly_payment": 29.81
+ },
+ {
+  "ticker": "AVB",
+  "dividend": 1.59,
+  "first_payment_date": "03-30-2022",
+  "potential_quarterly_payment": 32.24
+ },
+ {
+  "ticker": "CAT",
+  "dividend": 1.11,
+  "first_payment_date": "01-19-2022",
+  "potential_quarterly_payment": 26.26
+ },
+ {
+  "ticker": "CLX",
+  "dividend": 1.16,
+  "first_payment_date": "01-25-2022",
+  "potential_quarterly_payment": 39.36
+ },
+ {
+  "ticker": "CI",
+  "dividend": 1.12,
+  "first_payment_date": "03-08-2022",
+  "potential_quarterly_payment": 21.94
+ },
+ {
+  "ticker": "CCI",
+  "dividend": 1.47,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 38.41
+ },
+ {
+  "ticker": "CVX",
+  "dividend": 1.42,
+  "first_payment_date": "02-15-2022",
+  "potential_quarterly_payment": 44.95
+ },
+ {
+  "ticker": "DLR",
+  "dividend": 1.22,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 40.4
+ },
+ {
+  "ticker": "DPZ",
+  "dividend": 1.1,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 14.79
+ },
+ {
+  "ticker": "DE",
+  "dividend": 1.05,
+  "first_payment_date": "03-30-2022",
+  "potential_quarterly_payment": 13.68
+ },
+ {
+  "ticker": "FRT",
+  "dividend": 1.07,
+  "first_payment_date": "01-03-2022",
+  "potential_quarterly_payment": 44.33
+ },
+ {
+  "ticker": "GD",
+  "dividend": 1.26,
+  "first_payment_date": "01-13-2022",
+  "potential_quarterly_payment": 26.24
+ },
+ {
+  "ticker": "GWW",
+  "dividend": 1.62,
+  "first_payment_date": "02-11-2022",
+  "potential_quarterly_payment": 16.4
+ },
+ {
+  "ticker": "GS",
+  "dividend": 2.0,
+  "first_payment_date": "03-01-2022",
+  "potential_quarterly_payment": 31.7
+ },
+ {
+  "ticker": "IBM",
+  "dividend": 1.64,
+  "first_payment_date": "02-10-2022",
+  "potential_quarterly_payment": 59.68
+ },
+ {
+  "ticker": "ITW",
+  "dividend": 1.22,
+  "first_payment_date": "03-30-2022",
+  "potential_quarterly_payment": 30.41
+ },
+ {
+  "ticker": "KLAC",
+  "dividend": 1.05,
+  "first_payment_date": "02-11-2022",
+  "potential_quarterly_payment": 16.39
+ },
+ {
+  "ticker": "LMT",
+  "dividend": 2.8,
+  "first_payment_date": "02-28-2022",
+  "potential_quarterly_payment": 31.29
+ },
+ {
+  "ticker": "KMB",
+  "dividend": 1.16,
+  "first_payment_date": "03-03-2022",
+  "potential_quarterly_payment": 41.25
+ },
+ {
+  "ticker": "LYB",
+  "dividend": 1.13,
+  "first_payment_date": "03-04-2022",
+  "potential_quarterly_payment": 53.94
+ },
+ {
+  "ticker": "LHX",
+  "dividend": 1.12,
+  "first_payment_date": "03-10-2022",
+  "potential_quarterly_payment": 22.95
+ },
+ {
+  "ticker": "LIN",
+  "dividend": 1.17,
+  "first_payment_date": "03-10-2022",
+  "potential_quarterly_payment": 19.1
+ },
+ {
+  "ticker": "LRCX",
+  "dividend": 1.5,
+  "first_payment_date": "03-15-2022",
+  "potential_quarterly_payment": 16.05
+ },
+ {
+  "ticker": "MMM",
+  "dividend": 1.49,
+  "first_payment_date": "02-17-2022",
+  "potential_quarterly_payment": 51.62
+ },
+ {
+  "ticker": "MSCI",
+  "dividend": 1.04,
+  "first_payment_date": "02-17-2022",
+  "potential_quarterly_payment": 12.03
+ },
+ {
+  "ticker": "MTB",
+  "dividend": 1.2,
+  "first_payment_date": "02-25-2022",
+  "potential_quarterly_payment": 34.94
+ },
+ {
+  "ticker": "NSC",
+  "dividend": 1.24,
+  "first_payment_date": "02-03-2022",
+  "potential_quarterly_payment": 24.03
+ },
+ {
+  "ticker": "NOC",
+  "dividend": 1.57,
+  "first_payment_date": "02-25-2022",
+  "potential_quarterly_payment": 17.59
+ },
+ {
+  "ticker": "PNC",
+  "dividend": 1.5,
+  "first_payment_date": "01-14-2022",
+  "potential_quarterly_payment": 43.92
+ },
+ {
+  "ticker": "PRU",
+  "dividend": 1.2,
+  "first_payment_date": "02-14-2022",
+  "potential_quarterly_payment": 53.79
+ },
+ {
+  "ticker": "PXD",
+  "dividend": 3.78,
+  "first_payment_date": "02-25-2022",
+  "potential_quarterly_payment": 81.44
+ },
+ {
+  "ticker": "PSA",
+  "dividend": 2.0,
+  "first_payment_date": "03-15-2022",
+  "potential_quarterly_payment": 25.18
+ },
+ {
+  "ticker": "RE",
+  "dividend": 1.55,
+  "first_payment_date": "03-15-2022",
+  "potential_quarterly_payment": 27.54
+ },
+ {
+  "ticker": "PM",
+  "dividend": 1.25,
+  "first_payment_date": "03-23-2022",
+  "potential_quarterly_payment": 60.64
+ },
+ {
+  "ticker": "SNA",
+  "dividend": 1.42,
+  "first_payment_date": "02-22-2022",
+  "potential_quarterly_payment": 32.18
+ },
+ {
+  "ticker": "SPG",
+  "dividend": 1.65,
+  "first_payment_date": "03-09-2022",
+  "potential_quarterly_payment": 66.16
+ },
+ {
+  "ticker": "SRE",
+  "dividend": 1.145,
+  "first_payment_date": "03-24-2022",
+  "potential_quarterly_payment": 34.66
+ },
+ {
+  "ticker": "TXN",
+  "dividend": 1.15,
+  "first_payment_date": "01-28-2022",
+  "potential_quarterly_payment": 33.67
+ },
+ {
+  "ticker": "UPS",
+  "dividend": 1.52,
+  "first_payment_date": "02-18-2022",
+  "potential_quarterly_payment": 41.05
+ },
+ {
+  "ticker": "UNP",
+  "dividend": 1.18,
+  "first_payment_date": "02-25-2022",
+  "potential_quarterly_payment": 25.06
+ },
+ {
+  "ticker": "UNH",
+  "dividend": 1.45,
+  "first_payment_date": "03-11-2022",
+  "potential_quarterly_payment": 13.98
+ },
+ {
+  "ticker": "TROW",
+  "dividend": 1.2,
+  "first_payment_date": "03-14-2022",
+  "potential_quarterly_payment": 45.21
+ },
+ {
+  "ticker": "WHR",
+  "dividend": 1.75,
+  "first_payment_date": "02-24-2022",
+  "potential_quarterly_payment": 46.03
+ }
+]
+}
