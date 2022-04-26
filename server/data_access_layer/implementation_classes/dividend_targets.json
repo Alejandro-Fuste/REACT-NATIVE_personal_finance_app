@@ -229,6 +229,26 @@
    "ticker": "CCI",
    "amount": 1.47,
    "first_payment_date": "03-14-2022"
+  },
+  {
+   "ticker": "CVX",
+   "amount": 1.42,
+   "first_payment_date": "02-15-2022"
+  },
+  {
+   "ticker": "DLR",
+   "amount": 1.22,
+   "first_payment_date": "03-14-2022"
+  },
+  {
+   "ticker": "DPZ",
+   "amount": 1.1,
+   "first_payment_date": "03-14-2022"
+  },
+  {
+   "ticker": "DE",
+   "amount": 1.05,
+   "first_payment_date": "03-30-2022"
   }
  ]
 }
