@@ -37,3 +37,43 @@ class Option:
         self.straddle_put_breakeven_amount = straddle_put_breakeven_amount
         self.straddle_put_breakeven_percent = straddle_put_breakeven_percent
 
+    def create_id(self):
+        pass
+
+    # Calculate Call Option ----------------------------------------------------------------------
+
+    def calculate_call_breakeven_amount(self):
+        pass
+
+    def calculate_call_breakeven_percent(self):
+        pass
+
+    # Calculate Put Option ----------------------------------------------------------------------
+
+    def calculate_put_breakeven_amount(self):
+        pass
+
+    def calculate_put_breakeven_percent(self):
+        pass
+
+    # Calculate Call Straddle -------------------------------------------------------------------
+
+    def calculate_straddle_call_breakeven_amount(self):
+        pass
+
+    def calculate_straddle_call_breakeven_percent(self):
+        pass
+
+    def calculate_straddle_put_breakeven_amount(self):
+        pass
+
+    def calculate_straddle_put_breakeven_percent(self):
+        pass
+
+    # Dictionary and str methods -----------------------------------------------------------------
+    def make_dictionary(self):
+        pass
+
+    def __str__(self):
+        pass
+
