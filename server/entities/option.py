@@ -11,15 +11,6 @@ class Option:
                  strategy_type: str = None,
                  call_price: float = None,
                  put_price: float = None,
-                 call_breakeven_amount: float = None,
-                 call_breakeven_percent: int = None,
-                 put_breakeven_amount: float = None,
-                 put_breakeven_percent: int = None,
-                 straddle_call_breakeven_amount: float = None,
-                 straddle_call_breakeven_percent: int = None,
-                 straddle_put_breakeven_amount: float = None,
-                 straddle_put_breakeven_percent: int = None,
-
                  ):
         self.ticker = ticker
         self.strike_price = strike_price
@@ -29,14 +20,6 @@ class Option:
         self.strategy_type = strategy_type
         self.call_price = call_price
         self.put_price = put_price
-        self.call_breakeven_amount = call_breakeven_amount
-        self.call_breakeven_percent = call_breakeven_percent
-        self.put_breakeven_amount = put_breakeven_amount
-        self.put_breakeven_percent = put_breakeven_percent
-        self.straddle_call_breakeven_amount = straddle_call_breakeven_amount
-        self.straddle_call_breakeven_percent = straddle_call_breakeven_percent
-        self.straddle_put_breakeven_amount = straddle_put_breakeven_amount
-        self.straddle_put_breakeven_percent = straddle_put_breakeven_percent
 
     @staticmethod
     def create_option_id():
