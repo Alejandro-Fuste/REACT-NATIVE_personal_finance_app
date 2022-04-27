@@ -127,4 +127,4 @@ class DividendInfoImp(DividendInfoDao):
         return sorted_data
 
 
-d = DividendInfoImp()
+# d = DividendInfoImp()
