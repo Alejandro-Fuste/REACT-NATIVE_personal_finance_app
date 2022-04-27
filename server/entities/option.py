@@ -1,6 +1,8 @@
+import random
+
+
 class Option:
     def __init__(self,
-                 option_id: int = None,
                  ticker: str = None,
                  strike_price: float = None,
                  stock_price: float = None,
@@ -19,7 +21,6 @@ class Option:
                  straddle_put_breakeven_percent: int = None,
 
                  ):
-        self.option_id = option_id
         self.ticker = ticker
         self.strike_price = strike_price
         self.stock_price = stock_price
@@ -37,8 +38,10 @@ class Option:
         self.straddle_put_breakeven_amount = straddle_put_breakeven_amount
         self.straddle_put_breakeven_percent = straddle_put_breakeven_percent
 
-    def create_id(self):
-        pass
+    @staticmethod
+    def create_option_id():
+        new_id = round(random.uniform(1, 1000000))
+        return new_id
 
     # Calculate Call Option ----------------------------------------------------------------------
 
@@ -72,8 +75,14 @@ class Option:
 
     # Dictionary and str methods -----------------------------------------------------------------
     def make_dictionary(self):
-        pass
+        dictionary = {
+            "optionId": self.create_option_id()
+        }
+        return dictionary
 
     def __str__(self):
-        pass
+        return f"option_id: {self.create_option_id()}"
 
+
+a = Option()
+print(a)
