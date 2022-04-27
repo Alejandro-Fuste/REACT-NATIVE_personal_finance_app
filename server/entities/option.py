@@ -91,7 +91,13 @@ class Option:
                f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, " \
                f"call_price: {self.call_price}, put_price: {self.put_price}, " \
                f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}, " \
-               f"call_breakeven_percent: {self.calculate_call_breakeven_percent()}"
+               f"call_breakeven_percent: {self.calculate_call_breakeven_percent()}, put_breakeven_amount: " \
+               f"{self.calculate_put_breakeven_amount()}, put_breakeven_percent: " \
+               f"{self.calculate_put_breakeven_percent()}, straddle_call_breakeven_amount: " \
+               f"{self.calculate_straddle_call_breakeven_amount()}, straddle_call_breakeven_percent: " \
+               f"{self.calculate_straddle_call_breakeven_percent()}, straddle_put_breakeven_amount: " \
+               f"{self.calculate_straddle_put_breakeven_amount()}, straddle_put_breakeven_percent: " \
+               f"{self.calculate_straddle_put_breakeven_percent()}"
 
 
 a = Option("T", 20.00, 20.01, "call", "4/30", "straddle", .37, .14)
