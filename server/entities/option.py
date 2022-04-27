@@ -61,12 +61,24 @@ class Option:
     def make_dictionary(self):
         dictionary = {
             "optionId": self.create_option_id(),
+            "ticker": self.ticker,
+            "strikePrice": self.strike_price,
+            "stockPrice": self.stock_price,
+            "tradeType": self.trade_type,
+            "expirationDate": self.expiration_date,
+            "strategyType": self.strategy_type,
+            "callPrice": self.call_price,
+            "putPrice": self.put_price,
             "callBreakevenAmount": self.calculate_call_breakeven_amount()
         }
         return dictionary
 
     def __str__(self):
-        return f"option_id: {self.create_option_id()}"
+        return f"option_id: {self.create_option_id()} ticker: {self.ticker}, strike_price: {self.strike_price}, " \
+               f"stock_price: {self.stock_price}, trade_type: {self.trade_type}, " \
+               f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, " \
+               f"call_price: {self.call_price}, put_price: {self.put_price}, " \
+               f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}"
 
 
 a = Option("T", 20.00, 21.37, "call", "4/30", "straddle", .37, .14)
