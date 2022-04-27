@@ -75,7 +75,13 @@ class Option:
             "putPrice": self.put_price,
             "callBreakevenAmount": self.calculate_call_breakeven_amount(),
             "callBreakevenPercent": self.calculate_call_breakeven_percent(),
-            "putBreakevenAmount": self.calculate_put_breakeven_amount()
+            "putBreakevenAmount": self.calculate_put_breakeven_amount(),
+            "putBreakevenPercent": self.calculate_put_breakeven_percent(),
+            "straddleCallBreakevenAmount": self.calculate_straddle_call_breakeven_amount(),
+            "straddleCallBreakevenPercent": self.calculate_straddle_call_breakeven_percent(),
+            "straddlePutBreakevenAmount": self.calculate_straddle_put_breakeven_amount(),
+            "straddlePutBreakevenPercent": self.calculate_straddle_put_breakeven_percent()
+
         }
         return dictionary
 
