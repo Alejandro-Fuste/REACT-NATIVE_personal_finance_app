@@ -46,7 +46,8 @@ class Option:
     # Calculate Call Option ----------------------------------------------------------------------
 
     def calculate_call_breakeven_amount(self):
-        pass
+        amount = round(self.strike_price + self.call_price, 2)
+        return amount
 
     def calculate_call_breakeven_percent(self):
         pass
@@ -76,7 +77,8 @@ class Option:
     # Dictionary and str methods -----------------------------------------------------------------
     def make_dictionary(self):
         dictionary = {
-            "optionId": self.create_option_id()
+            "optionId": self.create_option_id(),
+            "callBreakevenAmount": self.calculate_call_breakeven_amount()
         }
         return dictionary
 
@@ -84,5 +86,5 @@ class Option:
         return f"option_id: {self.create_option_id()}"
 
 
-a = Option()
-print(a)
+a = Option("T", 20.00, 21.37, "call", "4/30", "straddle", .37, .14)
+print(a.make_dictionary())
