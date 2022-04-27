@@ -1,4 +1,5 @@
 import random
+from pprint import pprint
 
 
 class Option:
@@ -38,7 +39,8 @@ class Option:
     # Calculate Put Option ----------------------------------------------------------------------
 
     def calculate_put_breakeven_amount(self):
-        pass
+        amount = round(self.strike_price - self.put_price, 2)
+        return amount
 
     def calculate_put_breakeven_percent(self):
         pass
@@ -69,7 +71,8 @@ class Option:
             "strategyType": self.strategy_type,
             "callPrice": self.call_price,
             "putPrice": self.put_price,
-            "callBreakevenAmount": self.calculate_call_breakeven_amount()
+            "callBreakevenAmount": self.calculate_call_breakeven_amount(),
+            "putBreakevenAmount": self.calculate_put_breakeven_amount()
         }
         return dictionary
 
@@ -82,4 +85,4 @@ class Option:
 
 
 a = Option("T", 20.00, 21.37, "call", "4/30", "straddle", .37, .14)
-print(a.make_dictionary())
+pprint(a.make_dictionary())
