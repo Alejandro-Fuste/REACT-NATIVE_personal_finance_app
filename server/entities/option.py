@@ -45,7 +45,9 @@ class Option:
         return amount
 
     def calculate_put_breakeven_percent(self):
-        pass
+        put_be = self.calculate_put_breakeven_amount()
+        percent = (self.stock_price - put_be) / self.stock_price * 100
+        return round(percent, 2)
 
     # Calculate Call Straddle -------------------------------------------------------------------
 
@@ -100,5 +102,5 @@ class Option:
                f"{self.calculate_straddle_put_breakeven_percent()}"
 
 
-a = Option("T", 20.00, 20.01, "call", "4/30", "straddle", .37, .14)
-pprint(a.make_dictionary())
+a = Option("T", 20.00, 19.11, "put", "4/30", "straddle", .02, .94)
+pprint(a.calculate_put_breakeven_percent())
