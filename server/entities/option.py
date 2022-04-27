@@ -34,7 +34,9 @@ class Option:
         return amount
 
     def calculate_call_breakeven_percent(self):
-        pass
+        call_be = self.calculate_call_breakeven_amount()
+        percent = (call_be - self.stock_price) / self.stock_price * 100
+        return round(percent, 2)
 
     # Calculate Put Option ----------------------------------------------------------------------
 
@@ -72,6 +74,7 @@ class Option:
             "callPrice": self.call_price,
             "putPrice": self.put_price,
             "callBreakevenAmount": self.calculate_call_breakeven_amount(),
+            "callBreakevenPercent": self.calculate_call_breakeven_percent(),
             "putBreakevenAmount": self.calculate_put_breakeven_amount()
         }
         return dictionary
@@ -81,8 +84,9 @@ class Option:
                f"stock_price: {self.stock_price}, trade_type: {self.trade_type}, " \
                f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, " \
                f"call_price: {self.call_price}, put_price: {self.put_price}, " \
-               f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}"
+               f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}, " \
+               f"call_breakeven_percent: {self.calculate_call_breakeven_percent()}"
 
 
-a = Option("T", 20.00, 21.37, "call", "4/30", "straddle", .37, .14)
+a = Option("T", 20.00, 20.01, "call", "4/30", "straddle", .37, .14)
 pprint(a.make_dictionary())
