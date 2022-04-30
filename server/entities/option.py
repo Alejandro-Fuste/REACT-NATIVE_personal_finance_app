@@ -65,7 +65,9 @@ class Option:
         return round(amount, 2)
 
     def calculate_straddle_put_breakeven_percent(self):
-        pass
+        put_be = self.calculate_straddle_put_breakeven_amount()
+        percent = (self.stock_price - put_be) / self.stock_price * 100
+        return round(percent, 2)
 
     # Dictionary and str methods -----------------------------------------------------------------
     def make_dictionary(self):
@@ -106,9 +108,9 @@ class Option:
                f"{self.calculate_straddle_put_breakeven_percent()}"
 
 
-a = Option("T", 20.00, 19.11, "call", "4/30", "straddle", .04, 1.18)
-b = Option("T", 19.00, 19.11, "call", "4/30", "straddle", .25, .38)
-pprint(a.calculate_straddle_call_breakeven_amount())
-print(a.calculate_straddle_call_breakeven_percent())
-print(b.calculate_straddle_call_breakeven_amount())
-print(b.calculate_straddle_call_breakeven_percent())
+a = Option("T", 20.00, 19.11, "put", "4/30", "straddle", .04, 1.18)
+b = Option("T", 19.00, 19.11, "put", "4/30", "straddle", .25, .38)
+pprint(a.calculate_straddle_put_breakeven_amount())
+print(a.calculate_straddle_put_breakeven_percent())
+print(b.calculate_straddle_put_breakeven_amount())
+print(b.calculate_straddle_put_breakeven_percent())
