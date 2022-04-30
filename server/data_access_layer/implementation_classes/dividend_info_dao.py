@@ -140,4 +140,4 @@ sorted_group_2 = sorted(group_2, key=lambda i: i["potential_quarterly_payment"],
 group_3 = list(filter(lambda x: "03-01-2022" <= x["first_payment_date"] <= "03-31-2022", invest_list))
 sorted_group_3 = sorted(group_3, key=lambda i: i["potential_quarterly_payment"], reverse=True)
 
-pprint(sorted_group_3)
+pprint(sorted_group_1)
