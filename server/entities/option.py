@@ -53,7 +53,7 @@ class Option:
 
     def calculate_straddle_call_breakeven_amount(self):
         amount = self.strike_price + self.call_price + self.put_price
-        return amount
+        return round(amount, 2)
 
     def calculate_straddle_call_breakeven_percent(self):
         pass
