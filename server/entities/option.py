@@ -110,7 +110,5 @@ class Option:
 
 a = Option("T", 20.00, 19.11, "put", "4/30", "straddle", .04, 1.18)
 b = Option("T", 19.00, 19.11, "put", "4/30", "straddle", .25, .38)
-pprint(a.calculate_straddle_put_breakeven_amount())
-print(a.calculate_straddle_put_breakeven_percent())
-print(b.calculate_straddle_put_breakeven_amount())
-print(b.calculate_straddle_put_breakeven_percent())
+print(a)
+
