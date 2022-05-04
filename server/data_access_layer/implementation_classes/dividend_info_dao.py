@@ -127,17 +127,17 @@ class DividendInfoImp(DividendInfoDao):
         return sorted_data
 
 
-d = DividendInfoImp()
-
-invest_list = d.read_file('investment_list.json')
-
-group_1 = list(filter(lambda x: "01-01-2022" <= x["first_payment_date"] <= "01-31-2022", invest_list))
-sorted_group_1 = sorted(group_1, key=lambda i: i["potential_quarterly_payment"], reverse=True)
-
-group_2 = list(filter(lambda x: "02-01-2022" <= x["first_payment_date"] <= "02-31-2022", invest_list))
-sorted_group_2 = sorted(group_2, key=lambda i: i["potential_quarterly_payment"], reverse=True)
-
-group_3 = list(filter(lambda x: "03-01-2022" <= x["first_payment_date"] <= "03-31-2022", invest_list))
-sorted_group_3 = sorted(group_3, key=lambda i: i["potential_quarterly_payment"], reverse=True)
-
-pprint(sorted_group_1)
+# d = DividendInfoImp()
+#
+# invest_list = d.read_file('investment_list.json')
+#
+# group_1 = list(filter(lambda x: "01-01-2022" <= x["first_payment_date"] <= "01-31-2022", invest_list))
+# sorted_group_1 = sorted(group_1, key=lambda i: i["potential_quarterly_payment"], reverse=True)
+#
+# group_2 = list(filter(lambda x: "02-01-2022" <= x["first_payment_date"] <= "02-31-2022", invest_list))
+# sorted_group_2 = sorted(group_2, key=lambda i: i["potential_quarterly_payment"], reverse=True)
+#
+# group_3 = list(filter(lambda x: "03-01-2022" <= x["first_payment_date"] <= "03-31-2022", invest_list))
+# sorted_group_3 = sorted(group_3, key=lambda i: i["potential_quarterly_payment"], reverse=True)
+#
+# pprint(sorted_group_1)

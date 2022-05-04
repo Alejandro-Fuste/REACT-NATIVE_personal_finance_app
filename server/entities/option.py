@@ -7,7 +7,6 @@ class Option:
                  ticker: str = None,
                  strike_price: float = None,
                  stock_price: float = None,
-                 trade_type: str = None,
                  expiration_date: str = None,
                  strategy_type: str = None,
                  call_price: float = None,
@@ -16,7 +15,6 @@ class Option:
         self.ticker = ticker
         self.strike_price = strike_price
         self.stock_price = stock_price
-        self.trade_type = trade_type
         self.expiration_date = expiration_date
         self.strategy_type = strategy_type
         self.call_price = call_price
@@ -76,7 +74,6 @@ class Option:
             "ticker": self.ticker,
             "strikePrice": self.strike_price,
             "stockPrice": self.stock_price,
-            "tradeType": self.trade_type,
             "expirationDate": self.expiration_date,
             "strategyType": self.strategy_type,
             "callPrice": self.call_price,
@@ -95,9 +92,8 @@ class Option:
 
     def __str__(self):
         return f"option_id: {self.create_option_id()} ticker: {self.ticker}, strike_price: {self.strike_price}, " \
-               f"stock_price: {self.stock_price}, trade_type: {self.trade_type}, " \
-               f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, " \
-               f"call_price: {self.call_price}, put_price: {self.put_price}, " \
+               f"stock_price: {self.stock_price}, expiration_date: {self.expiration_date}, " \
+               f"strategy_type: {self.strategy_type}, call_price: {self.call_price}, put_price: {self.put_price}, " \
                f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}, " \
                f"call_breakeven_percent: {self.calculate_call_breakeven_percent()}, put_breakeven_amount: " \
                f"{self.calculate_put_breakeven_amount()}, put_breakeven_percent: " \
@@ -106,9 +102,4 @@ class Option:
                f"{self.calculate_straddle_call_breakeven_percent()}, straddle_put_breakeven_amount: " \
                f"{self.calculate_straddle_put_breakeven_amount()}, straddle_put_breakeven_percent: " \
                f"{self.calculate_straddle_put_breakeven_percent()}"
-
-
-a = Option("T", 20.00, 19.11, "put", "4/30", "straddle", .04, 1.18)
-b = Option("T", 19.00, 19.11, "put", "4/30", "straddle", .25, .38)
-print(a)
 
