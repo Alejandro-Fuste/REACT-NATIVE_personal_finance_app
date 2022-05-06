@@ -17,3 +17,6 @@ class OptionsInfoDAO(ABC):
     def get_puts(self, ticker: str) -> pandas:
         pass
 
+    @abstractmethod
+    def get_targeted_options(self, ticker: str, expiration_date: str) -> list:
+        pass

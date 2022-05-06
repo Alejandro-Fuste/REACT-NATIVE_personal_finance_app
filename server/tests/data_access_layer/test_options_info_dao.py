@@ -41,3 +41,16 @@ def test_get_puts_failure(bad_ticker):
         assert False
     except OptionNotFound as e:
         assert str(e) == stock_not_found
+
+
+def test_get_targeted_options_success(ticker):
+    options = options_dao.get_targeted_options(ticker, "5/6")
+    assert len(options) == 4
+
+
+def test_get_targeted_options_failure(bad_ticker):
+    try:
+        options = options_dao.get_targeted_options(bad_ticker, "5/6")
+        assert False
+    except OptionNotFound as e:
+        assert str(e) == stock_not_found
