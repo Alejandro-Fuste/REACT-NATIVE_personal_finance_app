@@ -60,4 +60,16 @@ class OptionsInfoServiceImp(OptionsInfoService):
         return self.options_info_dao.get_puts(ticker)
 
     def get_targeted_options(self, ticker: str, expiration_date: str) -> list:
-        pass
+        # check ticker not blank
+        if ticker is None or expiration_date is None:
+            raise InputMissing(input_not_provided)
+
+        # check ticker is a string
+        if isinstance(ticker, str) is False or isinstance(expiration_date, str) is False:
+            raise InputNotString(input_must_be_string)
+
+        # check ticker not empty
+        if len(ticker.strip()) == 0 or len(expiration_date.strip()) == 0:
+            raise InputMissing(input_not_provided)
+
+        return self.options_info_dao.get_targeted_options(ticker, expiration_date)
