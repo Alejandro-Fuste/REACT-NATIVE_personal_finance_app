@@ -7,6 +7,7 @@ from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_too_long import InputTooLong
 from server.custom_exceptions.input_too_short import InputTooShort
 from server.custom_exceptions.no_trades import NoTrades
+from server.custom_exceptions.option_not_found import OptionNotFound
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
 from server.custom_exceptions.paper_trade_id_missing import PaperTradeIdMissing
 from server.custom_exceptions.paper_trade_id_not_int import PaperTradeIdNotInt
@@ -32,7 +33,6 @@ from flask import Flask, request, jsonify
 from flask_cors import CORS
 
 import logging
-
 
 logging.basicConfig(filename="records.log", level=logging.DEBUG,
                     format="[%(levelname)s] - %(asctime)s - %(name)s - : %(message)s in %(pathname)s:%(lineno)d")
@@ -344,6 +344,47 @@ def delete_trade():
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
     except PaperTradeIdNotInt as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+
+
+# Paper Trade Routes --------------------------------------------------------------------------------------------------
+# Read routes -------
+
+@app.get("/api/options/stockPrice/<ticker>")
+def get_stock_price(ticker):
+    try:
+        data = paper_trade_service.get_paper_trades(ticker)
+        return jsonify(data), 200
+    except InputMissing as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except InputNotString as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except AssertionError as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+
+
+@app.get("/api/options/getTargetedOptions/<ticker>/<expiration_date>")
+def get_targeted_options(ticker):
+    try:
+        data = paper_trade_service.get_paper_trades(ticker)
+        return jsonify(data), 200
+    except InputMissing as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except InputNotString as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except OptionNotFound as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
