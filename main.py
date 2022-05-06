@@ -25,6 +25,7 @@ from server.data_access_layer.implementation_classes.options_info_dao import Opt
 
 from server.service_layer.implementation_classes.user_service import UserService, UserServiceImp
 from server.service_layer.implementation_classes.paper_trade_service import PaperTradeService, PaperTradeServiceImp
+from server.service_layer.implementation_classes.options_info_service import OptionsInfoService, OptionsInfoServiceImp
 
 from server.entities.db_user import DatabaseUser
 from server.entities.user import User
