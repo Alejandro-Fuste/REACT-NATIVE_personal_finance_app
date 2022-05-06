@@ -21,6 +21,7 @@ from server.custom_exceptions.user_not_found import UserNotFound
 
 from server.data_access_layer.implementation_classes.user_dao import UserDAO, UserDAOImp
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAO, PaperTradeDAOImp
+from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAO, OptionsInfoImp
 
 from server.service_layer.implementation_classes.user_service import UserService, UserServiceImp
 from server.service_layer.implementation_classes.paper_trade_service import PaperTradeService, PaperTradeServiceImp
