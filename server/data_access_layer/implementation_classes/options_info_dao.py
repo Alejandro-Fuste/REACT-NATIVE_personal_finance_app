@@ -73,6 +73,3 @@ class OptionsInfoImp(OptionsInfoDAO):
         return array
 
 
-# o = OptionsInfoImp()
-# a = o.get_targeted_options("t", "5/6")
-# pprint(a)

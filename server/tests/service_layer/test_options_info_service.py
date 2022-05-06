@@ -85,3 +85,28 @@ def test_get_puts_ticker_blank(none_ticker):
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
+
+
+# Get Targeted Options Tests ---------------------------------------------------------------------
+def test_get_targeted_options_ticker_not_string(int_ticker):
+    try:
+        options_info_service.(int_ticker)
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
+
+
+def test_get_targeted_options_ticker_empty_string(empty_string):
+    try:
+        options_info_service.(empty_string)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+def test_get_targeted_options_ticker_blank(none_ticker):
+    try:
+        options_info_service.(none_ticker)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided

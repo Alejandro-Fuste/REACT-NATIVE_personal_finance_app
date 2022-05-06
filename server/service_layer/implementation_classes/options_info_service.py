@@ -58,3 +58,6 @@ class OptionsInfoServiceImp(OptionsInfoService):
             raise InputMissing(input_not_provided)
 
         return self.options_info_dao.get_puts(ticker)
+
+    def get_targeted_options(self, ticker: str, expiration_date: str) -> list:
+        pass
