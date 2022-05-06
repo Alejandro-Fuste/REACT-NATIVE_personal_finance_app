@@ -10,7 +10,7 @@ import pandas
 stock_not_found = "Your stock was not able to be located."
 
 
-class OptionsInfoImp(OptionsInfoDAO):
+class OptionsInfoDAOImp(OptionsInfoDAO):
 
     # Get stock price -------------------------------------------------------------
     def get_stock_price(self, ticker: str) -> float:
