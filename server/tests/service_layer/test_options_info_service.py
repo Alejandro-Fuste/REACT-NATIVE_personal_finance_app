@@ -90,7 +90,7 @@ def test_get_puts_ticker_blank(none_ticker):
 # Get Targeted Options Tests ---------------------------------------------------------------------
 def test_get_targeted_options_ticker_not_string(int_ticker):
     try:
-        options_info_service.(int_ticker)
+        options_info_service.get_targeted_options(int_ticker, "5/6")
         assert False
     except InputNotString as e:
         assert str(e) == input_must_be_string
@@ -98,7 +98,7 @@ def test_get_targeted_options_ticker_not_string(int_ticker):
 
 def test_get_targeted_options_ticker_empty_string(empty_string):
     try:
-        options_info_service.(empty_string)
+        options_info_service.get_targeted_options(empty_string, "5/6")
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
@@ -106,7 +106,31 @@ def test_get_targeted_options_ticker_empty_string(empty_string):
 
 def test_get_targeted_options_ticker_blank(none_ticker):
     try:
-        options_info_service.(none_ticker)
+        options_info_service.get_targeted_options(none_ticker, "5/6")
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+def test_get_targeted_options_expiration_not_string(int_ticker):
+    try:
+        options_info_service.get_targeted_options("t", int_ticker)
+        assert False
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
+
+
+def test_get_targeted_options_expiration_empty_string(empty_string):
+    try:
+        options_info_service.get_targeted_options("t", empty_string)
+        assert False
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+def test_get_targeted_options_expiration_blank(none_ticker):
+    try:
+        options_info_service.get_targeted_options("t", none_ticker)
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
