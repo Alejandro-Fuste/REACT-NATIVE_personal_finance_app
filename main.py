@@ -359,7 +359,7 @@ def delete_trade():
 @app.get("/api/options/stockPrice/<ticker>")
 def get_stock_price(ticker):
     try:
-        data = paper_trade_service.get_paper_trades(ticker)
+        data = option_service.get_stock_price(ticker)
         return jsonify(data), 200
     except InputMissing as e:
         exception_dictionary = {"errorMessage": str(e)}
@@ -376,9 +376,9 @@ def get_stock_price(ticker):
 
 
 @app.get("/api/options/getTargetedOptions/<ticker>/<expiration_date>")
-def get_targeted_options(ticker):
+def get_targeted_options(ticker, expiration_date):
     try:
-        data = paper_trade_service.get_paper_trades(ticker)
+        data = option_service.get_targeted_options(ticker, expiration_date)
         return jsonify(data), 200
     except InputMissing as e:
         exception_dictionary = {"errorMessage": str(e)}
