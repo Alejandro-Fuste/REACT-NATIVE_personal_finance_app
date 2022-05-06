@@ -47,6 +47,7 @@ user_service: UserService = UserServiceImp(user_dao)
 paper_trade_dao: PaperTradeDAO = PaperTradeDAOImp()
 paper_trade_service: PaperTradeService = PaperTradeServiceImp(paper_trade_dao)
 option_dao: OptionsInfoDAO = OptionsInfoDAOImp()
+option_service: OptionsInfoService = OptionsInfoServiceImp(option_dao)
 
 
 @app.route("/")
