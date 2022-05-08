@@ -70,7 +70,7 @@ class Option:
     # Dictionary and str methods -----------------------------------------------------------------
     def make_dictionary(self):
         dictionary = {
-            "optionId": self.create_option_id(),
+            "tradeId": self.create_option_id(),
             "ticker": self.ticker,
             "strikePrice": self.strike_price,
             "stockPrice": self.stock_price,
@@ -91,7 +91,7 @@ class Option:
         return dictionary
 
     def __str__(self):
-        return f"option_id: {self.create_option_id()} ticker: {self.ticker}, strike_price: {self.strike_price}, " \
+        return f"trade_id: {self.create_option_id()} ticker: {self.ticker}, strike_price: {self.strike_price}, " \
                f"stock_price: {self.stock_price}, expiration_date: {self.expiration_date}, " \
                f"strategy_type: {self.strategy_type}, call_price: {self.call_price}, put_price: {self.put_price}, " \
                f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}, " \

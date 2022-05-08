@@ -43,7 +43,7 @@ class PaperTradeServiceImp(PaperTradeService):
             raise MissingUserId(user_id_not_provided)
 
         # check if value is a string
-        if isinstance(paper_trade["ticker"], str) is False or isinstance(paper_trade["tradeType"], str) is False \
+        if isinstance(paper_trade["ticker"], str) is False \
                 or isinstance(paper_trade["expirationDate"], str) is False \
                 or isinstance(paper_trade["strategyType"], str) is False:
             raise InputNotString(paper_trade_value_must_be_string)
@@ -51,13 +51,12 @@ class PaperTradeServiceImp(PaperTradeService):
         # check if value is not empty
         if paper_trade["tradeId"] is None or len(paper_trade["ticker"].strip()) == 0 \
                 or paper_trade["strikePrice"] is None \
-                or len(paper_trade["tradeType"].strip()) == 0 \
                 or len(paper_trade["expirationDate"].strip()) == 0 \
                 or len(paper_trade["strategyType"].strip()) == 0 \
                 or paper_trade["callPrice"] is None \
                 or paper_trade["putPrice"] is None \
-                or paper_trade["callBreakevenPoint"] is None \
-                or paper_trade["putBreakevenPoint"] is None \
+                or paper_trade["callBreakevenAmount"] is None \
+                or paper_trade["putBreakevenAmount"] is None \
                 or paper_trade["straddleCallBreakevenPoint"] is None \
                 or paper_trade["straddlePutBreakevenPoint"] is None \
                 or paper_trade["sellPrice"] is None \

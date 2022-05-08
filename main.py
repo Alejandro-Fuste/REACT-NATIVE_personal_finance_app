@@ -30,6 +30,7 @@ from server.service_layer.implementation_classes.options_info_service import Opt
 from server.entities.db_user import DatabaseUser
 from server.entities.user import User
 from server.entities.paper_trade import PaperTrade
+from server.entities.option import Option
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
@@ -210,12 +211,8 @@ def delete_user():
 def create_paper_trade():
     try:
         data = request.get_json()
-        new_trade = PaperTrade(data["tradeId"], data["ticker"], data["strikePrice"], data["tradeType"],
-                               data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"],
-                               data["callBreakevenPoint"], data["putBreakevenPoint"],
-                               data["straddleCallBreakevenPoint"], data["straddlePutBreakevenPoint"],
-                               data["sellPrice"], data["costPrice"], data["totalSell"],
-                               data["totalCost"], data["netProfit"], data["netProfitPercentage"])
+        new_trade = Option(data["ticker"], data["strikePrice"], data["stockPrice"],
+                           data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"], )
         trade_to_return = paper_trade_service.add_paper_trade(data["userId"], new_trade.make_dictionary())
         return jsonify(trade_to_return.modified_count), 201
 
@@ -393,5 +390,12 @@ def get_targeted_options(ticker, expiration_date):
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
 
+@app.get("/api/options/getTarget/<ticker>/<expiration_date>")
+def get_target_option(ticker, expiration_date):
+    try:
+        data = request.get_json()
+        new_trade = Option(data["ticker"], data["strikePrice"], data["stockPrice"],
+                           data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"])
+    return jsonify(new_trade), 200
 
 app.run()

@@ -2,6 +2,8 @@ from abc import ABC, abstractmethod
 
 import pandas
 
+from server.entities.option import Option
+
 
 class OptionsInfoDAO(ABC):
 
@@ -19,4 +21,8 @@ class OptionsInfoDAO(ABC):
 
     @abstractmethod
     def get_targeted_options(self, ticker: str, expiration_date: str) -> list:
+        pass
+
+    @abstractmethod
+    def get_option_info(self, data: dict) -> Option:
         pass
