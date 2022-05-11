@@ -3,34 +3,34 @@ class PaperTrade:
                  trade_id: int = None,
                  ticker: str = None,
                  strike_price: float = None,
-                 trade_type: str = None,
                  expiration_date: str = None,
                  contracts: int = None,
                  strategy_type: str = None,
                  call_price: float = None,
                  put_price: float = None,
-                 call_breakeven_point: float = None,
-                 put_breakeven_point: float = None,
-                 straddle_call_breakeven_point: float = None,
-                 straddle_put_breakeven_point: float = None,
+                 call_breakeven_amount: float = None,
+                 put_breakeven_amount: float = None,
+                 straddle_call_breakeven_amount: float = None,
+                 straddle_put_breakeven_amount: float = None,
                  sell_price: float = None,
-                 cost_price: float = None,
                  ):
         self.trade_id = trade_id
         self.ticker = ticker
         self.strike_price = strike_price
-        self.trade_type = trade_type
         self.expiration_date = expiration_date
         self.contracts = contracts
         self.strategy_type = strategy_type
         self.call_price = call_price
         self.put_price = put_price
-        self.call_breakeven_point = call_breakeven_point
-        self.put_breakeven_point = put_breakeven_point
-        self.straddle_call_breakeven_point = straddle_call_breakeven_point
-        self.straddle_put_breakeven_point = straddle_put_breakeven_point
+        self.call_breakeven_amount = call_breakeven_amount
+        self.put_breakeven_amount = put_breakeven_amount
+        self.straddle_call_breakeven_amount = straddle_call_breakeven_amount
+        self.straddle_put_breakeven_amount = straddle_put_breakeven_amount
         self.sell_price = sell_price
-        self.cost_price = cost_price
+
+    # Calculate Cost Price
+    def calculate_cost_price(self):
+        pass
 
     # Calculate Total Sell Amount ----------------------------------------------------------------
     def calculate_total_sell(self):
@@ -54,17 +54,16 @@ class PaperTrade:
             "tradeId": self.trade_id,
             "ticker": self.ticker,
             "strikePrice": self.strike_price,
-            "tradeType": self.trade_type,
             "expirationDate": self.expiration_date,
             "strategyType": self.strategy_type,
             "callPrice": self.call_price,
             "putPrice": self.put_price,
-            "callBreakevenPoint": self.call_breakeven_point,
-            "putBreakevenPoint": self.put_breakeven_point,
-            "straddleCallBreakevenPoint": self.straddle_call_breakeven_point,
-            "straddlePutBreakevenPoint": self.straddle_put_breakeven_point,
+            "callBreakevenPoint": self.call_breakeven_amount,
+            "putBreakevenPoint": self.put_breakeven_amount,
+            "straddleCallBreakevenPoint": self.straddle_call_breakeven_amount,
+            "straddlePutBreakevenPoint": self.straddle_put_breakeven_amount,
             "sellPrice": self.sell_price,
-            "costPrice": self.cost_price,
+            "costPrice": self.calculate_cost_price(),
             "totalSell": self.calculate_total_sell(),
             "totalCost": self.calculate_total_cost(),
             "netProfit": self.calculate_net_profit(),
@@ -75,11 +74,11 @@ class PaperTrade:
 
     def __str__(self):
         return f"tradeId: {self.trade_id}, ticker: {self.ticker}, strike_price: {self.strike_price}, " \
-               f"trade_type: {self.trade_type}, expiration_date: {self.expiration_date}, " \
-               f"strategy_type: {self.strategy_type}, call_price: {self.call_price}, put_price: {self.put_price}, " \
-               f"call_breakeven_point: {self.call_breakeven_point}, put_breakeven_point: {self.put_breakeven_point}, " \
-               f"straddle_call_breakeven_point: {self.straddle_call_breakeven_point}, " \
-               f"straddle_put_breakeven_point: {self.straddle_put_breakeven_point} sell_price: {self.sell_price}, " \
-               f"cost_price: {self.cost_price}, total_sell: {self.calculate_total_sell()}, " \
-               f"total_cost: {self.calculate_total_cost()}, net_profit: {self.calculate_net_profit()}, " \
-               f"net_profit_percentage: {self.calculate_net_profit_percentage()}"
+               f"expiration_date: {self.expiration_date}, strategy_type: {self.strategy_type}, call_price: " \
+               f"{self.call_price}, put_price: {self.put_price}, call_breakeven_point: {self.call_breakeven_amount}," \
+               f"put_breakeven_point: {self.put_breakeven_amount}, straddle_call_breakeven_point: " \
+               f"{self.straddle_call_breakeven_amount}, straddle_put_breakeven_point: " \
+               f"{self.straddle_put_breakeven_amount}, sell_price: {self.sell_price}, cost_price: " \
+               f"{self.calculate_cost_price()}, total_sell: {self.calculate_total_sell()}, total_cost: " \
+               f"{self.calculate_total_cost()}, net_profit: {self.calculate_net_profit()}, net_profit_percentage: " \
+               f"{self.calculate_net_profit_percentage()}"
