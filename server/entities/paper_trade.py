@@ -41,7 +41,9 @@ class PaperTrade:
 
     # Calculate Total Cost Amount ----------------------------------------------------------------
     def calculate_total_cost(self):
-        pass
+        contract_amount = self.contracts * 100
+        amount = self.calculate_cost_price() * contract_amount
+        return amount
 
     # Calculate Net Profit Amount ----------------------------------------------------------------
     def calculate_net_profit(self):
