@@ -26,5 +26,5 @@ def test_calculate_net_profit():
 
 def test_calculate_net_profit_percentage():
     percentage = paper_trade['netProfitPercentage']
-    assert percentage == 38
+    assert percentage == 38.61
 

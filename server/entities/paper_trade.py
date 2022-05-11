@@ -47,11 +47,13 @@ class PaperTrade:
 
     # Calculate Net Profit Amount ----------------------------------------------------------------
     def calculate_net_profit(self):
-        pass
+        amount = self.calculate_total_sell() - self.calculate_total_cost()
+        return amount
 
     # Calculate Net Profit Percentage ------------------------------------------------------------
     def calculate_net_profit_percentage(self):
-        pass
+        amount = (self.calculate_net_profit() / self.calculate_total_sell()) * 100
+        return round(amount, 2)
 
     # Dictionary and str methods -----------------------------------------------------------------
     def make_dictionary(self):
