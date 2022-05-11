@@ -35,7 +35,9 @@ class PaperTrade:
 
     # Calculate Total Sell Amount ----------------------------------------------------------------
     def calculate_total_sell(self):
-        pass
+        contract_amount = self.contracts * 100
+        amount = self.sell_price * contract_amount
+        return amount
 
     # Calculate Total Cost Amount ----------------------------------------------------------------
     def calculate_total_cost(self):
