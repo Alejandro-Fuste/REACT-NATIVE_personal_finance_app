@@ -30,7 +30,8 @@ class PaperTrade:
 
     # Calculate Cost Price
     def calculate_cost_price(self):
-        pass
+        amount = self.call_price + self.put_price
+        return amount
 
     # Calculate Total Sell Amount ----------------------------------------------------------------
     def calculate_total_sell(self):
