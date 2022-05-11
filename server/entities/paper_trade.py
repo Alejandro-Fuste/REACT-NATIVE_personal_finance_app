@@ -5,6 +5,7 @@ class PaperTrade:
                  strike_price: float = None,
                  trade_type: str = None,
                  expiration_date: str = None,
+                 contracts: int = None,
                  strategy_type: str = None,
                  call_price: float = None,
                  put_price: float = None,
@@ -14,16 +15,13 @@ class PaperTrade:
                  straddle_put_breakeven_point: float = None,
                  sell_price: float = None,
                  cost_price: float = None,
-                 total_sell: float = None,
-                 total_cost: float = None,
-                 net_profit: float = None,
-                 net_profit_percentage: int = None
                  ):
         self.trade_id = trade_id
         self.ticker = ticker
         self.strike_price = strike_price
         self.trade_type = trade_type
         self.expiration_date = expiration_date
+        self.contracts = contracts
         self.strategy_type = strategy_type
         self.call_price = call_price
         self.put_price = put_price
@@ -33,10 +31,6 @@ class PaperTrade:
         self.straddle_put_breakeven_point = straddle_put_breakeven_point
         self.sell_price = sell_price
         self.cost_price = cost_price
-        self.total_sell = total_sell
-        self.total_cost = total_cost
-        self.net_profit = net_profit
-        self.net_profit_percentage = net_profit_percentage
 
     # Calculate Total Sell Amount ----------------------------------------------------------------
     def calculate_total_sell(self):
