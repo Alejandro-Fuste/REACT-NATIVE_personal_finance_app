@@ -38,6 +38,23 @@ class PaperTrade:
         self.net_profit = net_profit
         self.net_profit_percentage = net_profit_percentage
 
+    # Calculate Total Sell Amount ----------------------------------------------------------------
+    def calculate_total_sell(self):
+        pass
+
+    # Calculate Total Cost Amount ----------------------------------------------------------------
+    def calculate_total_cost(self):
+        pass
+
+    # Calculate Net Profit Amount ----------------------------------------------------------------
+    def calculate_net_profit(self):
+        pass
+
+    # Calculate Net Profit Percentage ------------------------------------------------------------
+    def calculate_net_profit_percentage(self):
+        pass
+
+    # Dictionary and str methods -----------------------------------------------------------------
     def make_dictionary(self):
         dictionary = {
             "tradeId": self.trade_id,
@@ -54,10 +71,10 @@ class PaperTrade:
             "straddlePutBreakevenPoint": self.straddle_put_breakeven_point,
             "sellPrice": self.sell_price,
             "costPrice": self.cost_price,
-            "totalSell": self.total_sell,
-            "totalCost": self.total_cost,
-            "netProfit": self.net_profit,
-            "netProfitPercentage": self.net_profit_percentage
+            "totalSell": self.calculate_total_sell(),
+            "totalCost": self.calculate_total_cost(),
+            "netProfit": self.calculate_net_profit(),
+            "netProfitPercentage": self.calculate_net_profit_percentage()
         }
 
         return dictionary
@@ -69,6 +86,6 @@ class PaperTrade:
                f"call_breakeven_point: {self.call_breakeven_point}, put_breakeven_point: {self.put_breakeven_point}, " \
                f"straddle_call_breakeven_point: {self.straddle_call_breakeven_point}, " \
                f"straddle_put_breakeven_point: {self.straddle_put_breakeven_point} sell_price: {self.sell_price}, " \
-               f"cost_price: {self.cost_price}, total_sell: {self.total_sell}, " \
-               f"total_cost: {self.total_cost}, net_profit: {self.net_profit}, " \
-               f"net_profit_percentage: {self.net_profit_percentage}"
+               f"cost_price: {self.cost_price}, total_sell: {self.calculate_total_sell()}, " \
+               f"total_cost: {self.calculate_total_cost()}, net_profit: {self.calculate_net_profit()}, " \
+               f"net_profit_percentage: {self.calculate_net_profit_percentage()}"
