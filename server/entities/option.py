@@ -1,5 +1,4 @@
 import random
-from pprint import pprint
 
 
 class Option:
@@ -8,6 +7,7 @@ class Option:
                  strike_price: float = None,
                  stock_price: float = None,
                  expiration_date: str = None,
+                 contracts: int = None,
                  strategy_type: str = None,
                  call_price: float = None,
                  put_price: float = None,
@@ -16,6 +16,7 @@ class Option:
         self.strike_price = strike_price
         self.stock_price = stock_price
         self.expiration_date = expiration_date
+        self.contracts = contracts
         self.strategy_type = strategy_type
         self.call_price = call_price
         self.put_price = put_price
@@ -75,6 +76,7 @@ class Option:
             "strikePrice": self.strike_price,
             "stockPrice": self.stock_price,
             "expirationDate": self.expiration_date,
+            "contracts": self.contracts,
             "strategyType": self.strategy_type,
             "callPrice": self.call_price,
             "putPrice": self.put_price,
@@ -92,7 +94,7 @@ class Option:
 
     def __str__(self):
         return f"trade_id: {self.create_option_id()} ticker: {self.ticker}, strike_price: {self.strike_price}, " \
-               f"stock_price: {self.stock_price}, expiration_date: {self.expiration_date}, " \
+               f"stock_price: {self.stock_price}, expiration_date: {self.expiration_date}, contracts: {self.contracts}"\
                f"strategy_type: {self.strategy_type}, call_price: {self.call_price}, put_price: {self.put_price}, " \
                f"call_breakeven_amount: {self.calculate_call_breakeven_amount()}, " \
                f"call_breakeven_percent: {self.calculate_call_breakeven_percent()}, put_breakeven_amount: " \
