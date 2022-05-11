@@ -75,5 +75,4 @@ class OptionsInfoDAOImp(OptionsInfoDAO):
     def get_option_info(self, data: dict) -> Option:
         new_option = Option(data["ticker"], data["strikePrice"], data["stockPrice"], data["expirationDate"],
                             data["strategyType"], data["callPrice"], data["putPrice"])
-        return new_option
-    
+        return new_option.make_dictionary()

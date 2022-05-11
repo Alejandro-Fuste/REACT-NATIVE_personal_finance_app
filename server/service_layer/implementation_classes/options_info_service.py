@@ -4,6 +4,7 @@ from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_missing import InputMissing
 
 from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAOImp
+from server.entities.option import Option
 from server.service_layer.abstract_classes.options_info_service_abs import OptionsInfoService
 
 input_must_be_string: str = "The input must be a string."
@@ -73,3 +74,6 @@ class OptionsInfoServiceImp(OptionsInfoService):
             raise InputMissing(input_not_provided)
 
         return self.options_info_dao.get_targeted_options(ticker, expiration_date)
+
+    def get_option_info(self, data: dict) -> Option:
+        return self.options_info_dao.get_option_info(data)

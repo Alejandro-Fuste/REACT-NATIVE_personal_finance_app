@@ -390,12 +390,15 @@ def get_targeted_options(ticker, expiration_date):
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
 
-@app.get("/api/options/getTarget/<ticker>/<expiration_date>")
-def get_target_option(ticker, expiration_date):
+
+@app.get("/api/options/getTarget")
+def get_target_option():
     try:
         data = request.get_json()
-        new_trade = Option(data["ticker"], data["strikePrice"], data["stockPrice"],
-                           data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"])
-    return jsonify(new_trade), 200
+        new_trade = option_service.get_option_info(data)
+        return jsonify(new_trade), 200
+    except AssertionError as e:
+        pass
+
 
 app.run()
