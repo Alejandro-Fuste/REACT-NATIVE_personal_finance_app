@@ -151,9 +151,10 @@ def test_get_option_info_ticker_not_string(option_dict_ticker_not_string):
 
 
 # missing
-def test_get_option_info_missing_exp_date():
+def test_get_option_info_missing_exp_date(option_dict_missing_exp_date):
     try:
-        pass
+        options_info_service.get_option_info(option_dict_missing_exp_date)
+        assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
 

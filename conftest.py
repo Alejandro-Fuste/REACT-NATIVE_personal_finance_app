@@ -333,3 +333,19 @@ def option_dict_ticker_not_string() -> dict:
     }
 
     return opt_dict
+
+
+@fixture
+def option_dict_missing_exp_date() -> dict:
+    opt_dict = {
+        "ticker": "T",
+        "strikePrice": 19,
+        "stockPrice": 19.35,
+        "expirationDate": None,
+        "contracts": 1,
+        "strategyType": "Straddle",
+        "callPrice": 0.49,
+        "putPrice": 0.13
+    }
+
+    return opt_dict
