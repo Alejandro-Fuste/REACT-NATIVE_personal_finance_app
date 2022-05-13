@@ -1,6 +1,7 @@
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
+from server.custom_exceptions.input_not_float import InputNotFloat
 
 from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAO, OptionsInfoDAOImp
 from server.service_layer.implementation_classes.options_info_service import OptionsInfoService, OptionsInfoServiceImp
@@ -11,6 +12,7 @@ options_info_service: OptionsInfoService = OptionsInfoServiceImp(options_info_da
 input_must_be_string: str = "The input must be a string."
 input_not_provided: str = "An input must be provided."
 input_not_integer: str = "The input must be a integer."
+input_not_float: str = "The input must be a float."
 
 
 # Read Tests --------------------------------------------------------------------------------
@@ -157,7 +159,10 @@ def test_get_option_info_missing_exp_date():
 
 # not float
 def test_get_option_info_stock_price_not_float():
-    pass
+    try:
+        pass
+    except InputNotFloat as e:
+        assert str(e) == input_not_float
 
 
 # not int
