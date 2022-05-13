@@ -1,5 +1,6 @@
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_missing import InputMissing
+from server.custom_exceptions.input_not_int import InputNotInteger
 
 from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAO, OptionsInfoDAOImp
 from server.service_layer.implementation_classes.options_info_service import OptionsInfoService, OptionsInfoServiceImp
@@ -9,6 +10,7 @@ options_info_service: OptionsInfoService = OptionsInfoServiceImp(options_info_da
 
 input_must_be_string: str = "The input must be a string."
 input_not_provided: str = "An input must be provided."
+input_not_integer: str = "The input must be a integer."
 
 
 # Read Tests --------------------------------------------------------------------------------
@@ -134,3 +136,33 @@ def test_get_targeted_options_expiration_blank(none_ticker):
         assert False
     except InputMissing as e:
         assert str(e) == input_not_provided
+
+
+# Get Option Info Tests -------------------------------------------------------------------------
+# not string
+def test_get_option_info_ticker_not_string():
+    try:
+        pass
+    except InputNotString as e:
+        assert str(e) == input_must_be_string
+
+
+# missing
+def test_get_option_info_missing_exp_date():
+    try:
+        pass
+    except InputMissing as e:
+        assert str(e) == input_not_provided
+
+
+# not float
+def test_get_option_info_stock_price_not_float():
+    pass
+
+
+# not int
+def test_get_option_info_contract_not_int():
+    try:
+        pass
+    except InputNotInteger as e:
+        assert str(e) == input_not_integer
