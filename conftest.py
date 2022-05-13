@@ -317,3 +317,19 @@ def empty_string() -> str:
 @fixture
 def none_ticker() -> None:
     return None
+
+
+@fixture
+def option_dict() -> dict:
+    opt_dict = {
+        "ticker": "T",
+        "strikePrice": 19,
+        "stockPrice": 19.35,
+        "expirationDate": "5/13",
+        "contracts": 1,
+        "strategyType": "Straddle",
+        "callPrice": 0.49,
+        "putPrice": 0.13
+    }
+
+    return opt_dict
