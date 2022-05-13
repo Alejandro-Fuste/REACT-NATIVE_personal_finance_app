@@ -349,3 +349,35 @@ def option_dict_missing_exp_date() -> dict:
     }
 
     return opt_dict
+
+
+@fixture
+def option_dict_stock_price_not_float() -> dict:
+    opt_dict = {
+        "ticker": "T",
+        "strikePrice": 19,
+        "stockPrice": "19.35",
+        "expirationDate": "5/13",
+        "contracts": 1,
+        "strategyType": "Straddle",
+        "callPrice": 0.49,
+        "putPrice": 0.13
+    }
+
+    return opt_dict
+
+
+@fixture
+def option_dict_contract_not_int() -> dict:
+    opt_dict = {
+        "ticker": "T",
+        "strikePrice": 19,
+        "stockPrice": 19.35,
+        "expirationDate": "5/13",
+        "contracts": "1",
+        "strategyType": "Straddle",
+        "callPrice": 0.49,
+        "putPrice": 0.13
+    }
+
+    return opt_dict

@@ -160,16 +160,16 @@ def test_get_option_info_missing_exp_date(option_dict_missing_exp_date):
 
 
 # not float
-def test_get_option_info_stock_price_not_float():
+def test_get_option_info_stock_price_not_float(option_dict_stock_price_not_float):
     try:
-        pass
+        options_info_service.get_option_info(option_dict_stock_price_not_float)
     except InputNotFloat as e:
         assert str(e) == input_not_float
 
 
 # not int
-def test_get_option_info_contract_not_int():
+def test_get_option_info_contract_not_int(option_dict_contract_not_int):
     try:
-        pass
+        options_info_service.get_option_info(option_dict_contract_not_int)
     except InputNotInteger as e:
         assert str(e) == input_not_integer
