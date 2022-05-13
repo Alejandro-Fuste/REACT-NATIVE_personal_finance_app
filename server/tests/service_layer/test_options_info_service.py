@@ -1,10 +1,10 @@
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_missing import InputMissing
 
-from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAO, OptionsInfoImp
+from server.data_access_layer.implementation_classes.options_info_dao import OptionsInfoDAO, OptionsInfoDAOImp
 from server.service_layer.implementation_classes.options_info_service import OptionsInfoService, OptionsInfoServiceImp
 
-options_info_dao: OptionsInfoDAO = OptionsInfoImp()
+options_info_dao: OptionsInfoDAO = OptionsInfoDAOImp()
 options_info_service: OptionsInfoService = OptionsInfoServiceImp(options_info_dao)
 
 input_must_be_string: str = "The input must be a string."
