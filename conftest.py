@@ -339,9 +339,9 @@ def option_dict_ticker_not_string() -> dict:
 def option_dict_missing_exp_date() -> dict:
     opt_dict = {
         "ticker": "T",
-        "strikePrice": 19,
+        "strikePrice": 19.00,
         "stockPrice": 19.35,
-        "expirationDate": None,
+        "expirationDate": "",
         "contracts": 1,
         "strategyType": "Straddle",
         "callPrice": 0.49,
@@ -371,7 +371,7 @@ def option_dict_stock_price_not_float() -> dict:
 def option_dict_contract_not_int() -> dict:
     opt_dict = {
         "ticker": "T",
-        "strikePrice": 19,
+        "strikePrice": 19.00,
         "stockPrice": 19.35,
         "expirationDate": "5/13",
         "contracts": "1",

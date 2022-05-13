@@ -45,7 +45,7 @@ class PaperTradeServiceImp(PaperTradeService):
         # check if value is a string
         if isinstance(paper_trade["ticker"], str) is False \
                 or isinstance(paper_trade["expirationDate"], str) is False \
-                or isinstance(paper_trade["strategyType"], str) is False:
+                or isinstance(paper_trade["expirationDate"], str) is False:
             raise InputNotString(paper_trade_value_must_be_string)
 
         # check if value is not empty
