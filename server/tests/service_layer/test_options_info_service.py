@@ -142,9 +142,10 @@ def test_get_targeted_options_expiration_blank(none_ticker):
 
 # Get Option Info Tests -------------------------------------------------------------------------
 # not string
-def test_get_option_info_ticker_not_string():
+def test_get_option_info_ticker_not_string(option_dict_ticker_not_string):
     try:
-        pass
+        options_info_service.get_option_info(option_dict_ticker_not_string)
+        assert False
     except InputNotString as e:
         assert str(e) == input_must_be_string
 

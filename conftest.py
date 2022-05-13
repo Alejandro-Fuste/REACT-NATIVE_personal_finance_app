@@ -320,9 +320,9 @@ def none_ticker() -> None:
 
 
 @fixture
-def option_dict() -> dict:
+def option_dict_ticker_not_string() -> dict:
     opt_dict = {
-        "ticker": "T",
+        "ticker": 1,
         "strikePrice": 19,
         "stockPrice": 19.35,
         "expirationDate": "5/13",
