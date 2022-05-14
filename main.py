@@ -3,6 +3,7 @@ from server.custom_exceptions.duplicate_user import DuplicateUser
 from server.custom_exceptions.email_wrong_format import EmailWrongFormat
 from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
+from server.custom_exceptions.input_not_float import InputNotFloat
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.input_too_long import InputTooLong
 from server.custom_exceptions.input_too_short import InputTooShort
@@ -397,8 +398,22 @@ def get_target_option():
         data = request.get_json()
         new_trade = option_service.get_option_info(data)
         return jsonify(new_trade), 200
-    except AssertionError as e:
-        pass
+    except InputNotString as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except InputMissing as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except InputNotFloat as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except InputNotInteger as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
 
 
 app.run()
