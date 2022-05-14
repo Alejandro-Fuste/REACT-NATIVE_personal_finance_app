@@ -33,7 +33,7 @@ class PaperTradeServiceImp(PaperTradeService):
     def __init__(self, paper_trade_dao):
         self.paper_trade_dao: PaperTradeDAOImp = paper_trade_dao
 
-    def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
+    def add_paper_trade(self, user_id: str, pending_option: dict) -> dict:
         # check user_id is a string
         if isinstance(user_id, str) is False:
             raise UserIdMustBeString(user_id_must_be_string)
@@ -43,56 +43,56 @@ class PaperTradeServiceImp(PaperTradeService):
             raise MissingUserId(user_id_not_provided)
 
         # check if value is a string
-        if isinstance(paper_trade["ticker"], str) is False \
-                or isinstance(paper_trade["expirationDate"], str) is False \
-                or isinstance(paper_trade["strategyType"], str) is False:
+        if isinstance(pending_option["ticker"], str) is False \
+                or isinstance(pending_option["expirationDate"], str) is False \
+                or isinstance(pending_option["strategyType"], str) is False:
             raise InputNotString(paper_trade_value_must_be_string)
 
         # check if value is not empty
-        if paper_trade["tradeId"] is None or len(paper_trade["ticker"].strip()) == 0 \
-                or paper_trade["strikePrice"] is None \
-                or len(paper_trade["expirationDate"].strip()) == 0 \
-                or len(paper_trade["strategyType"].strip()) == 0 \
-                or paper_trade["contracts"] is None \
-                or paper_trade["callPrice"] is None \
-                or paper_trade["putPrice"] is None \
-                or paper_trade["callBreakevenAmount"] is None \
-                or paper_trade["callBreakevenPercent"] is None \
-                or paper_trade["putBreakevenAmount"] is None \
-                or paper_trade["putBreakevenPercent"] is None \
-                or paper_trade["straddleCallBreakevenAmount"] is None \
-                or paper_trade["straddleCallBreakevenPercent"] is None \
-                or paper_trade["straddlePutBreakevenAmount"] is None \
-                or paper_trade["straddlePutBreakevenPercent"] is None \
-                or paper_trade["sellPrice"] is None \
-                or paper_trade["costPrice"] is None \
-                or paper_trade["totalSell"] is None \
-                or paper_trade["totalCost"] is None \
-                or paper_trade["netProfit"] is None \
-                or paper_trade["netProfitPercentage"] is None:
+        if pending_option["tradeId"] is None or len(pending_option["ticker"].strip()) == 0 \
+                or pending_option["strikePrice"] is None \
+                or len(pending_option["expirationDate"].strip()) == 0 \
+                or len(pending_option["strategyType"].strip()) == 0 \
+                or pending_option["contracts"] is None \
+                or pending_option["callPrice"] is None \
+                or pending_option["putPrice"] is None \
+                or pending_option["callBreakevenAmount"] is None \
+                or pending_option["callBreakevenPercent"] is None \
+                or pending_option["putBreakevenAmount"] is None \
+                or pending_option["putBreakevenPercent"] is None \
+                or pending_option["straddleCallBreakevenAmount"] is None \
+                or pending_option["straddleCallBreakevenPercent"] is None \
+                or pending_option["straddlePutBreakevenAmount"] is None \
+                or pending_option["straddlePutBreakevenPercent"] is None \
+                or pending_option["sellPrice"] is None \
+                or pending_option["costPrice"] is None \
+                or pending_option["totalSell"] is None \
+                or pending_option["totalCost"] is None \
+                or pending_option["netProfit"] is None \
+                or pending_option["netProfitPercentage"] is None:
             raise PaperTradeException(paper_trade_value_not_provided)
 
         # check if value is a float
-        if isinstance(paper_trade["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
-                or isinstance(paper_trade["callBreakevenAmount"], float) is False \
-                or isinstance(paper_trade["callBreakevenPercent"], float) is False \
-                or isinstance(paper_trade["putBreakevenAmount"], float) is False \
-                or isinstance(paper_trade["putBreakevenPercent"], float) is False \
-                or isinstance(paper_trade["straddleCallBreakevenAmount"], float) is False \
-                or isinstance(paper_trade["straddleCallBreakevenPercent"], float) is False \
-                or isinstance(paper_trade["straddlePutBreakevenAmount"], float) is False \
-                or isinstance(paper_trade["straddlePutBreakevenPercent"], float) is False \
-                or isinstance(paper_trade["sellPrice"], float) is False \
-                or isinstance(paper_trade["costPrice"], float) is False \
-                or isinstance(paper_trade["totalSell"], float) is False \
-                or isinstance(paper_trade["totalCost"], float) is False \
-                or isinstance(paper_trade["netProfit"], float) is False \
-                or isinstance(paper_trade["strikePrice"], float) is False:
+        if isinstance(pending_option["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
+                or isinstance(pending_option["callBreakevenAmount"], float) is False \
+                or isinstance(pending_option["callBreakevenPercent"], float) is False \
+                or isinstance(pending_option["putBreakevenAmount"], float) is False \
+                or isinstance(pending_option["putBreakevenPercent"], float) is False \
+                or isinstance(pending_option["straddleCallBreakevenAmount"], float) is False \
+                or isinstance(pending_option["straddleCallBreakevenPercent"], float) is False \
+                or isinstance(pending_option["straddlePutBreakevenAmount"], float) is False \
+                or isinstance(pending_option["straddlePutBreakevenPercent"], float) is False \
+                or isinstance(pending_option["sellPrice"], float) is False \
+                or isinstance(pending_option["costPrice"], float) is False \
+                or isinstance(pending_option["totalSell"], float) is False \
+                or isinstance(pending_option["totalCost"], float) is False \
+                or isinstance(pending_option["netProfit"], float) is False \
+                or isinstance(pending_option["strikePrice"], float) is False:
             raise PaperTradeException(paper_trade_value_must_be_float)
 
         # check if value is an integer
-        if isinstance(paper_trade["tradeId"], int) is False \
-                or isinstance(paper_trade["netProfitPercentage"], int) is False:
+        if isinstance(pending_option["tradeId"], int) is False \
+                or isinstance(pending_option["netProfitPercentage"], int) is False:
             raise InputNotInteger(paper_trade_value_must_be_int)
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
