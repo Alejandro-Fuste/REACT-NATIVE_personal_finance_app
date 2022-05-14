@@ -161,22 +161,27 @@ def create_new_user_password_too_long() -> DatabaseUser:
 
 # new paper trade -----------------------------------------------------------------
 @fixture
-def create_new_paper_trade() -> PaperTrade:
-    new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           "3/25", 1, "Straddle",
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           )
-    return new_trade.make_dictionary()
+def create_new_paper_trade() -> dict:
+    return {
+        "tradeId": fake.pyint(max_value=10000),
+        "ticker": "T",
+        "strikePrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "stockPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "expirationDate": "3/25",
+        "contracts": 1,
+        "strategyType": "Straddle",
+        "callPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "putPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "callBreakevenAmount": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "callBreakevenPercent": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "putBreakevenAmount": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "putBreakevenPercent": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "straddleCallBreakevenAmount": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "straddleCallBreakevenPercent": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "straddlePutBreakevenAmount": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "straddlePutBreakevenPercent": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+        "sellPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True)
+    }
 
 
 @fixture
