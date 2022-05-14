@@ -53,7 +53,7 @@ class PaperTradeServiceImp(PaperTradeService):
                 or paper_trade["strikePrice"] is None \
                 or len(paper_trade["expirationDate"].strip()) == 0 \
                 or len(paper_trade["strategyType"].strip()) == 0 \
-                or paper_trade["contracts"] is None \
+                or paper_trade["contAmount"] is None \
                 or paper_trade["callPrice"] is None \
                 or paper_trade["putPrice"] is None \
                 or paper_trade["callBreakevenAmount"] is None \
@@ -74,10 +74,14 @@ class PaperTradeServiceImp(PaperTradeService):
 
         # check if value is a float
         if isinstance(paper_trade["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
-                or isinstance(paper_trade["callBreakevenPoint"], float) is False \
-                or isinstance(paper_trade["putBreakevenPoint"], float) is False \
-                or isinstance(paper_trade["straddleCallBreakevenPoint"], float) is False \
-                or isinstance(paper_trade["straddlePutBreakevenPoint"], float) is False \
+                or isinstance(paper_trade["callBreakevenAmount"], float) is False \
+                or isinstance(paper_trade["callBreakevenPercent"], float) is False \
+                or isinstance(paper_trade["putBreakevenAmount"], float) is False \
+                or isinstance(paper_trade["putBreakevenPercent"], float) is False \
+                or isinstance(paper_trade["straddleCallBreakevenAmount"], float) is False \
+                or isinstance(paper_trade["straddleCallBreakevenPercent"], float) is False \
+                or isinstance(paper_trade["straddlePutBreakevenAmount"], float) is False \
+                or isinstance(paper_trade["straddlePutBreakevenPercent"], float) is False \
                 or isinstance(paper_trade["sellPrice"], float) is False \
                 or isinstance(paper_trade["costPrice"], float) is False \
                 or isinstance(paper_trade["totalSell"], float) is False \

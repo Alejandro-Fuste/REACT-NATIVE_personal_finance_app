@@ -163,7 +163,7 @@ def create_new_user_password_too_long() -> DatabaseUser:
 @fixture
 def create_new_paper_trade() -> PaperTrade:
     new_trade = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           "Call", "3/25", "Straddle",
+                           "3/25", 1, "Straddle",
                            fake.pyfloat(left_digits=0, right_digits=2, positive=True),
                            fake.pyfloat(left_digits=0, right_digits=2, positive=True),
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),
@@ -175,7 +175,6 @@ def create_new_paper_trade() -> PaperTrade:
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),
                            fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyint(max_value=100)
                            )
     return new_trade.make_dictionary()
 
