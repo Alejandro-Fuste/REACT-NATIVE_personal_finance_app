@@ -64,16 +64,12 @@ class PaperTradeServiceImp(PaperTradeService):
                 or pending_option["straddleCallBreakevenPercent"] is None \
                 or pending_option["straddlePutBreakevenAmount"] is None \
                 or pending_option["straddlePutBreakevenPercent"] is None \
-                or pending_option["sellPrice"] is None \
-                or pending_option["costPrice"] is None \
-                or pending_option["totalSell"] is None \
-                or pending_option["totalCost"] is None \
-                or pending_option["netProfit"] is None \
-                or pending_option["netProfitPercentage"] is None:
+                or pending_option["sellPrice"] is None:
             raise PaperTradeException(paper_trade_value_not_provided)
 
         # check if value is a float
-        if isinstance(pending_option["callPrice"], float) is False or isinstance(paper_trade["putPrice"], float) is False \
+        if isinstance(pending_option["callPrice"], float) is False \
+                or isinstance(pending_option["putPrice"], float) is False \
                 or isinstance(pending_option["callBreakevenAmount"], float) is False \
                 or isinstance(pending_option["callBreakevenPercent"], float) is False \
                 or isinstance(pending_option["putBreakevenAmount"], float) is False \
@@ -83,10 +79,6 @@ class PaperTradeServiceImp(PaperTradeService):
                 or isinstance(pending_option["straddlePutBreakevenAmount"], float) is False \
                 or isinstance(pending_option["straddlePutBreakevenPercent"], float) is False \
                 or isinstance(pending_option["sellPrice"], float) is False \
-                or isinstance(pending_option["costPrice"], float) is False \
-                or isinstance(pending_option["totalSell"], float) is False \
-                or isinstance(pending_option["totalCost"], float) is False \
-                or isinstance(pending_option["netProfit"], float) is False \
                 or isinstance(pending_option["strikePrice"], float) is False:
             raise PaperTradeException(paper_trade_value_must_be_float)
 
@@ -94,6 +86,16 @@ class PaperTradeServiceImp(PaperTradeService):
         if isinstance(pending_option["tradeId"], int) is False \
                 or isinstance(pending_option["netProfitPercentage"], int) is False:
             raise InputNotInteger(paper_trade_value_must_be_int)
+
+        paper_trade = PaperTrade(pending_option["tradeId"], pending_option["ticker"], pending_option["strikePrice"],
+                                 pending_option["expirationDate"], pending_option["contracts"],
+                                 pending_option["strategyType"], pending_option["callPrice"],
+                                 pending_option["putPrice"], pending_option["callBreakevenAmount"],
+                                 pending_option["callBreakevenPercent"], pending_option["putBreakevenAmount"],
+                                 pending_option["putBreakevenPercent"], pending_option["straddleCallBreakevenAmount"],
+                                 pending_option["straddleCallBreakevenPercent"],
+                                 pending_option["straddlePutBreakevenAmount"],
+                                 pending_option["straddlePutBreakevenPercent"], pending_option["sellPrice"])
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
 
