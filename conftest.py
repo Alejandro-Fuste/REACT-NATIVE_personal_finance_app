@@ -213,7 +213,7 @@ def trade_value_not_int() -> dict:
     return {
         "tradeId": "fake.pyint(max_value=10000)",
         "ticker": "T",
-        "strikePrice": "fake.pyfloat(left_digits=2, right_digits=2, positive=True)",
+        "strikePrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
         "stockPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
         "expirationDate": "3/25",
         "contracts": 1,
