@@ -9,9 +9,13 @@ class PaperTrade:
                  call_price: float = None,
                  put_price: float = None,
                  call_breakeven_amount: float = None,
+                 call_breakeven_percent: float = None,
                  put_breakeven_amount: float = None,
+                 put_breakeven_percent: float = None,
                  straddle_call_breakeven_amount: float = None,
+                 straddle_call_breakeven_percent: float = None,
                  straddle_put_breakeven_amount: float = None,
+                 straddle_put_breakeven_percent: float = None,
                  sell_price: float = None,
                  ):
         self.trade_id = trade_id
@@ -23,9 +27,13 @@ class PaperTrade:
         self.call_price = call_price
         self.put_price = put_price
         self.call_breakeven_amount = call_breakeven_amount
+        self.call_breakeven_percent = call_breakeven_percent
         self.put_breakeven_amount = put_breakeven_amount
+        self.put_breakeven_percent = put_breakeven_percent
         self.straddle_call_breakeven_amount = straddle_call_breakeven_amount
+        self.straddle_call_breakeven_percent = straddle_call_breakeven_percent
         self.straddle_put_breakeven_amount = straddle_put_breakeven_amount
+        self.straddle_put_breakeven_percent = straddle_put_breakeven_percent
         self.sell_price = sell_price
 
     # Calculate Cost Price
@@ -63,12 +71,17 @@ class PaperTrade:
             "strikePrice": self.strike_price,
             "expirationDate": self.expiration_date,
             "strategyType": self.strategy_type,
+            "contracts": self.contracts,
             "callPrice": self.call_price,
             "putPrice": self.put_price,
-            "callBreakevenPoint": self.call_breakeven_amount,
-            "putBreakevenPoint": self.put_breakeven_amount,
-            "straddleCallBreakevenPoint": self.straddle_call_breakeven_amount,
-            "straddlePutBreakevenPoint": self.straddle_put_breakeven_amount,
+            "callBreakevenAmount": self.call_breakeven_amount,
+            "callBreakevenPercent": self.call_breakeven_percent,
+            "putBreakevenAmount": self.put_breakeven_amount,
+            "putBreakevenPercent": self.put_breakeven_percent,
+            "straddleCallBreakevenAmount": self.straddle_call_breakeven_amount,
+            "straddleCallBreakevenPercent": self.straddle_call_breakeven_percent,
+            "straddlePutBreakevenAmount": self.straddle_put_breakeven_amount,
+            "straddlePutBreakevenPercent": self.straddle_put_breakeven_percent,
             "sellPrice": self.sell_price,
             "costPrice": self.calculate_cost_price(),
             "totalSell": self.calculate_total_sell(),
@@ -88,4 +101,4 @@ class PaperTrade:
                f"{self.straddle_put_breakeven_amount}, sell_price: {self.sell_price}, cost_price: " \
                f"{self.calculate_cost_price()}, total_sell: {self.calculate_total_sell()}, total_cost: " \
                f"{self.calculate_total_cost()}, net_profit: {self.calculate_net_profit()}, net_profit_percentage: " \
-               f"{self.calculate_net_profit_percentage()}"
+               f"{self.calculate_net_profit_percentage()}, contracts: {self.contracts}"
