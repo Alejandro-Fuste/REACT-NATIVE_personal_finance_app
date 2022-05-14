@@ -208,13 +208,11 @@ def delete_user():
 # Paper Trade Routes --------------------------------------------------------------------------------------------------
 # Create routes -------
 
-@app.post("/api/createPaperTrade")
-def create_paper_trade():
+@app.post("/api/createPaperTrade/<user_id>")
+def create_paper_trade(user_id):
     try:
         data = request.get_json()
-        new_trade = Option(data["ticker"], data["strikePrice"], data["stockPrice"],
-                           data["expirationDate"], data["strategyType"], data["callPrice"], data["putPrice"], )
-        trade_to_return = paper_trade_service.add_paper_trade(data["userId"], new_trade.make_dictionary())
+        trade_to_return = paper_trade_service.add_paper_trade(user_id, data)
         return jsonify(trade_to_return.modified_count), 201
 
     except DuplicateTrade as e:

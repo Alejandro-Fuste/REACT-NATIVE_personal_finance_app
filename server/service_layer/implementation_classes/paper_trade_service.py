@@ -53,7 +53,7 @@ class PaperTradeServiceImp(PaperTradeService):
                 or paper_trade["strikePrice"] is None \
                 or len(paper_trade["expirationDate"].strip()) == 0 \
                 or len(paper_trade["strategyType"].strip()) == 0 \
-                or paper_trade["contAmount"] is None \
+                or paper_trade["contracts"] is None \
                 or paper_trade["callPrice"] is None \
                 or paper_trade["putPrice"] is None \
                 or paper_trade["callBreakevenAmount"] is None \
