@@ -3,6 +3,7 @@ from server.environment_variables import mongo_url
 from bson.objectid import ObjectId
 from server.data_access_layer.abstract_classes.paper_trade_dao import PaperTradeDAO
 from server.entities.paper_trade import PaperTrade
+from server.entities.option import Option
 from server.custom_exceptions.duplicate_trade import DuplicateTrade
 from server.custom_exceptions.trade_not_found import TradeNotFound
 from server.custom_exceptions.user_not_found import UserNotFound
@@ -22,7 +23,7 @@ paper_trade_not_found: str = "This trade could not be found."
 
 class PaperTradeDAOImp(PaperTradeDAO):
     # Create method -------
-    def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
+    def add_paper_trade(self, user_id: str, paper_trade: Option) -> dict:
         trade_id: int = paper_trade["tradeId"]
         result = collection.find_one({"paperTrades": {"$elemMatch": {"tradeId": trade_id}}})
 
