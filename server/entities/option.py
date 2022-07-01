@@ -78,6 +78,7 @@ class Option:
             "expirationDate": self.expiration_date,
             "contracts": self.contracts,
             "strategyType": self.strategy_type,
+            "status": "pending",
             "callPrice": self.call_price,
             "putPrice": self.put_price,
             "callBreakevenAmount": self.calculate_call_breakeven_amount(),
@@ -87,7 +88,8 @@ class Option:
             "straddleCallBreakevenAmount": self.calculate_straddle_call_breakeven_amount(),
             "straddleCallBreakevenPercent": self.calculate_straddle_call_breakeven_percent(),
             "straddlePutBreakevenAmount": self.calculate_straddle_put_breakeven_amount(),
-            "straddlePutBreakevenPercent": self.calculate_straddle_put_breakeven_percent()
+            "straddlePutBreakevenPercent": self.calculate_straddle_put_breakeven_percent(),
+            "sellPrice": 0.00
         }
         return dictionary
 

@@ -63,8 +63,8 @@ class PaperTradeServiceImp(PaperTradeService):
                 or pending_option["straddleCallBreakevenAmount"] is None \
                 or pending_option["straddleCallBreakevenPercent"] is None \
                 or pending_option["straddlePutBreakevenAmount"] is None \
-                or pending_option["straddlePutBreakevenPercent"] is None \
-                or pending_option["sellPrice"] is None:
+                or pending_option["straddlePutBreakevenPercent"] is None:
+            # or pending_option["sellPrice"] is None:
             raise PaperTradeException(paper_trade_value_not_provided)
 
         # check if value is a float
@@ -78,8 +78,8 @@ class PaperTradeServiceImp(PaperTradeService):
                 or isinstance(pending_option["straddleCallBreakevenPercent"], float) is False \
                 or isinstance(pending_option["straddlePutBreakevenAmount"], float) is False \
                 or isinstance(pending_option["straddlePutBreakevenPercent"], float) is False \
-                or isinstance(pending_option["sellPrice"], float) is False \
                 or isinstance(pending_option["strikePrice"], float) is False:
+            # or isinstance(pending_option["sellPrice"], float) is False \
             raise PaperTradeException(paper_trade_value_must_be_float)
 
         # check if value is an integer
