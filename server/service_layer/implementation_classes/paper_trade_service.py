@@ -14,6 +14,8 @@ from server.data_access_layer.implementation_classes.paper_trade_dao import Pape
 from server.entities.paper_trade import PaperTrade
 from server.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService
 
+from server.entities.option import Option
+
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
 paper_trade_id_must_be_int: str = "The paper trade id must be an integer."
@@ -49,53 +51,31 @@ class PaperTradeServiceImp(PaperTradeService):
             raise InputNotString(paper_trade_value_must_be_string)
 
         # check if value is not empty
-        if pending_option["tradeId"] is None or len(pending_option["ticker"].strip()) == 0 \
+        if len(pending_option["ticker"].strip()) == 0 \
                 or pending_option["strikePrice"] is None \
+                or pending_option["stockPrice"] is None \
                 or len(pending_option["expirationDate"].strip()) == 0 \
                 or len(pending_option["strategyType"].strip()) == 0 \
                 or pending_option["contracts"] is None \
                 or pending_option["callPrice"] is None \
-                or pending_option["putPrice"] is None \
-                or pending_option["callBreakevenAmount"] is None \
-                or pending_option["callBreakevenPercent"] is None \
-                or pending_option["putBreakevenAmount"] is None \
-                or pending_option["putBreakevenPercent"] is None \
-                or pending_option["straddleCallBreakevenAmount"] is None \
-                or pending_option["straddleCallBreakevenPercent"] is None \
-                or pending_option["straddlePutBreakevenAmount"] is None \
-                or pending_option["straddlePutBreakevenPercent"] is None:
-            # or pending_option["sellPrice"] is None:
+                or pending_option["putPrice"] is None:
             raise PaperTradeException(paper_trade_value_not_provided)
 
         # check if value is a float
         if isinstance(pending_option["callPrice"], float) is False \
                 or isinstance(pending_option["putPrice"], float) is False \
-                or isinstance(pending_option["callBreakevenAmount"], float) is False \
-                or isinstance(pending_option["callBreakevenPercent"], float) is False \
-                or isinstance(pending_option["putBreakevenAmount"], float) is False \
-                or isinstance(pending_option["putBreakevenPercent"], float) is False \
-                or isinstance(pending_option["straddleCallBreakevenAmount"], float) is False \
-                or isinstance(pending_option["straddleCallBreakevenPercent"], float) is False \
-                or isinstance(pending_option["straddlePutBreakevenAmount"], float) is False \
-                or isinstance(pending_option["straddlePutBreakevenPercent"], float) is False \
+                or isinstance(pending_option["stockPrice"], float) is False \
                 or isinstance(pending_option["strikePrice"], float) is False:
-            # or isinstance(pending_option["sellPrice"], float) is False \
             raise PaperTradeException(paper_trade_value_must_be_float)
 
         # check if value is an integer
-        if isinstance(pending_option["tradeId"], int) is False \
-                or isinstance(pending_option["netProfitPercentage"], int) is False:
+        if isinstance(pending_option["contracts"], int) is False:
             raise InputNotInteger(paper_trade_value_must_be_int)
 
-        paper_trade = PaperTrade(pending_option["tradeId"], pending_option["ticker"], pending_option["strikePrice"],
-                                 pending_option["expirationDate"], pending_option["contracts"],
-                                 pending_option["strategyType"], pending_option["callPrice"],
-                                 pending_option["putPrice"], pending_option["callBreakevenAmount"],
-                                 pending_option["callBreakevenPercent"], pending_option["putBreakevenAmount"],
-                                 pending_option["putBreakevenPercent"], pending_option["straddleCallBreakevenAmount"],
-                                 pending_option["straddleCallBreakevenPercent"],
-                                 pending_option["straddlePutBreakevenAmount"],
-                                 pending_option["straddlePutBreakevenPercent"], pending_option["sellPrice"])
+        paper_trade = Option(pending_option["ticker"], pending_option["strikePrice"], pending_option["stockPrice"],
+                             pending_option["expirationDate"], pending_option["contracts"],
+                             pending_option["strategyType"], pending_option["callPrice"],
+                             pending_option["putPrice"])
 
         return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
 
