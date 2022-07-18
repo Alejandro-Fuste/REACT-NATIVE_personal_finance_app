@@ -362,3 +362,54 @@ def option_dict_contract_not_int() -> dict:
     }
 
     return opt_dict
+
+
+@fixture
+def option_update_sell_price_value_missing() -> dict:
+    opt_dict = {
+        "tradeId": 123456,
+        "contracts": "1",
+        "putPrice": 0.13,
+        "sellPrice": "sellPrice"
+    }
+
+    return opt_dict
+
+
+@fixture
+def option_update_sell_price_not_float() -> dict:
+    opt_dict = {
+        "tradeId": 123456,
+        "contracts": "1",
+        "callPrice": 0.49,
+        "putPrice": 0.13,
+        "sellPrice": "sellPrice"
+    }
+
+    return opt_dict
+
+
+@fixture
+def option_update_sell_price_missing() -> dict:
+    opt_dict = {
+        "tradeId": 123456,
+        "contracts": "1",
+        "callPrice": 0.49,
+        "putPrice": 0.13,
+
+    }
+
+    return opt_dict
+
+
+@fixture
+def option_update_sell_price_negative_number() -> dict:
+    opt_dict = {
+        "tradeId": 123456,
+        "contracts": "1",
+        "callPrice": 0.49,
+        "putPrice": 0.13,
+        "sellPrice": -1.01
+    }
+
+    return opt_dict

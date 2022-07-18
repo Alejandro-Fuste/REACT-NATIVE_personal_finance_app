@@ -8,6 +8,7 @@ from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
+from server.custom_exceptions.value_missing_from_option import ValueMissing
 
 from server.data_access_layer.implementation_classes.user_dao import UserDAO, UserDAOImp
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAO
@@ -32,6 +33,7 @@ paper_trade_index_not_provided: str = "A paper trade index must be provided."
 sell_price_must_be_float: str = "The sell price must be a float."
 sell_price_index_not_provided: str = "A sell price must be provided."
 sell_price_negative: str = "A sell price must be a positive number."
+value_missing_from_option: str = "The option is missing a value."
 
 
 # Creation Tests ----------------------------------------------------------------------------
@@ -137,28 +139,36 @@ def test_update_paper_trade_index_missing(bad_id, missing_paper_trade_id):
         assert str(e) == paper_trade_index_not_provided
 
 
-# sell price not float
-def test_update_paper_trade_sell_price_not_float(bad_id):
+def test_update_paper_trade_value_missing(bad_id, option_update_sell_price_value_missing):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, "111.11")
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_value_missing)
+        assert False
+    except ValueMissing as e:
+        assert str(e) == value_missing_from_option
+
+
+# sell price not float
+def test_update_paper_trade_sell_price_not_float(bad_id, option_update_sell_price_not_float):
+    try:
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_not_float)
         assert False
     except SellPriceNotFloat as e:
         assert str(e) == sell_price_must_be_float
 
 
 # sell price missing
-def test_update_paper_trade_sell_price_missing(bad_id, missing_paper_trade_id):
+def test_update_paper_trade_sell_price_missing(bad_id, option_update_sell_price_missing):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, missing_paper_trade_id)
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_missing)
         assert False
     except SellPriceMissing as e:
         assert str(e) == sell_price_index_not_provided
 
 
 # sell price negative number
-def test_update_paper_trade_sell_price_negative(bad_id):
+def test_update_paper_trade_sell_price_negative(bad_id, option_update_sell_price_negative_number):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, -111.11)
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_negative_number)
         assert False
     except SellPriceNegative as e:
         assert str(e) == sell_price_negative

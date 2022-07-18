@@ -90,7 +90,7 @@ class PaperTradeServiceImp(PaperTradeService):
 
         return self.paper_trade_dao.get_paper_trades(user_id)
 
-    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, sell_price: float) -> bool:
+    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, option_update: dict) -> bool:
         # check user_id is a string
         if isinstance(user_id, str) is False:
             raise UserIdMustBeString(user_id_must_be_string)
@@ -108,15 +108,15 @@ class PaperTradeServiceImp(PaperTradeService):
             raise InputNotInteger(paper_trade_index_must_be_int)
 
         # check sell_price is missing
-        if sell_price is None:
+        if option_update["sellPrice"] is None:
             raise SellPriceMissing(sell_price_not_provided)
 
         # check sell_price is a float
-        if isinstance(sell_price, float) is False:
+        if isinstance(option_update["sellPrice"], float) is False:
             raise SellPriceNotFloat(sell_price_must_be_float)
 
         # check if sell_price is a negative number
-        if sell_price < 0:
+        if option_update["sellPrice"] < 0:
             raise SellPriceNegative(sell_price_negative)
 
         return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, sell_price)
