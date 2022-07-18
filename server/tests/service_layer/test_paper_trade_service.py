@@ -166,11 +166,9 @@ def test_update_paper_trade_sell_price_negative(bad_id):
 
 # Delete Tests ------------------------------------------------------------------------------
 # id not string
-def test_delete_paper_trade_user_id_not_string(invalid_id):
-    users: list = user_dao.get_all_users()
-    trade_id: int = users[0]["paperTrades"][0]["tradeId"]
+def test_delete_paper_trade_user_id_not_string(invalid_id, valid_paper_trade_id):
     try:
-        paper_trade_service.delete_paper_trade(invalid_id, trade_id)
+        paper_trade_service.delete_paper_trade(invalid_id, valid_paper_trade_id)
         assert False
     except UserIdMustBeString as e:
         assert str(e) == user_id_must_be_string
@@ -185,11 +183,9 @@ def test_delete_paper_trade_id_not_int(bad_id):
 
 
 # id missing
-def test_delete_paper_trade_no_user_id(missing_id):
-    users: list = user_dao.get_all_users()
-    trade_id: int = users[0]["paperTrades"][0]["tradeId"]
+def test_delete_paper_trade_no_user_id(missing_id, valid_paper_trade_id):
     try:
-        paper_trade_service.delete_paper_trade(missing_id, trade_id)
+        paper_trade_service.delete_paper_trade(missing_id, valid_paper_trade_id)
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided

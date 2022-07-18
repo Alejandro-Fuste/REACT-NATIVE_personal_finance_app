@@ -237,6 +237,11 @@ def missing_paper_trade_id() -> None:
 
 
 @fixture
+def valid_paper_trade_id() -> int:
+    return 123456
+
+
+@fixture
 def update_username() -> str:
     return fake.domain_word()
 
