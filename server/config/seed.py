@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 from server.environment_variables import mongo_url
 from server.entities.db_user import DatabaseUser
-from server.entities.paper_trade import PaperTrade
+from server.entities.option import Option
 from faker import Faker
 
 # database connection -------------
@@ -19,75 +19,39 @@ print(f"{delete_previous_entries.deleted_count} documents deleted.")
 fake = Faker()
 
 #   Paper Trades --------------------
-paper_trade_1 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           "Call", "3/25", "Straddle",
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyint(max_value=100))
+option_1 = Option("T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  "5/5", 1, "straddle",
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=2, right_digits=2, positive=True))
 
-paper_trade_2 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           "Call", "3/25", "Straddle",
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyint(max_value=100))
+option_2 = Option("T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  "5/5", 1, "straddle",
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=2, right_digits=2, positive=True))
 
-paper_trade_3 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           "Call", "3/25", "Straddle",
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyint(max_value=100))
+option_3 = Option("T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  "5/5", 1, "straddle",
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=2, right_digits=2, positive=True))
 
-paper_trade_4 = PaperTrade(fake.pyint(max_value=10000), "T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           "Call", "3/25", "Straddle",
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=0, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-                           fake.pyint(max_value=100))
+option_4 = Option("T", fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  "5/5", 1, "straddle",
+                  fake.pyfloat(left_digits=0, right_digits=2, positive=True),
+                  fake.pyfloat(left_digits=2, right_digits=2, positive=True))
 
 #   Users  --------------------------
 
 test_user_1 = DatabaseUser("Luke", "Skywalker", "luke.skywalker@jedi.com",
-                           "Master Luke", fake.sha256(raw_output=False), [paper_trade_1.make_dictionary(),
-                                                                          paper_trade_2.make_dictionary()])
+                           "Master Luke", fake.sha256(raw_output=False), [option_1.make_dictionary(),
+                                                                          option_2.make_dictionary()])
 
 test_user_2 = DatabaseUser("Leia", "Organa", "leia.organa@jedi.net",
-                           "Princess Leia", fake.sha256(raw_output=False), [paper_trade_3.make_dictionary(),
-                                                                            paper_trade_4.make_dictionary()])
+                           "Princess Leia", fake.sha256(raw_output=False), [option_3.make_dictionary(),
+                                                                            option_4.make_dictionary()])
 
 test_user_3 = DatabaseUser("Rey", "Skywalker", "rey.skywalker@jedi.com", "Jedi Knight", fake.sha256(raw_output=False))
 
