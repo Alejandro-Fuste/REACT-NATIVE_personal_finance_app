@@ -1,11 +1,11 @@
 from server.entities.option import Option
 
-test_call_option = Option("T", 19.00, 18.94, "call", "5/6", "straddle", .25, .38)
+test_call_option = Option("T", 19.00, 18.94, "5/6", 1, "straddle", .25, .38)
 option = test_call_option.make_dictionary()
 
 
 def test_create_option_id():
-    option_id = option["optionId"]
+    option_id = option["tradeId"]
     assert isinstance(option_id, int)
 
 
