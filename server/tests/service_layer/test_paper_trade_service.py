@@ -150,9 +150,10 @@ def test_update_paper_trade_value_missing(bad_id, option_update_sell_price_value
         assert str(e) == value_missing_from_object
 
 
-def test_update_paper_trade_value_not_float(bad_id, option_update_sell_price_value_not_float):
+# value not a float
+def test_update_paper_trade_value_not_float(bad_id, option_update_value_not_float):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_value_not_float)
+        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_value_not_float)
         assert False
     except ValueNotFloat as e:
         assert str(e) == value_not_float_in_object

@@ -9,6 +9,7 @@ from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
 from server.custom_exceptions.input_not_string import InputNotString
+from server.custom_exceptions.value_not_float_in_option import ValueNotFloat
 
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
 from server.entities.paper_trade import PaperTrade
@@ -29,6 +30,8 @@ paper_trade_index_not_provided: str = "A paper trade index must be provided."
 sell_price_must_be_float: str = "The sell price must be a float."
 sell_price_not_provided: str = "A sell price must be provided."
 sell_price_negative: str = "A sell price must be a positive number."
+value_not_float_in_object: str = "The object has a value that is not a float."
+value_not_int_in_object: str = "The object has a value that is not an integer."
 
 
 class PaperTradeServiceImp(PaperTradeService):
@@ -107,19 +110,33 @@ class PaperTradeServiceImp(PaperTradeService):
         if isinstance(paper_trade_index, int) is False:
             raise InputNotInteger(paper_trade_index_must_be_int)
 
-        # check sell_price is missing
-        if option_update["sellPrice"] is None:
+        # check if values are missing
+        if option_update["sellPrice"] is None \
+                or option_update["tradeId"] is None \
+                or option_update["contracts"] is None \
+                or option_update["callPrice"] is None \
+                or option_update["putPrice"] is None:
             raise SellPriceMissing(sell_price_not_provided)
 
         # check sell_price is a float
         if isinstance(option_update["sellPrice"], float) is False:
             raise SellPriceNotFloat(sell_price_must_be_float)
 
+        # check if value is a float
+        if isinstance(option_update["callPrice"], float) is False \
+                or isinstance(option_update["putPrice"], float) is False:
+            raise SellPriceNotFloat(sell_price_must_be_float)
+
+        # check if value is an integer
+        if isinstance(option_update["contracts"], int) is False \
+                or isinstance(option_update["tradeId"], int) is False:
+            raise InputNotInteger(value_not_int_in_object)
+
         # check if sell_price is a negative number
         if option_update["sellPrice"] < 0:
             raise SellPriceNegative(sell_price_negative)
 
-        return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, sell_price)
+        return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, option_update)
 
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
         # check user_id is a string

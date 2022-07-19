@@ -377,11 +377,11 @@ def option_update_sell_price_value_missing() -> dict:
 
 
 @fixture
-def option_update_sell_price_value_not_float() -> dict:
+def option_update_value_not_float() -> dict:
     opt_dict = {
         "tradeId": 123456,
-        "contracts": "1",
-        "callPrice": .54,
+        "contracts": 1,
+        "callPrice": ".54",
         "putPrice": 0.13,
         "sellPrice": 1.01
     }
