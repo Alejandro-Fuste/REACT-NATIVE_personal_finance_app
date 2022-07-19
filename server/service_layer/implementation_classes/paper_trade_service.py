@@ -2,7 +2,6 @@ from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.paper_trade_id_missing import PaperTradeIdMissing
 from server.custom_exceptions.paper_trade_id_not_int import PaperTradeIdNotInt
-from server.custom_exceptions.sell_price_missing import SellPriceMissing
 from server.custom_exceptions.sell_price_negative import SellPriceNegative
 from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
@@ -10,9 +9,9 @@ from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.paper_trade_exception import PaperTradeException
 from server.custom_exceptions.input_not_string import InputNotString
 from server.custom_exceptions.value_not_float_in_option import ValueNotFloat
+from server.custom_exceptions.value_missing_from_option import ValueMissing
 
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAOImp
-from server.entities.paper_trade import PaperTrade
 from server.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService
 
 from server.entities.option import Option
@@ -32,6 +31,7 @@ sell_price_not_provided: str = "A sell price must be provided."
 sell_price_negative: str = "A sell price must be a positive number."
 value_not_float_in_object: str = "The object has a value that is not a float."
 value_not_int_in_object: str = "The object has a value that is not an integer."
+value_missing_from_object: str = "The object has a missing value."
 
 
 class PaperTradeServiceImp(PaperTradeService):
@@ -116,7 +116,7 @@ class PaperTradeServiceImp(PaperTradeService):
                 or option_update["contracts"] is None \
                 or option_update["callPrice"] is None \
                 or option_update["putPrice"] is None:
-            raise SellPriceMissing(sell_price_not_provided)
+            raise ValueMissing(value_missing_from_object)
 
         # check sell_price is a float
         if isinstance(option_update["sellPrice"], float) is False:
@@ -125,7 +125,7 @@ class PaperTradeServiceImp(PaperTradeService):
         # check if value is a float
         if isinstance(option_update["callPrice"], float) is False \
                 or isinstance(option_update["putPrice"], float) is False:
-            raise SellPriceNotFloat(sell_price_must_be_float)
+            raise ValueNotFloat(value_not_float_in_object)
 
         # check if value is an integer
         if isinstance(option_update["contracts"], int) is False \

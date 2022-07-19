@@ -173,8 +173,8 @@ def test_update_paper_trade_sell_price_missing(bad_id, option_update_sell_price_
     try:
         paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_missing)
         assert False
-    except SellPriceMissing as e:
-        assert str(e) == sell_price_index_not_provided
+    except ValueMissing as e:
+        assert str(e) == value_missing_from_object
 
 
 # sell price negative number

@@ -368,9 +368,10 @@ def option_dict_contract_not_int() -> dict:
 def option_update_sell_price_value_missing() -> dict:
     opt_dict = {
         "tradeId": 123456,
-        "contracts": "1",
+        "contracts": 1,
         "putPrice": 0.13,
-        "sellPrice": "sellPrice"
+        "callPrice": None,
+        "sellPrice": 1.01
     }
 
     return opt_dict
@@ -409,6 +410,7 @@ def option_update_sell_price_missing() -> dict:
         "contracts": "1",
         "callPrice": 0.49,
         "putPrice": 0.13,
+        "sellPrice": None,
 
     }
 
@@ -419,7 +421,7 @@ def option_update_sell_price_missing() -> dict:
 def option_update_sell_price_negative_number() -> dict:
     opt_dict = {
         "tradeId": 123456,
-        "contracts": "1",
+        "contracts": 1,
         "callPrice": 0.49,
         "putPrice": 0.13,
         "sellPrice": -1.01
