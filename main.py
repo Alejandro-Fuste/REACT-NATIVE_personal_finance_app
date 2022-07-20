@@ -30,8 +30,6 @@ from server.service_layer.implementation_classes.options_info_service import Opt
 
 from server.entities.db_user import DatabaseUser
 from server.entities.user import User
-from server.entities.paper_trade import PaperTrade
-from server.entities.option import Option
 
 from flask import Flask, request, jsonify
 from flask_cors import CORS
