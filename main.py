@@ -19,6 +19,8 @@ from server.custom_exceptions.trade_not_found import TradeNotFound
 from server.custom_exceptions.user_id_not_provided import MissingUserId
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
 from server.custom_exceptions.user_not_found import UserNotFound
+from server.custom_exceptions.value_missing_from_option import ValueMissing
+from server.custom_exceptions.value_not_float_in_option import ValueNotFloat
 
 from server.data_access_layer.implementation_classes.user_dao import UserDAO, UserDAOImp
 from server.data_access_layer.implementation_classes.paper_trade_dao import PaperTradeDAO, PaperTradeDAOImp
@@ -297,11 +299,15 @@ def update_paper_trade(user_id, paper_trade_index):
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
-    except SellPriceMissing as e:
+    except ValueMissing as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
     except SellPriceNotFloat as e:
+        exception_dictionary = {"errorMessage": str(e)}
+        exception_json = jsonify(exception_dictionary)
+        return exception_json, 400
+    except ValueNotFloat as e:
         exception_dictionary = {"errorMessage": str(e)}
         exception_json = jsonify(exception_dictionary)
         return exception_json, 400
