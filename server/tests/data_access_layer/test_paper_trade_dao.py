@@ -72,9 +72,9 @@ def test_update_paper_trade_success(option_update):
     assert updated_trade
 
 
-def test_update_paper_trade_failure_user_not_found(bad_id):
+def test_update_paper_trade_failure_user_not_found(bad_id, option_update):
     try:
-        paper_trade_dao.update_paper_trade_sell_price(bad_id, 0, 111.11)
+        paper_trade_dao.update_paper_trade(bad_id, 0, option_update)
         assert False
     except UserNotFound as e:
         assert str(e) == user_not_found_message
@@ -87,7 +87,7 @@ def test_update_paper_trade_failure_paper_trade_not_found():
     bad_trade_index: int = len(trades) + 1
 
     try:
-        paper_trade_dao.update_paper_trade_sell_price(first_user_id, bad_trade_index, 111.11)
+        paper_trade_dao.update_paper_trade(first_user_id, bad_trade_index, 111.11)
         assert False
     except TradeNotFound as e:
         assert str(e) == paper_trade_not_found
