@@ -1,5 +1,6 @@
 from pytest import fixture
 from faker import Faker
+from server.entities.option import Option
 from server.entities.paper_trade import PaperTrade
 from server.entities.db_user import DatabaseUser
 
@@ -11,6 +12,29 @@ def create_new_user() -> DatabaseUser:
     new_user = DatabaseUser(fake.first_name(), fake.last_name(), fake.ascii_company_email(), fake.domain_word(),
                             fake.sha256(raw_output=False))
     return new_user.make_dictionary()
+
+
+# new paper trade -----------------------------------------------------------------
+@fixture
+def create_new_paper_trade() -> Option:
+    new_paper_trade = Option("T",
+                             20.0,
+                             fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                             "3/25",
+                             1,
+                             "Straddle",
+                             fake.pyfloat(left_digits=2, right_digits=2, positive=True),
+                             fake.pyfloat(left_digits=2, right_digits=2, positive=True)
+                             )
+
+    return new_paper_trade.make_dictionary()
+
+
+@fixture
+def option_update() -> PaperTrade:
+    opt_dict = PaperTrade(498040, 1, 0.13, 0.41, 1.01)
+
+    return opt_dict.make_dictionary()
 
 
 # number errors -----------------------------------------------------------------
@@ -157,21 +181,6 @@ def create_new_user_password_too_long() -> DatabaseUser:
                             "390460893240689230948609820923406"
                             "8809")
     return new_user.make_dictionary()
-
-
-# new paper trade -----------------------------------------------------------------
-@fixture
-def create_new_paper_trade() -> dict:
-    return {
-        "ticker": "T",
-        "strikePrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-        "stockPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-        "expirationDate": "3/25",
-        "contracts": 1,
-        "strategyType": "Straddle",
-        "callPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True),
-        "putPrice": fake.pyfloat(left_digits=2, right_digits=2, positive=True)
-    }
 
 
 @fixture

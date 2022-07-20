@@ -53,8 +53,20 @@ class PaperTradeDAOImp(PaperTradeDAO):
             raise TradeNotFound(paper_trade_not_found)
         else:
             result = collection.update_one({"_id": ObjectId(user_id)},
-                                           {"$set": {f"paperTrades.{paper_trade_index}.sellPrice": sell_price,
-                                                     f"paperTrades.{paper_trade_index}.status": "closed"}})
+                                           {"$set": {f"paperTrades.{paper_trade_index}.sellPrice":
+                                            paper_trade["sellPrice"],
+                                                     f"paperTrades.{paper_trade_index}.status": "closed",
+                                                     f"paperTrades.{paper_trade_index}.costPrice":
+                                                         paper_trade["costPrice"],
+                                                     f"paperTrades.{paper_trade_index}.totalSell":
+                                                         paper_trade["totalSell"],
+                                                     f"paperTrades.{paper_trade_index}.totalCost":
+                                                         paper_trade["totalCost"],
+                                                     f"paperTrades.{paper_trade_index}.netProfit":
+                                                         paper_trade["netProfit"],
+                                                     f"paperTrades.{paper_trade_index}.netProfitPercentage":
+                                                         paper_trade["netProfitPercentage"],
+                                                     }})
             return result.acknowledged
 
     # Delete method -------

@@ -81,7 +81,7 @@ class PaperTradeServiceImp(PaperTradeService):
                              pending_option["strategyType"], pending_option["callPrice"],
                              pending_option["putPrice"])
 
-        return self.paper_trade_dao.add_paper_trade(user_id, paper_trade)
+        return self.paper_trade_dao.add_paper_trade(user_id, paper_trade.make_dictionary())
 
     def get_paper_trades(self, user_id: str) -> list:
         # check user_id is a string
@@ -140,7 +140,7 @@ class PaperTradeServiceImp(PaperTradeService):
         paper_trade = PaperTrade(option_update["tradeId"], option_update["contracts"], option_update["callPrice"],
                                  option_update["putPrice"], option_update["sellPrice"])
 
-        return self.paper_trade_dao.update_paper_trade(user_id, paper_trade_index, paper_trade)
+        return self.paper_trade_dao.update_paper_trade(user_id, paper_trade_index, paper_trade.make_dictionary())
 
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
         # check user_id is a string

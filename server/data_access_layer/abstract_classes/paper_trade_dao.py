@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+from server.entities.option import Option
 from server.entities.paper_trade import PaperTrade
 
 
@@ -7,7 +8,7 @@ class PaperTradeDAO(ABC):
 
     # Create method -------
     @abstractmethod
-    def add_paper_trade(self, user_id: str, paper_trade: PaperTrade) -> dict:
+    def add_paper_trade(self, user_id: str, paper_trade: Option) -> dict:
         pass
 
     # Read methods --------

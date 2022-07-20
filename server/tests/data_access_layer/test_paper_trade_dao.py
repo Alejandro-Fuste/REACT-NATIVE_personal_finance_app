@@ -65,10 +65,10 @@ def test_get_paper_trades_failure_no_trades_exist():
 
 # Update Tests ------------------
 
-def test_update_paper_trade_success():
+def test_update_paper_trade_success(option_update):
     users = user_dao.get_all_users()
     first_user_id = users[0]["_id"]
-    updated_trade: bool = paper_trade_dao.update_paper_trade_sell_price(first_user_id, 0, 111.11)
+    updated_trade: bool = paper_trade_dao.update_paper_trade(first_user_id, 0, option_update)
     assert updated_trade
 
 
