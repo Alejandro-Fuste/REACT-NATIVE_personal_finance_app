@@ -15,6 +15,7 @@ from server.data_access_layer.implementation_classes.paper_trade_dao import Pape
 from server.service_layer.abstract_classes.paper_trade_service_abs import PaperTradeService
 
 from server.entities.option import Option
+from server.entities.paper_trade import PaperTrade
 
 user_id_must_be_string: str = "The user id must be a string."
 user_id_not_provided: str = "A user id must be provided."
@@ -136,7 +137,10 @@ class PaperTradeServiceImp(PaperTradeService):
         if option_update["sellPrice"] < 0:
             raise SellPriceNegative(sell_price_negative)
 
-        return self.paper_trade_dao.update_paper_trade_sell_price(user_id, paper_trade_index, option_update)
+        paper_trade = PaperTrade(option_update["tradeId"], option_update["contracts"], option_update["callPrice"],
+                                 option_update["putPrice"], option_update["sellPrice"])
+
+        return self.paper_trade_dao.update_paper_trade(user_id, paper_trade_index, paper_trade)
 
     def delete_paper_trade(self, user_id: str, paper_trade_id: int) -> int:
         # check user_id is a string

@@ -44,7 +44,7 @@ class PaperTradeDAOImp(PaperTradeDAO):
             return trades["paperTrades"]
 
     # Update method -------
-    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, option_update: dict) -> bool:
+    def update_paper_trade(self, user_id: str, paper_trade_index: int, paper_trade: PaperTrade) -> bool:
         user = collection.find_one({"_id": ObjectId(user_id)})
 
         if user is None:
