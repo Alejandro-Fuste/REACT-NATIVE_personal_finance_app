@@ -17,7 +17,7 @@ class PaperTradeService(ABC):
 
     # Update method -------
     @abstractmethod
-    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, option_update: dict) -> bool:
+    def update_paper_trade(self, user_id: str, paper_trade_index: int, option_update: dict) -> bool:
         pass
 
     # Delete method -------

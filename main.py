@@ -266,12 +266,11 @@ def get_paper_trades(user_id):
 
 # Update routes -------
 
-@app.patch("/api/updateSellPrice")
-def update_sell_price():
+@app.patch("/api/updatePaperTrade/<user_id>/<paper_trade_index>")
+def update_paper_trade(user_id, paper_trade_index):
     try:
         data = request.get_json()
-        new_sell_price = paper_trade_service.update_paper_trade_sell_price(data["userId"], data["paperTradeIndex"],
-                                                                           data["sellPrice"])
+        new_sell_price = paper_trade_service.update_paper_trade(user_id, paper_trade_index, data)
         return jsonify(new_sell_price), 200
 
     except UserNotFound as e:

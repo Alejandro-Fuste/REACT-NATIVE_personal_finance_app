@@ -94,7 +94,7 @@ class PaperTradeServiceImp(PaperTradeService):
 
         return self.paper_trade_dao.get_paper_trades(user_id)
 
-    def update_paper_trade_sell_price(self, user_id: str, paper_trade_index: int, option_update: dict) -> bool:
+    def update_paper_trade(self, user_id: str, paper_trade_index: int, option_update: dict) -> bool:
         # check user_id is a string
         if isinstance(user_id, str) is False:
             raise UserIdMustBeString(user_id_must_be_string)
