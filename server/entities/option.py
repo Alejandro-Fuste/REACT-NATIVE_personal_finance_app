@@ -88,8 +88,7 @@ class Option:
             "straddleCallBreakevenAmount": self.calculate_straddle_call_breakeven_amount(),
             "straddleCallBreakevenPercent": self.calculate_straddle_call_breakeven_percent(),
             "straddlePutBreakevenAmount": self.calculate_straddle_put_breakeven_amount(),
-            "straddlePutBreakevenPercent": self.calculate_straddle_put_breakeven_percent(),
-            "sellPrice": 0.00
+            "straddlePutBreakevenPercent": self.calculate_straddle_put_breakeven_percent()
         }
         return dictionary
 
