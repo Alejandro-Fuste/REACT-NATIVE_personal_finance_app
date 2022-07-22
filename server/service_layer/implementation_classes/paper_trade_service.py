@@ -112,15 +112,17 @@ class PaperTradeServiceImp(PaperTradeService):
             raise InputNotInteger(paper_trade_index_must_be_int)
 
         # check if values are missing
-        if option_update["sellPrice"] is None \
-                or option_update["tradeId"] is None \
+        if option_update["tradeId"] is None \
                 or option_update["contracts"] is None \
                 or option_update["callPrice"] is None \
-                or option_update["putPrice"] is None:
+                or option_update["putPrice"] is None \
+                or option_update["callSellPrice"] is None \
+                or option_update["putSellPrice"] is None:
             raise ValueMissing(value_missing_from_object)
 
         # check sell_price is a float
-        if isinstance(option_update["sellPrice"], float) is False:
+        if isinstance(option_update["callSellPrice"], float) is False \
+                or isinstance(option_update["putSellPrice"], float) is False:
             raise SellPriceNotFloat(sell_price_must_be_float)
 
         # check if value is a float
@@ -133,12 +135,14 @@ class PaperTradeServiceImp(PaperTradeService):
                 or isinstance(option_update["tradeId"], int) is False:
             raise InputNotInteger(value_not_int_in_object)
 
-        # check if sell_price is a negative number
-        if option_update["sellPrice"] < 0:
+        # check if sell prices are a negative number
+        if option_update["callSellPrice"] < 0 \
+                or option_update["putSellPrice"] < 0:
             raise SellPriceNegative(sell_price_negative)
 
         paper_trade = PaperTrade(option_update["tradeId"], option_update["contracts"], option_update["callPrice"],
-                                 option_update["putPrice"], option_update["sellPrice"])
+                                 option_update["putPrice"], option_update["callSellPrice"],
+                                 option_update["putSellPrice"])
 
         return self.paper_trade_dao.update_paper_trade(user_id, paper_trade_index, paper_trade.make_dictionary())
 
