@@ -106,9 +106,9 @@ def test_get_paper_trades_user_id_missing(missing_id):
 # Update Tests ------------------------------------------------------------------------------
 
 # id not string
-def test_update_paper_trade_user_id_not_string(invalid_id):
+def test_update_paper_trade_user_id_not_string(invalid_id, option_update):
     try:
-        paper_trade_service.update_paper_trade(invalid_id, 0, 111.11)
+        paper_trade_service.update_paper_trade(invalid_id, 0, option_update)
         assert False
     except UserIdMustBeString as e:
         assert str(e) == user_id_must_be_string

@@ -32,7 +32,7 @@ def create_new_paper_trade() -> Option:
 
 @fixture
 def option_update() -> PaperTrade:
-    opt_dict = PaperTrade(498040, 1, 0.13, 0.41, 1.01)
+    opt_dict = PaperTrade(498040, 1, 0.13, 0.41, 1.01, .01)
 
     return opt_dict.make_dictionary()
 
