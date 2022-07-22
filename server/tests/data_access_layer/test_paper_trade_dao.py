@@ -80,14 +80,14 @@ def test_update_paper_trade_failure_user_not_found(bad_id, option_update):
         assert str(e) == user_not_found_message
 
 
-def test_update_paper_trade_failure_paper_trade_not_found():
+def test_update_paper_trade_failure_paper_trade_not_found(option_update):
     users = user_dao.get_all_users()
     first_user_id = users[2]["_id"]
     trades: list = users[2]["paperTrades"]
     bad_trade_index: int = len(trades) + 1
 
     try:
-        paper_trade_dao.update_paper_trade(first_user_id, bad_trade_index, 111.11)
+        paper_trade_dao.update_paper_trade(first_user_id, bad_trade_index, option_update)
         assert False
     except TradeNotFound as e:
         assert str(e) == paper_trade_not_found
