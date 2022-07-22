@@ -37,6 +37,20 @@ def option_update() -> PaperTrade:
     return opt_dict.make_dictionary()
 
 
+@fixture
+def option_update2() -> dict:
+    opt_dict = {
+        "tradeId": 498040,
+        "contracts": 1,
+        "callPrice": .13,
+        "putPrice": .41,
+        "callSellPrice": 1.01,
+        "putSellPrice": .01
+    }
+
+    return opt_dict
+
+
 # number errors -----------------------------------------------------------------
 @fixture
 def create_new_user_first_name_number() -> DatabaseUser:
@@ -380,7 +394,8 @@ def option_update_sell_price_value_missing() -> dict:
         "contracts": 1,
         "putPrice": 0.13,
         "callPrice": None,
-        "sellPrice": 1.01
+        "callSellPrice": 1.01,
+        "putSellPrice": .01
     }
 
     return opt_dict
@@ -393,7 +408,8 @@ def option_update_value_not_float() -> dict:
         "contracts": 1,
         "callPrice": ".54",
         "putPrice": 0.13,
-        "sellPrice": 1.01
+        "callSellPrice": 1.01,
+        "putSellPrice": .01
     }
 
     return opt_dict
@@ -406,7 +422,8 @@ def option_update_sell_price_not_float() -> dict:
         "contracts": "1",
         "callPrice": 0.49,
         "putPrice": 0.13,
-        "sellPrice": "sellPrice"
+        "callSellPrice": "1.01",
+        "putSellPrice": .01
     }
 
     return opt_dict
@@ -419,7 +436,8 @@ def option_update_sell_price_missing() -> dict:
         "contracts": "1",
         "callPrice": 0.49,
         "putPrice": 0.13,
-        "sellPrice": None,
+        "callSellPrice": None,
+        "putSellPrice": .01
 
     }
 
@@ -433,7 +451,8 @@ def option_update_sell_price_negative_number() -> dict:
         "contracts": 1,
         "callPrice": 0.49,
         "putPrice": 0.13,
-        "sellPrice": -1.01
+        "callSellPrice": -1.01,
+        "putSellPrice": .01
     }
 
     return opt_dict

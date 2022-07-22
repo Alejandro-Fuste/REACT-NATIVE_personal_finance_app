@@ -2,7 +2,6 @@ from server.custom_exceptions.input_missing import InputMissing
 from server.custom_exceptions.input_not_int import InputNotInteger
 from server.custom_exceptions.paper_trade_id_missing import PaperTradeIdMissing
 from server.custom_exceptions.paper_trade_id_not_int import PaperTradeIdNotInt
-from server.custom_exceptions.sell_price_missing import SellPriceMissing
 from server.custom_exceptions.sell_price_negative import SellPriceNegative
 from server.custom_exceptions.sell_price_not_float import SellPriceNotFloat
 from server.custom_exceptions.user_id_must_be_string import UserIdMustBeString
@@ -106,36 +105,36 @@ def test_get_paper_trades_user_id_missing(missing_id):
 # Update Tests ------------------------------------------------------------------------------
 
 # id not string
-def test_update_paper_trade_user_id_not_string(invalid_id, option_update):
+def test_update_paper_trade_user_id_not_string(invalid_id, option_update2):
     try:
-        paper_trade_service.update_paper_trade(invalid_id, 0, option_update)
+        paper_trade_service.update_paper_trade(invalid_id, 0, option_update2)
         assert False
     except UserIdMustBeString as e:
         assert str(e) == user_id_must_be_string
 
 
 # id missing
-def test_update_paper_trade_user_id_missing(missing_id):
+def test_update_paper_trade_user_id_missing(missing_id, option_update2):
     try:
-        paper_trade_service.update_paper_trade(missing_id, 0, 111.11)
+        paper_trade_service.update_paper_trade(missing_id, 0, option_update2)
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
 
 
 # index not int
-def test_update_paper_trade_index_not_int(bad_id, invalid_id):
+def test_update_paper_trade_index_not_int(bad_id, option_update):
     try:
-        paper_trade_service.update_paper_trade(bad_id, '0', 111.11)
+        paper_trade_service.update_paper_trade(bad_id, '0', option_update)
         assert False
     except InputNotInteger as e:
         assert str(e) == paper_trade_index_must_be_int
 
 
 # index missing
-def test_update_paper_trade_index_missing(bad_id, missing_paper_trade_id):
+def test_update_paper_trade_index_missing(bad_id, missing_paper_trade_id, option_update2):
     try:
-        paper_trade_service.update_paper_trade(bad_id, missing_paper_trade_id, 111.11)
+        paper_trade_service.update_paper_trade(bad_id, missing_paper_trade_id, option_update2)
         assert False
     except InputMissing as e:
         assert str(e) == paper_trade_index_not_provided
