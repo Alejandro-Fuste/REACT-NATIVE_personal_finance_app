@@ -272,7 +272,7 @@ def get_paper_trades(user_id):
 def update_paper_trade(user_id, paper_trade_index):
     try:
         data = request.get_json()
-        new_sell_price = paper_trade_service.update_paper_trade(user_id, paper_trade_index, data)
+        new_sell_price = paper_trade_service.update_paper_trade(user_id, int(paper_trade_index), data)
         return jsonify(new_sell_price), 200
 
     except UserNotFound as e:

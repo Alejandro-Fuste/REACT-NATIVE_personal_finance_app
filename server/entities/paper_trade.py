@@ -4,13 +4,15 @@ class PaperTrade:
                  contracts: int = None,
                  call_price: float = None,
                  put_price: float = None,
-                 sell_price: float = None,
+                 call_sell_price: float = None,
+                 put_sell_price: float = None
                  ):
         self.trade_id = trade_id
         self.contracts = contracts
         self.call_price = call_price
         self.put_price = put_price
-        self.sell_price = sell_price
+        self.call_sell_price = call_sell_price
+        self.put_sell_price = put_sell_price
 
     # Calculate Cost Price
     def calculate_cost_price(self):
@@ -20,7 +22,9 @@ class PaperTrade:
     # Calculate Total Sell Amount ----------------------------------------------------------------
     def calculate_total_sell(self):
         contract_amount = self.contracts * 100
-        amount = self.sell_price * contract_amount
+        call_total = self.call_sell_price * contract_amount
+        put_total = self.put_sell_price * contract_amount
+        amount = call_total + put_total
         return amount
 
     # Calculate Total Cost Amount ----------------------------------------------------------------
@@ -46,7 +50,8 @@ class PaperTrade:
             "contracts": self.contracts,
             "callPrice": self.call_price,
             "putPrice": self.put_price,
-            "sellPrice": self.sell_price,
+            "callSellPrice": self.call_sell_price,
+            "putSellPrice": self.put_sell_price,
             "costPrice": self.calculate_cost_price(),
             "totalSell": self.calculate_total_sell(),
             "totalCost": self.calculate_total_cost(),
@@ -59,7 +64,7 @@ class PaperTrade:
 
     def __str__(self):
         return f"tradeId: {self.trade_id}, contracts: {self.contracts}, call_price: {self.call_price}, " \
-               f"put_price: {self.put_price}, sell_price: {self.sell_price}, cost_price: " \
+               f"put_price: {self.put_price}, call_sell_price: {self.call_sell_price}, cost_price: " \
                f"{self.calculate_cost_price()}, total_sell: {self.calculate_total_sell()}, total_cost: " \
                f"{self.calculate_total_cost()}, net_profit: {self.calculate_net_profit()}, net_profit_percentage: " \
                f"{self.calculate_net_profit_percentage()}, status: closed"

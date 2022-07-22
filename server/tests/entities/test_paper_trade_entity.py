@@ -1,6 +1,6 @@
 from server.entities.paper_trade import PaperTrade
 
-test_paper_trade = PaperTrade(631428, 1, .49, .13, 1.01)
+test_paper_trade = PaperTrade(631428, 1, .49, .13, 1.01, .01)
 paper_trade = test_paper_trade.make_dictionary()
 
 
@@ -11,7 +11,7 @@ def test_calculate_cost_price():
 
 def test_calculate_total_sell():
     amount = paper_trade['totalSell']
-    assert amount == 101
+    assert amount == 102
 
 
 def test_calculate_total_cost():
@@ -21,10 +21,10 @@ def test_calculate_total_cost():
 
 def test_calculate_net_profit():
     amount = paper_trade['netProfit']
-    assert amount == 39
+    assert amount == 40
 
 
 def test_calculate_net_profit_percentage():
     percentage = paper_trade['netProfitPercentage']
-    assert percentage == 38.61
+    assert percentage == 39.22
 
