@@ -108,7 +108,7 @@ def test_get_paper_trades_user_id_missing(missing_id):
 # id not string
 def test_update_paper_trade_user_id_not_string(invalid_id):
     try:
-        paper_trade_service.update_paper_trade_sell_price(invalid_id, 0, 111.11)
+        paper_trade_service.update_paper_trade(invalid_id, 0, 111.11)
         assert False
     except UserIdMustBeString as e:
         assert str(e) == user_id_must_be_string
@@ -117,7 +117,7 @@ def test_update_paper_trade_user_id_not_string(invalid_id):
 # id missing
 def test_update_paper_trade_user_id_missing(missing_id):
     try:
-        paper_trade_service.update_paper_trade_sell_price(missing_id, 0, 111.11)
+        paper_trade_service.update_paper_trade(missing_id, 0, 111.11)
         assert False
     except MissingUserId as e:
         assert str(e) == user_id_not_provided
@@ -126,7 +126,7 @@ def test_update_paper_trade_user_id_missing(missing_id):
 # index not int
 def test_update_paper_trade_index_not_int(bad_id, invalid_id):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, '0', 111.11)
+        paper_trade_service.update_paper_trade(bad_id, '0', 111.11)
         assert False
     except InputNotInteger as e:
         assert str(e) == paper_trade_index_must_be_int
@@ -135,7 +135,7 @@ def test_update_paper_trade_index_not_int(bad_id, invalid_id):
 # index missing
 def test_update_paper_trade_index_missing(bad_id, missing_paper_trade_id):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, missing_paper_trade_id, 111.11)
+        paper_trade_service.update_paper_trade(bad_id, missing_paper_trade_id, 111.11)
         assert False
     except InputMissing as e:
         assert str(e) == paper_trade_index_not_provided
@@ -144,7 +144,7 @@ def test_update_paper_trade_index_missing(bad_id, missing_paper_trade_id):
 # value missing from object
 def test_update_paper_trade_value_missing(bad_id, option_update_sell_price_value_missing):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_value_missing)
+        paper_trade_service.update_paper_trade(bad_id, 0, option_update_sell_price_value_missing)
         assert False
     except ValueMissing as e:
         assert str(e) == value_missing_from_object
@@ -153,7 +153,7 @@ def test_update_paper_trade_value_missing(bad_id, option_update_sell_price_value
 # value not a float
 def test_update_paper_trade_value_not_float(bad_id, option_update_value_not_float):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_value_not_float)
+        paper_trade_service.update_paper_trade(bad_id, 0, option_update_value_not_float)
         assert False
     except ValueNotFloat as e:
         assert str(e) == value_not_float_in_object
@@ -162,7 +162,7 @@ def test_update_paper_trade_value_not_float(bad_id, option_update_value_not_floa
 # sell price not float
 def test_update_paper_trade_sell_price_not_float(bad_id, option_update_sell_price_not_float):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_not_float)
+        paper_trade_service.update_paper_trade(bad_id, 0, option_update_sell_price_not_float)
         assert False
     except SellPriceNotFloat as e:
         assert str(e) == sell_price_must_be_float
@@ -171,7 +171,7 @@ def test_update_paper_trade_sell_price_not_float(bad_id, option_update_sell_pric
 # sell price missing
 def test_update_paper_trade_sell_price_missing(bad_id, option_update_sell_price_missing):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_missing)
+        paper_trade_service.update_paper_trade(bad_id, 0, option_update_sell_price_missing)
         assert False
     except ValueMissing as e:
         assert str(e) == value_missing_from_object
@@ -180,7 +180,7 @@ def test_update_paper_trade_sell_price_missing(bad_id, option_update_sell_price_
 # sell price negative number
 def test_update_paper_trade_sell_price_negative(bad_id, option_update_sell_price_negative_number):
     try:
-        paper_trade_service.update_paper_trade_sell_price(bad_id, 0, option_update_sell_price_negative_number)
+        paper_trade_service.update_paper_trade(bad_id, 0, option_update_sell_price_negative_number)
         assert False
     except SellPriceNegative as e:
         assert str(e) == sell_price_negative
